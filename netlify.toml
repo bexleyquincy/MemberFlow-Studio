@@ -5,6 +5,7 @@
 
 [functions]
   node_bundler = "esbuild"
+  format = "esm"
   included_files = ["package.json"]
 
 [[redirects]]
