@@ -1,17 +1,10 @@
 [build]
   command = "npm run build"
   publish = "dist"
-  functions = "netlify/functions"
 
 [functions]
+  directory = "netlify/functions"
   node_bundler = "esbuild"
-  format = "esm"
-  included_files = ["package.json"]
-
-[[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/:splat"
-  status = 200
 
 [[redirects]]
   from = "/*"
