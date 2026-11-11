@@ -1,0 +1,2576 @@
+# MASTER DEVELOPER PROMPT — MEMBERFLOW STUDIO HOMEPAGE
+
+## 1. ROLE & PROJECT OVERVIEW
+
+Act as a world-class UI/UX designer, senior frontend developer, conversion rate optimization specialist, and creative digital agency website architect.
+
+I am building a premium four-page portfolio website for **MemberFlow Studio**, founded by **Testimony Samuel**.
+
+MemberFlow Studio specializes in helping Skool community owners build, organize, manage, improve, and grow their online communities.
+
+The website must position MemberFlow Studio as a professional community growth and management studio, not a generic freelancer website.
+
+YOUR TASK: Build the complete, functional homepage based on the attached reference screenshot.
+
+HOMEPAGE REFERENCE IMAGE URL: https://cdn.phototourl.com/member/2026-11-10-3018ec39-3c6e-4f6d-8daa-b499198bba73.png
+
+The reference image is the primary visual authority. Study its layout, proportions, spacing, typography, colors, visual hierarchy, section compositions, card designs, imagery, and overall aesthetic before writing code.
+
+Do not create an unrelated design or substitute a generic agency template.
+
+Reproduce the visual direction as closely as possible while ensuring the final website is responsive, functional, accessible, and production-ready.
+
+---
+
+## 2. BRAND IDENTITY
+
+Business name: MemberFlow Studio
+
+Founder: Testimony Samuel
+
+Industry: Skool Community Setup, Management, Member Experience and Growth.
+
+Official tagline:
+"Better Systems. Stronger Communities."
+
+Brand positioning:
+
+"We help community owners build, organize, manage and grow thriving online communities through strategic setup, better member experiences and engagement systems."
+
+### Brand personality
+
+- Premium
+- Innovative
+- Strategic
+- Professional
+- Trustworthy
+- Modern
+- Approachable
+
+### Color system
+
+Strictly follow the 60-30-10 color principle.
+
+Dominant:
+Midnight Navy — #10192B
+
+Secondary:
+Slate Blue — #202E43
+
+Accent:
+Electric Blue — #2563EB
+
+Supporting colors:
+Soft White — #F5F7FB
+Muted Text — #AAB7CC
+Light Border — #DCE3EF
+
+Use dark navy for premium hero and footer areas, soft white for content sections, slate blue for cards and secondary surfaces, and electric blue for primary CTAs, highlights, icons and important visual elements.
+
+Avoid introducing unrelated colors.
+
+### Typography
+
+Headings: Sora (Google Fonts)
+Body: DM Sans (Google Fonts)
+
+Use strong, bold, editorial-style headlines, readable body text, intentional font sizing, and consistent typographic hierarchy.
+
+---
+
+## 3. WEBSITE NAVIGATION
+
+Create a premium, clean navigation bar.
+
+Left:
+
+- MemberFlow Studio logo.
+- Custom geometric M monogram in electric blue.
+- Wordmark: MemberFlow Studio.
+
+Center/right navigation:
+
+- Home
+- Services
+- Portfolio
+- About
+- FAQ
+
+Right:
+
+- Prominent electric-blue "Get in Touch" button.
+
+Requirements:
+
+- Home must be visually active.
+- Navigation links must have subtle hover effects.
+- The logo must link to the homepage.
+- Services, Portfolio and About must be implemented as navigation-ready routes for future page development.
+- FAQ should link to an FAQ section on the homepage or its future dedicated destination.
+- Make the navigation responsive with a polished mobile menu.
+- Keep the navigation visually consistent throughout the website.
+
+---
+
+## 4. HOMEPAGE SECTION-BY-SECTION IMPLEMENTATION
+
+Build all the following sections in the specified order.
+
+### SECTION 1 — PREMIUM HERO
+
+This is the most important section.
+
+Create a dramatic, premium dark navy hero with an attractive two-column composition.
+
+LEFT COLUMN:
+
+Small eyebrow badge:
+"Skool Community Experts"
+
+Main headline:
+"Better Systems. Stronger Communities."
+
+Highlight "Communities" in electric blue with an elegant visual accent or underline.
+
+Supporting description:
+
+"We help Skool community owners build, organize, manage and grow thriving communities through expert setup, engaging classrooms and strategic growth."
+
+Primary CTA:
+"Explore Our Services"
+
+Secondary CTA:
+"Watch Our Work"
+
+The primary CTA should navigate to the Services page. The secondary CTA should scroll to the featured portfolio section.
+
+RIGHT COLUMN:
+
+Create a premium visual composition containing:
+
+- A confident, professional Black female business professional.
+- Floating Skool-style classroom interface mockups.
+- Community member interface previews.
+- Small visual cards showing community growth and member engagement.
+- Subtle electric-blue glowing shapes and curved decorative elements.
+- Elegant floating labels such as "Grow Your Community" and "Engage More Members".
+- Handwritten-style decorative phrase: "Build. Grow. Thrive."
+
+Use realistic, high-quality imagery and carefully layered interface mockups.
+
+Do not make the composition cluttered.
+
+Under the hero copy, include three credibility indicators.
+
+Suggested labels:
+
+- Community Members Supported
+- Client Satisfaction
+- Growth Strategies
+
+IMPORTANT: Do not invent numerical achievements. Use replaceable placeholders for any statistics that have not been verified. If no real numbers are available, show service capabilities or qualitative credibility indicators instead.
+
+### SECTION 2 — TRUSTED PLATFORMS STRIP
+
+Create a horizontal strip that communicates familiarity with online community and website platforms.
+
+Include text:
+"Supporting Community Owners Across Platforms"
+
+Use appropriately styled text-based platform names or permitted brand assets for:
+
+- Skool
+- Wix
+- Squarespace
+- Circle
+- Mighty Networks
+- Kajabi
+
+Do not suggest official partnerships, certifications, or endorsements.
+
+On mobile, make the strip horizontally scrollable or neatly wrapped.
+
+### SECTION 3 — SERVICES OVERVIEW
+
+Use a contrasting soft-white background.
+
+Small label:
+"Our Services"
+
+Headline:
+"End-to-End Skool Community Solutions"
+
+Supporting description:
+
+"From setup to growth, we provide the systems and support you need to create a powerful, engaging and well-organized community."
+
+Display six visually distinctive service cards.
+
+CARD 1 — Community Setup
+"Launch a professional, well-structured Skool community."
+
+CARD 2 — Community Management
+"Keep your community organized, supported and actively managed."
+
+CARD 3 — Member Experience
+"Improve onboarding, navigation and the overall member journey."
+
+CARD 4 — Community Growth
+"Strengthen your community's visibility and membership growth strategy."
+
+CARD 5 — Social Media Management
+"Build your online presence and amplify your community across platforms."
+
+CARD 6 — Additional Support
+"Get tailored solutions for your community's specific needs."
+
+Each card must include:
+
+- A distinctive blue icon.
+- Strong service title.
+- Short description.
+- Subtle border or shadow.
+- Attractive hover animation.
+- Consistent card dimensions.
+
+Include a "View All Services" CTA linking to the Services page.
+
+### SECTION 4 — FEATURED PORTFOLIO
+
+Create a dramatic dark navy portfolio section with sophisticated electric-blue decorative elements.
+
+Small label:
+"Our Portfolio"
+
+Headline:
+"See Our Work in Action"
+
+Supporting description:
+"Explore examples of Skool classrooms and community landing pages we've designed and organized."
+
+Show four project preview cards in a responsive grid.
+
+Each card should have:
+
+- A large screenshot preview.
+- Project category.
+- Project title.
+- Small arrow icon.
+- Subtle hover effect.
+
+IMPORTANT — PORTFOLIO IMAGE URL PLACEHOLDERS:
+
+I will supply the actual project screenshots and image URLs later.
+
+Create the following editable image variables:
+
+CLASSROOM_PROJECT_01_IMAGE_URL = "https://img.sanishtech.com/u/d18df1c25ca09bab0a6239b84996b116.png"
+CLASSROOM_PROJECT_02_IMAGE_URL = "https://img.sanishtech.com/u/b23962d874c57145a61ed60d99809bf2.png"
+LANDING_PAGE_PROJECT_01_IMAGE_URL = "https://img.sanishtech.com/u/b6f1c88dadfc9dcdaa1aa1408c238b2a.png"
+LANDING_PAGE_PROJECT_02_IMAGE_URL = "https://img.sanishtech.com/u/d6253575a28ac741cb6d70f4ee7a3f48.png"
+
+Suggested project labels:
+
+1. Skool Classroom Design
+2. Premium Community Classroom
+3. Real Estate Community Landing Page
+4. Design & Apparel Community Landing Page
+
+These labels are examples and must be editable.
+
+Do not replace these placeholders with randomly generated portfolio work. Use neutral placeholder image frames until I supply my real screenshots.
+
+Include a "View Full Portfolio" button linking to the Portfolio page.
+
+The portfolio component must support additional projects later without redesigning the section.
+
+### SECTION 5 — WHY CHOOSE MEMBERFLOW
+
+Use a soft-white background with a distinctive asymmetric layout.
+
+Small label:
+"Why Choose Us"
+
+Headline:
+"Your Success Is Our Priority"
+
+Supporting copy:
+"We go beyond setup. We partner with you to build a community experience that lasts and grows."
+
+Show five value propositions:
+
+1. Expertise
+   "Focused knowledge of community systems and growth."
+
+2. Tailored Solutions
+   "Strategies designed around your community's needs."
+
+3. Dedicated Support
+   "Reliable support throughout your community journey."
+
+4. Strategic Thinking
+   "Every decision considers your members and business goals."
+
+5. Member-First Approach
+   "Create an experience that makes members want to participate."
+
+On the right, create a beautiful 3D-inspired growth illustration featuring an upward blue growth arrow, geometric blocks and a trophy.
+
+Keep the illustration elegant and visually balanced.
+
+### SECTION 6 — CLIENT TESTIMONIALS
+
+Create a premium dark navy section.
+
+Small label:
+"What Our Clients Say"
+
+Headline:
+"Real Experiences. Better Communities."
+
+Build a three-card testimonial layout with attractive profile-image placeholders, quotation styling and a subtle star-rating visual.
+
+IMPORTANT:
+Do not invent testimonials, client names, ratings, or customer experiences.
+
+Create clearly identifiable editable placeholder content that can be replaced with genuine client feedback later. Do not present placeholder testimonials as real endorsements.
+
+The section must support adding or removing testimonials easily.
+
+### SECTION 7 — FINAL CONVERSION BANNER
+
+Create a visually striking full-width electric-blue gradient CTA section.
+
+Headline:
+"Ready to Level Up Your Skool Community?"
+
+Supporting text:
+"Let's turn your community into a thriving, engaging and well-organized experience."
+
+Primary CTA:
+"Contact Us Today"
+
+Include a tasteful rocket or forward-growth illustration.
+
+The CTA should link to the contact destination.
+
+Use attractive typography, generous spacing and strong contrast.
+
+### SECTION 8 — FOOTER
+
+Create a sophisticated dark navy footer.
+
+Left:
+MemberFlow Studio logo and wordmark.
+
+Description:
+"Better Systems. Stronger Communities."
+
+Include:
+"Founded by Testimony Samuel"
+
+Navigation:
+
+- Home
+- Services
+- Portfolio
+- About
+- FAQ
+
+Social media placeholders:
+
+- LinkedIn
+- Instagram
+- Facebook
+- YouTube
+
+Use editable URLs rather than inventing social profiles.
+
+Include copyright information with a dynamically updated year.
+
+---
+
+## 5. DESIGN AND USER EXPERIENCE REQUIREMENTS
+
+The finished homepage must feel like a premium technology and digital growth agency website.
+
+Design requirements:
+
+- Strong visual hierarchy.
+- Generous whitespace.
+- Premium card compositions.
+- Sophisticated dark/light section transitions.
+- Beautiful section separators and subtle background details.
+- Consistent corner radii.
+- Refined shadows and blue glows.
+- High-quality imagery.
+- Professional iconography.
+- Smooth but restrained animations.
+- Clear and repeated conversion opportunities.
+
+Avoid:
+
+- Generic freelancer templates.
+- Excessively small sections.
+- Unnecessary blank spaces.
+- Overcrowded cards.
+- Random gradients everywhere.
+- Excessive animation.
+- Generic stock-dashboard layouts.
+- Fake statistics or testimonials.
+- Unnecessary popups.
+
+Every section must contribute to the visitor's understanding, trust or decision to contact MemberFlow Studio.
+
+---
+
+## 6. RESPONSIVE DESIGN
+
+Build mobile-first, but optimize the final result for desktop and tablet.
+
+Desktop:
+
+- Preserve the reference's spacious two-column hero.
+- Use balanced content widths.
+- Show multi-column service and portfolio grids.
+- Maintain comfortable readability.
+
+Tablet:
+
+- Reorganize columns naturally.
+- Avoid squeezed cards and overlapping visuals.
+
+Mobile:
+
+- Stack hero content and imagery.
+- Use readable headline sizes.
+- Display cards in one column or suitable compact layouts.
+- Use a functional mobile navigation.
+- Ensure CTAs are easy to tap.
+- Prevent horizontal overflow.
+- Keep portfolio images visually appealing.
+
+---
+
+## 7. FUNCTIONALITY REQUIREMENTS
+
+This must be a real functional homepage, not a static screenshot.
+
+Implement:
+
+- Functional navigation.
+- Working internal routes or clearly prepared route destinations.
+- Working service and portfolio CTAs.
+- Smooth scrolling where appropriate.
+- Responsive mobile menu.
+- Accessible buttons and links.
+- Hover and focus states.
+- Reusable components.
+- Editable content data.
+- Reusable portfolio image URL variables.
+- Proper image loading and layout dimensions to minimize CLS.
+- SEO-friendly semantic HTML.
+- Appropriate page title and meta description.
+- Keyboard accessibility.
+
+Do not create buttons that look functional but do nothing.
+
+For any destination not yet implemented, use a clearly defined route placeholder or a functional contact link rather than a dead button.
+
+---
+
+## 8. TECHNICAL IMPLEMENTATION
+
+Use the existing project's framework and architecture if one is already established.
+
+If starting from scratch, use:
+
+- React
+- Next.js
+- TypeScript
+- Tailwind CSS
+- Lucide icons
+
+Use reusable components and a clean project structure.
+
+Keep the following elements editable:
+
+- Brand logo.
+- Navigation links.
+- Hero copy.
+- Service cards.
+- Portfolio project information.
+- Portfolio image URLs.
+- Testimonials.
+- Social links.
+- Contact destination.
+
+Use optimized image formats and lazy-load images below the fold.
+
+Avoid unnecessary dependencies and oversized assets.
+
+---
+
+## 9. FUTURE WEBSITE EXPANSION — VERY IMPORTANT
+
+This is the FIRST of four pages.
+
+The other pages will be:
+
+PAGE 2: Services
+PAGE 3: Portfolio
+PAGE 4: About
+
+Build the homepage so these pages can be integrated without rebuilding the entire site.
+
+Create shared:
+
+- Navigation component.
+- Footer component.
+- Button styles.
+- Typography system.
+- Color tokens.
+- Card components.
+- Container and spacing system.
+
+Maintain consistent branding and navigation across future pages.
+
+Do not create four separate websites.
+
+Do not change the homepage visual identity when additional pages are introduced.
+
+---
+
+## 10. FINAL QUALITY CONTROL
+
+Before declaring the homepage complete:
+
+1. Compare the result against the attached reference screenshot.
+2. Check the hero composition and visual hierarchy.
+3. Verify the color palette and typography.
+4. Confirm all eight homepage sections exist.
+5. Verify responsive layouts.
+6. Test all navigation and CTA interactions.
+7. Check that portfolio image placeholders are easy to replace.
+8. Ensure there are no invented client achievements or testimonials.
+9. Check that the page loads quickly.
+10. Confirm the result looks like a premium, professionally art-directed agency website.
+
+FINAL INSTRUCTION:
+
+Prioritize visual fidelity to the attached MemberFlow Studio homepage screenshot while delivering clean, functional, production-quality code.
+
+Do not simplify the design into a generic template.
+
+Do not omit sections.
+
+Do not replace the visual reference with your own unrelated interpretation.
+
+The final result should look like a custom-built, premium community growth studio website that gives potential clients confidence in MemberFlow Studio and encourages them to get in touch.
+
+
+
+
+# MASTER DEVELOPER PROMPT — MEMBERFLOW STUDIO SERVICES PAGE
+
+## 1. PROJECT CONTEXT
+
+Act as a world-class UI/UX designer, senior frontend developer, conversion rate optimization specialist and premium digital agency website architect.
+
+I already have an existing website project for:
+
+**Business:** MemberFlow Studio  
+**Founder:** Testimony Samuel  
+**Tagline:** Better Systems. Stronger Communities.
+
+MemberFlow Studio helps Skool community owners build, organize, manage and grow their communities through professional setup, classroom organization, course uploads, member onboarding, engagement improvement, community management, social media management and growth support.
+
+The homepage has already been designed and implemented.
+
+YOUR TASK:
+
+Create and integrate the SECOND PAGE of the existing website: THE SERVICES PAGE.
+
+Do not build a separate website.
+
+Do not rebuild the homepage.
+
+Do not change the homepage's design, content, layout, functionality or existing components unnecessarily.
+
+Add the Services page as a new route within the existing website.
+
+## 2. VISUAL REFERENCE — MANDATORY
+
+SERVICES PAGE REFERENCE IMAGE URL:
+
+https://cdn.phototourl.com/member/2026-11-10-664b2396-bfc0-4259-8938-067cafafd664.png
+
+I will also attach the actual Services page screenshot to this prompt.
+
+Study the attached reference carefully before implementation.
+
+Reproduce its:
+- Overall composition.
+- Section proportions.
+- Navigation design.
+- Typography hierarchy.
+- Background transitions.
+- Card layouts.
+- Image placement.
+- Spacing.
+- Button styling.
+- Decorative elements.
+- Overall visual atmosphere.
+
+The screenshot is the primary design authority.
+
+Do not replace it with a generic services template or invent an unrelated visual direction.
+
+The result must closely match the screenshot while improving responsiveness and functionality where necessary.
+
+## 3. PRESERVE THE EXISTING BRAND IDENTITY
+
+Use the exact existing MemberFlow Studio design system established on the homepage.
+
+### Official colors
+
+- Midnight Navy: #10192B
+- Slate Blue: #202E43
+- Electric Blue: #2563EB
+- Soft White: #F5F7FB
+- Muted Text: #AAB7CC
+- Light Border: #DCE3EF
+
+Follow the 60-30-10 color distribution.
+
+### Typography
+
+- Headings: Sora
+- Body: DM Sans
+
+### Brand identity
+
+- Business name: MemberFlow Studio
+- Founder: Testimony Samuel
+- Tagline: Better Systems. Stronger Communities.
+- Positioning: Skool Community Setup, Management, Member Experience and Growth.
+
+Do not introduce a different color palette, font system, logo or brand identity.
+
+## 4. SHARED NAVIGATION
+
+Reuse the exact navigation component from the homepage.
+
+Navigation:
+- MemberFlow Studio logo.
+- Home
+- Services
+- Portfolio
+- About
+- FAQ
+- Get in Touch CTA.
+
+Requirements:
+
+- Highlight Services as the active page.
+- Home must navigate to the existing homepage.
+- Services must navigate to /services.
+- Portfolio must navigate to /portfolio.
+- About must navigate to /about.
+- Get in Touch must navigate to the existing contact destination or appropriate contact section.
+- Preserve the existing logo and navigation styling.
+- Maintain the same responsive mobile navigation.
+
+Do not create a visually different navigation bar for the Services page.
+
+## 5. SERVICES PAGE STRUCTURE
+
+Implement the following sections in the same order and visual style as the attached reference.
+
+### SECTION 1 — SERVICES HERO
+
+Create a visually impressive hero section.
+
+Small eyebrow label:
+"WHAT WE DO"
+
+Main headline:
+"Everything Your Community Needs to Thrive."
+
+Supporting description:
+
+"From building your Skool community to improving member experiences and driving engagement, we provide the expertise and support to help your community move forward."
+
+Primary CTA:
+"Let's Build Your Community"
+
+Secondary CTA:
+"Explore Our Services"
+
+The primary CTA should lead to the contact destination.
+
+The secondary CTA should scroll to the detailed services section.
+
+Visual direction:
+
+Create an elegant, premium technology-inspired visual composition featuring:
+- Skool-style community interface mockups.
+- Classroom/course previews.
+- Member onboarding interface elements.
+- Community engagement visual cards.
+- Subtle electric-blue geometric decorations.
+- Layered UI elements.
+
+Make the visual engaging without overcrowding the hero.
+
+### SECTION 2 — CORE SERVICES OVERVIEW
+
+Eyebrow:
+"OUR EXPERTISE"
+
+Headline:
+"Solutions Designed Around Your Community."
+
+Supporting text:
+
+"Every community has different needs. We provide flexible solutions to help you build a strong foundation, deliver a better member experience and create an environment where people want to participate."
+
+Display six visually distinctive service cards.
+
+SERVICE 01 — SKOOL COMMUNITY SETUP
+
+Description:
+
+"Build a professional, structured and branded Skool community that is easy to navigate and ready for members."
+
+Include:
+- Community configuration.
+- Branding and visual organization.
+- About page setup.
+- Community categories.
+- Community rules.
+- Welcome post and announcements.
+- General community organization.
+
+SERVICE 02 — CLASSROOM & COURSE SETUP
+
+Description:
+
+"Turn your classroom into an organized learning environment that makes it easy for members to access and follow your content."
+
+Include:
+- Classroom organization.
+- Course uploads.
+- Course categorization.
+- Module and lesson organization.
+- Course thumbnails and visuals.
+- Learning-path organization.
+- Content presentation improvements.
+
+SERVICE 03 — MEMBER ONBOARDING
+
+Description:
+
+"Create a welcoming and straightforward experience that helps new members understand where to start and what to do next."
+
+Include:
+- Welcome experiences.
+- New-member instructions.
+- Getting-started resources.
+- Onboarding posts.
+- Member navigation guidance.
+- Onboarding journey improvements.
+
+SERVICE 04 — COMMUNITY MANAGEMENT
+
+Description:
+
+"Keep your community organized, supported and consistently managed so owners can focus on delivering value."
+
+Include:
+- Community organization.
+- Content and announcement management.
+- Member support.
+- Discussion monitoring.
+- Community moderation.
+- Routine management support.
+
+SERVICE 05 — ENGAGEMENT & EXPERIENCE IMPROVEMENT
+
+Description:
+
+"Help members become more involved by creating a community experience that encourages participation and meaningful interaction."
+
+Include:
+- Engagement strategies.
+- Discussion prompts.
+- Community activities.
+- Member interaction initiatives.
+- Gamification support.
+- Member experience improvements.
+
+SERVICE 06 — COMMUNITY GROWTH & SOCIAL MEDIA
+
+Description:
+
+"Strengthen your community's visibility and support its growth through strategic marketing and social media management."
+
+Include:
+- Social media content planning.
+- Community promotion.
+- Social media management.
+- Content distribution.
+- Community positioning.
+- Growth strategy support.
+
+Each service card must include:
+- A unique Lucide icon.
+- Service number.
+- Service title.
+- Concise description.
+- Supporting details.
+- Consistent dimensions.
+- Attractive hover effects.
+- Subtle blue visual accents.
+
+Make the cards premium and visually engaging.
+
+### SECTION 3 — DETAILED SERVICE SHOWCASE
+
+Create a more immersive section that expands on how the services work in practice.
+
+Eyebrow:
+"BEYOND THE BASICS"
+
+Headline:
+"More Than Just Setting Up a Community."
+
+Supporting description:
+
+"We look at the entire member journey, from the first impression to ongoing participation, to help create a community that works better for its owner and its members."
+
+Showcase three detailed service categories using alternating image-and-text layouts.
+
+BLOCK A — BUILD & ORGANIZE
+
+Explain how MemberFlow Studio helps owners create structured Skool communities and organized classrooms.
+
+Visual:
+A polished classroom dashboard mockup with course cards and organized learning categories.
+
+BLOCK B — WELCOME & ENGAGE
+
+Explain how better onboarding, community activities and member experience can make participation easier and more meaningful.
+
+Visual:
+A member onboarding journey and community interaction interface mockup.
+
+BLOCK C — MANAGE & GROW
+
+Explain how ongoing management, content organization, social media and growth support help community owners maintain and improve their communities.
+
+Visual:
+A professional community management dashboard with engagement and content-planning elements.
+
+IMPORTANT:
+These are illustrative interface visuals, not claims of actual client results.
+
+Use large, well-spaced compositions and meaningful explanations. Do not compress this section into three tiny cards.
+
+### SECTION 4 — HOW WE WORK
+
+Eyebrow:
+"OUR PROCESS"
+
+Headline:
+"A Clear Process. A Better Community."
+
+Supporting description:
+
+"Every project starts with understanding your goals and ends with a more organized, intentional community experience."
+
+Display a beautiful three-stage process.
+
+STEP 01 — DISCOVER
+
+"We understand your community, audience, current challenges and goals."
+
+STEP 02 — BUILD & IMPROVE
+
+"We organize, configure and implement the solutions your community needs."
+
+STEP 03 — SUPPORT & GROW
+
+"We help you maintain a better experience and continue improving your community."
+
+Use an elegant horizontal timeline on desktop and a vertical timeline on mobile.
+
+Use connected lines, numbered indicators and subtle electric-blue highlights.
+
+### SECTION 5 — FINAL CONVERSION BANNER
+
+Create a bold, attractive conversion section.
+
+Headline:
+"Your Community Deserves More Than Just a Setup."
+
+Supporting text:
+
+"Let's create a better organized, more engaging and growth-ready community experience."
+
+Primary CTA:
+"Let's Work Together"
+
+Secondary text:
+"Tell us about your community and what you'd like to improve."
+
+Use a premium electric-blue visual treatment with subtle geometric decorations.
+
+The CTA must navigate to the contact destination.
+
+### SECTION 6 — FOOTER
+
+Reuse the exact footer component from the existing homepage.
+
+Include:
+- MemberFlow Studio logo.
+- Better Systems. Stronger Communities.
+- Founded by Testimony Samuel.
+- Home.
+- Services.
+- Portfolio.
+- About.
+- FAQ.
+- Editable social media URLs.
+- Dynamically updated copyright year.
+
+Do not create a different footer design.
+
+## 6. CONVERSION OPTIMIZATION
+
+The Services page must guide visitors toward contacting MemberFlow Studio.
+
+Implement:
+- Strong service-specific headlines.
+- Clear descriptions of each service.
+- Repeated but tasteful CTAs.
+- Easy navigation between service sections.
+- Strong visual separation between service categories.
+- Benefit-focused copy.
+- Mobile-friendly contact buttons.
+
+Do not make exaggerated claims or guarantee community growth.
+
+The writing should be professional, direct, easy to understand and focused on community owners.
+
+## 7. RESPONSIVE DESIGN
+
+Desktop:
+- Large, spacious hero.
+- Attractive multi-column service cards.
+- Alternating image-and-text service showcase.
+- Horizontal process timeline.
+
+Tablet:
+- Balanced two-column layouts where appropriate.
+- Comfortable card spacing.
+- No compressed text.
+
+Mobile:
+- Stacked hero layout.
+- Single-column service cards.
+- Alternating layouts converted into readable vertical sections.
+- Vertical process timeline.
+- Full-width accessible CTAs.
+- Responsive navigation.
+- No horizontal overflow.
+
+## 8. TECHNICAL REQUIREMENTS
+
+First inspect the existing project and reuse its framework, routing, components, dependencies and styling system.
+
+Do not replace the existing technology stack.
+
+If the project uses Next.js, preserve its routing architecture.
+
+If it uses React Router, use the existing routing system.
+
+Create the Services page at:
+
+/services
+
+Use reusable components and maintain clean code.
+
+Implement:
+- Semantic HTML.
+- Accessible buttons and links.
+- Responsive layouts.
+- Optimized images.
+- Proper image dimensions to minimize layout shifts.
+- Lazy loading for below-the-fold images.
+- SEO-friendly page title and description.
+- Smooth scrolling.
+- Keyboard accessibility.
+- Appropriate hover and focus states.
+
+All visual elements must work on actual devices.
+
+Do not create a static screenshot as the final implementation.
+
+## 9. PROTECT THE EXISTING HOMEPAGE
+
+THIS REQUIREMENT IS CRITICAL.
+
+The homepage has already been created.
+
+You must:
+
+1. Preserve the existing homepage exactly as it is.
+2. Preserve its current layout and section order.
+3. Preserve its typography and color system.
+4. Preserve its navigation and footer.
+5. Preserve all working homepage interactions.
+6. Avoid unnecessary changes to existing components.
+7. Add the Services page as a separate route.
+8. Ensure the shared navigation connects both pages correctly.
+
+Do not overwrite the homepage with the Services page.
+
+Do not delete or replace any existing homepage content.
+
+Do not introduce global CSS changes that break the homepage.
+
+If shared components need improvements, make only changes that preserve their existing appearance and behavior.
+
+## 10. PREPARATION FOR FUTURE PAGES
+
+This is page TWO of a four-page website.
+
+The remaining pages are:
+
+PAGE 3 — PORTFOLIO
+PAGE 4 — ABOUT
+
+Prepare the website architecture so both pages can be added later.
+
+All pages must share:
+- The same navigation.
+- The same footer.
+- The same logo.
+- The same typography.
+- The same color tokens.
+- The same button system.
+- The same spacing conventions.
+- The same overall brand identity.
+
+The Portfolio page will eventually contain actual Skool classroom screenshots and community landing-page screenshots supplied by me.
+
+Do not build the Portfolio page now.
+
+Do not build the About page now.
+
+Only implement the Services page and the necessary shared navigation updates.
+
+## 11. FINAL QUALITY CONTROL
+
+Before finishing:
+
+- Compare the Services page with the attached screenshot.
+- Verify all six core services are present.
+- Verify the detailed three-part service showcase.
+- Verify the complete working process section.
+- Verify all CTAs.
+- Test the /services route.
+- Test the homepage navigation.
+- Test mobile responsiveness.
+- Verify that the homepage remains unchanged.
+- Verify that the shared footer and navigation are consistent.
+- Check performance and accessibility.
+
+FINAL INSTRUCTION:
+
+Build a visually impressive, premium and conversion-focused Services page for MemberFlow Studio.
+
+Use the attached reference image as the design blueprint.
+
+Integrate it into the existing website without damaging the homepage.
+
+The finished result must feel like a custom-designed page belonging to the same premium digital agency brand, not a separate website or generic template.
+
+
+
+
+# MASTER DEVELOPER PROMPT — MEMBERFLOW STUDIO PORTFOLIO PAGE
+
+## 1. PROJECT OVERVIEW
+
+Act as a world-class UI/UX designer, senior frontend developer, creative director and conversion rate optimization specialist.
+
+I already have an existing website project for:
+
+**Business:** MemberFlow Studio
+**Founder:** Testimony Samuel
+**Tagline:** Better Systems. Stronger Communities.
+
+MemberFlow Studio helps Skool community owners build, organize, manage and grow their communities through professional community setup, classroom organization, course uploads, member onboarding, engagement improvement, community management and growth support.
+
+The website already has two completed pages:
+
+PAGE 1 — Homepage
+PAGE 2 — Services
+
+YOUR TASK:
+
+Build PAGE 3 — PORTFOLIO.
+
+This page must showcase my actual work, especially:
+
+1. Skool classroom designs and course organization.
+2. Skool community landing pages.
+3. Community setup and organization projects.
+4. Other relevant community management and improvement projects.
+
+The Portfolio page must make potential clients understand the quality, variety and value of my work.
+
+IMPORTANT:
+Do not create a separate website.
+Do not rebuild the existing website.
+Do not replace the Homepage or Services page.
+Integrate this page into the existing project.
+
+---
+
+## 2. VISUAL REFERENCE — MANDATORY
+
+PORTFOLIO REFERENCE IMAGE URL:
+
+https://cdn.phototourl.com/member/2026-11-10-35558282-9f7d-44c2-9a45-641499669c81.png
+
+I will also attach the actual Portfolio screenshot to this prompt.
+
+Study the attached screenshot carefully.
+
+Recreate its:
+
+- Layout and composition.
+- Section proportions.
+- Typography.
+- Colors.
+- Navigation.
+- Card designs.
+- Image arrangements.
+- Background transitions.
+- Spacing.
+- Visual hierarchy.
+- Decorative elements.
+- Overall premium aesthetic.
+
+The screenshot is the primary visual authority.
+
+Do not substitute a generic portfolio template or independently redesign the page.
+
+You may improve responsiveness and functionality while maintaining strong visual fidelity to the reference.
+
+---
+
+## 3. PRESERVE THE MEMBERFLOW BRAND IDENTITY
+
+Use the exact existing brand system.
+
+Business name: MemberFlow Studio
+Founder: Testimony Samuel
+Tagline: Better Systems. Stronger Communities.
+
+### Colors
+
+- Midnight Navy: #10192B
+- Slate Blue: #202E43
+- Electric Blue: #2563EB
+- Soft White: #F5F7FB
+- Muted Text: #AAB7CC
+- Light Border: #DCE3EF
+
+Maintain the 60-30-10 color principle.
+
+### Typography
+
+Headings: Sora
+Body: DM Sans
+
+Maintain the premium technology/modern agency aesthetic.
+
+Do not change the existing logo, color palette, typography or visual identity.
+
+---
+
+## 4. SHARED NAVIGATION
+
+Reuse the exact navigation component from the existing website.
+
+Navigation:
+
+- MemberFlow Studio logo.
+- Home
+- Services
+- Portfolio
+- About
+- FAQ
+- Get in Touch CTA.
+
+Requirements:
+
+- Highlight Portfolio as the active page.
+- Home links to the existing homepage.
+- Services links to /services.
+- Portfolio links to /portfolio.
+- About links to /about.
+- Get in Touch links to the existing contact destination.
+- Preserve the existing responsive mobile navigation.
+
+Do not create a new navigation design.
+
+---
+
+# 5. PORTFOLIO PAGE STRUCTURE
+
+Implement the following sections in the exact order.
+
+## SECTION 1 — PORTFOLIO HERO
+
+Eyebrow:
+"OUR WORK / SELECTED PROJECTS"
+
+Main headline:
+
+"See What Better Communities Look Like."
+
+Supporting description:
+
+"From beautifully organized Skool classrooms to compelling community landing pages, explore how we help community owners create better digital experiences for their members."
+
+Primary CTA:
+"Explore Our Projects"
+
+Secondary CTA:
+"Start Your Project"
+
+Primary CTA scrolls to the portfolio gallery.
+
+Secondary CTA links to the contact destination.
+
+### Hero visual
+
+Create an attractive premium composition featuring overlapping Skool classroom and community landing-page interface previews.
+
+Use:
+
+- Layered website screenshot mockups.
+- Classroom course cards.
+- Community interface previews.
+- Subtle electric-blue geometric decorations.
+- Sophisticated shadows and depth.
+
+The composition must look polished and realistic.
+
+Do not use fake client results or fabricated performance dashboards.
+
+---
+
+## SECTION 2 — PLATFORM EXPERIENCE
+
+Eyebrow:
+"PLATFORMS & EXPERTISE"
+
+Headline:
+"Built Around the Platforms You Use."
+
+Supporting description:
+
+"We work with modern community and digital platforms to help create organized, professional and engaging experiences."
+
+Display elegant platform labels or logos for:
+
+- Skool
+- Wix
+- Squarespace
+- Circle
+- Mighty Networks
+- Kajabi
+
+Use genuine brand assets where permitted or clean text-based representations.
+
+Do not imply official partnerships, certifications or endorsements.
+
+---
+
+## SECTION 3 — SKOOL CLASSROOM PORTFOLIO
+
+This is one of the MOST IMPORTANT sections.
+
+Eyebrow:
+"CLASSROOM DESIGN & ORGANIZATION"
+
+Headline:
+"Classrooms That Make Learning Feel Organized."
+
+Supporting description:
+
+"Explore examples of Skool classrooms designed to present courses, organize learning materials and create a better experience for community members."
+
+### Classroom project gallery
+
+Create a premium visual gallery with large screenshot cards.
+
+Each project card should include:
+
+- Actual classroom screenshot.
+- Project name.
+- Project category.
+- Short description.
+- Optional "View Project" interaction.
+- Elegant hover effect.
+
+IMPORTANT: I WILL PROVIDE THE ACTUAL CLASSROOM SCREENSHOTS.
+
+Create editable image variables:
+
+CLASSROOM_PROJECT_01_IMAGE_URL = "https://img.sanishtech.com/u/b23962d874c57145a61ed60d99809bf2.png"
+CLASSROOM_PROJECT_02_IMAGE_URL = "https://img.sanishtech.com/u/d18df1c25ca09bab0a6239b84996b116.png"
+CLASSROOM_PROJECT_03_IMAGE_URL = "[INSERT ACTUAL CLASSROOM SCREENSHOT URL]"
+CLASSROOM_PROJECT_04_IMAGE_URL = "[INSERT ACTUAL CLASSROOM SCREENSHOT URL]"
+CLASSROOM_PROJECT_05_IMAGE_URL = "[INSERT ACTUAL CLASSROOM SCREENSHOT URL]"
+CLASSROOM_PROJECT_06_IMAGE_URL = "[INSERT ACTUAL CLASSROOM SCREENSHOT URL]"
+
+Create editable project information (that can only be edited by admin which is me):
+
+CLASSROOM_PROJECT_01_TITLE = "DY Salsa Dance Academy Classroom"
+CLASSROOM_PROJECT_01_DESCRIPTION = "[ADD AMAZING PROJECT DESCRIPTION YOURSELF]"
+
+Repeat the same structure for all six projects.
+
+Use the following example categories where appropriate:
+
+- Classroom Design
+- Course Organization
+- Course Upload & Structuring
+- Learning Experience
+- Community Setup
+- Classroom Optimization
+
+These categories are editable.
+
+### Image display requirements
+
+- Preserve the original screenshot proportions where practical.
+- Use object-fit: contain when necessary to prevent important interface details from being cropped.
+- Give screenshots a professional device/browser-frame presentation where appropriate.
+- Use consistent image dimensions.
+- Ensure screenshots remain readable.
+- Add subtle shadows and refined borders.
+- Make the gallery responsive.
+
+Create a "View More Classrooms" interaction if additional projects exist.
+
+Do not invent actual client names, project outcomes or testimonials.
+
+---
+
+## SECTION 4 — COMMUNITY LANDING PAGE PORTFOLIO
+
+Eyebrow:
+"COMMUNITY LANDING PAGE DESIGN"
+
+Headline:
+
+"First Impressions That Make Communities Stand Out."
+
+Supporting description:
+
+"Explore community landing pages designed to communicate value, present offers clearly and encourage visitors to take the next step."
+
+Create a separate premium gallery dedicated to community landing-page designs.
+
+Create these editable image variables:
+
+LANDING_PAGE_PROJECT_01_IMAGE_URL = "https://img.sanishtech.com/u/f37e41f7ca3c29592e3dde20e6a5e849.png"
+LANDING_PAGE_PROJECT_02_IMAGE_URL = "https://img.sanishtech.com/u/7b9e61d8e6f0a3f5cf3e3f287d13c677.png"
+LANDING_PAGE_PROJECT_03_IMAGE_URL = "https://img.sanishtech.com/u/d6253575a28ac741cb6d70f4ee7a3f48.png"
+LANDING_PAGE_PROJECT_04_IMAGE_URL = "https://img.sanishtech.com/u/b6f1c88dadfc9dcdaa1aa1408c238b2a.png"
+LANDING_PAGE_PROJECT_05_IMAGE_URL = "[INSERT ACTUAL LANDING PAGE SCREENSHOT URL]"
+LANDING_PAGE_PROJECT_06_IMAGE_URL = "[INSERT ACTUAL LANDING PAGE SCREENSHOT URL]"
+
+Create editable project information:
+
+LANDING_PAGE_PROJECT_01_TITLE = "Evergreen Real Estate Community Landing Page"
+LANDING_PAGE_PROJECT_01_DESCRIPTION = "[ADD AMAZING PROJECT DESCRIPTION YOURSELF]"
+
+Repeat the same structure for the remaining projects.
+
+Suggested project categories:
+
+- Community Landing Page
+- Sales Page Design
+- Community Positioning
+- Conversion-Focused Layout
+- Brand Presentation
+- Website Experience
+
+### Visual requirements
+
+Use larger image previews than ordinary service cards.
+
+Landing-page screenshots should be presented in elegant website mockup frames.
+
+Where appropriate:
+
+- Show desktop website previews.
+- Use realistic browser-frame styling.
+- Preserve the original screenshot.
+- Provide a way to open the full-size screenshot.
+- Use subtle hover animations.
+- Maintain a consistent visual grid.
+
+Do not replace my actual screenshots with AI-generated fictional project examples.
+
+The image URL placeholders must be straightforward to replace.
+
+---
+
+## SECTION 5 — FEATURED PROJECT / CASE STUDY
+
+Eyebrow:
+"FEATURED WORK"
+
+Headline:
+"A Closer Look at the Work Behind the Experience."
+
+Create a visually impressive featured-project section.
+
+Use a large screenshot on one side and project information on the other.
+
+Editable fields:
+
+FEATURED_PROJECT_IMAGE_URL = "https://img.sanishtech.com/u/d18df1c25ca09bab0a6239b84996b116.png" and "https://img.sanishtech.com/u/7b9e61d8e6f0a3f5cf3e3f287d13c677.png"
+
+FEATURED_PROJECT_NAME = "The Glam Crafter Empire Classroom" and "The Glam Crafter Empire Landing Page"
+
+FEATURED_PROJECT_CATEGORY = "Community Setup & growth"
+
+FEATURED_PROJECT_OVERVIEW = "[INSERT PROJECT OVERVIEW]"
+
+FEATURED_PROJECT_SERVICES = "Community setup, course upload, landing page design, and growth/marketing"
+
+FEATURED_PROJECT_DETAILS = "[INSERT PROJECT DETAILS]"
+
+Suggested structure:
+
+1. Project overview.
+2. What the project involved.
+3. Services provided.
+4. Visual presentation.
+5. Project highlights.
+
+IMPORTANT:
+
+Do not invent project results, client feedback, statistics or measurable improvements.
+
+If actual project details have not been supplied, use clearly editable placeholder text.
+
+This section should be designed so I can feature a different project later without changing the page structure.
+
+---
+
+## SECTION 6 — OUR CAPABILITIES
+
+Eyebrow:
+"WHAT GOES INTO THE WORK"
+
+Headline:
+"Every Detail Has a Purpose."
+
+Supporting description:
+
+"Good community experiences are built through thoughtful organization, clear structure and attention to how members interact with the platform."
+
+Create five concise visual capability indicators:
+
+1. Organized Classrooms
+2. Structured Course Content
+3. Seamless Member Onboarding
+4. Engaging Community Experiences
+5. Strategic Growth Support
+
+Use distinctive icons, small visual details and a polished layout.
+
+This section should reinforce my expertise without repeating the entire Services page.
+
+---
+
+## SECTION 7 — FINAL CONVERSION BANNER
+
+Create a premium, bold CTA section.
+
+Headline:
+
+"Your Community Could Be Our Next Project."
+
+Supporting description:
+
+"Have a Skool community that needs a better setup, a more organized classroom or a stronger member experience? Let's talk about it."
+
+Primary CTA:
+"Let's Build Something Great"
+
+Secondary CTA:
+"Explore Our Services"
+
+The primary CTA should lead to the contact destination.
+
+The secondary CTA should link to /services.
+
+Use an attractive electric-blue treatment with elegant decorative geometry.
+
+Make the CTA visually prominent without overcrowding it.
+
+---
+
+## SECTION 8 — FOOTER
+
+Reuse the exact footer from the Homepage and Services page.
+
+Include:
+
+- MemberFlow Studio logo.
+- Better Systems. Stronger Communities.
+- Founded by Testimony Samuel.
+- Home.
+- Services.
+- Portfolio.
+- About.
+- FAQ.
+- Editable social media URLs.
+- Dynamic copyright year.
+
+Do not create a new footer design.
+
+---
+
+# 6. PORTFOLIO MANAGEMENT SYSTEM — CRITICAL
+
+The Portfolio page must be easy to maintain and expand.
+
+Do not hardcode all project content separately inside the visual components.
+
+Create reusable project data structures.
+
+For example, each project should support:
+
+- Unique ID.
+- Project title.
+- Project category.
+- Short description.
+- Image URL.
+- Optional external project URL.
+- Optional project details.
+- Optional featured status.
+
+Create separate project collections for:
+
+1. Classroom Projects.
+2. Landing Page Projects.
+3. Featured Project.
+
+Make it possible to add a new project by adding a new entry to the relevant data collection.
+
+The gallery should automatically display new entries.
+
+### Image URL management
+
+I will supply actual image URLs later.
+
+Keep the image URLs clearly grouped in one easy-to-edit project data file.
+
+Example structure:
+
+const classroomProjects = [
+{
+id: "classroom-01",
+title: "Project Name",
+category: "Classroom Design",
+description: "Project description",
+image: "[INSERT CLASSROOM IMAGE URL]",
+}
+];
+
+const landingPageProjects = [
+{
+id: "landing-01",
+title: "Project Name",
+category: "Landing Page Design",
+description: "Project description",
+image: "[INSERT LANDING PAGE IMAGE URL]",
+}
+];
+
+Use equivalent structures for the remaining entries.
+
+Do not create broken image links.
+
+If an image URL has not been supplied, display an attractive neutral placeholder with a clear label such as "Project image coming soon."
+
+Never present an empty or broken image frame as completed portfolio work.
+
+### Gallery interactions
+
+Implement:
+
+- Separate Classroom and Landing Page categories.
+- Optional category filter.
+- Smooth hover effects.
+- Full-size image preview/lightbox.
+- Responsive image grid.
+- Expandable gallery when additional projects exist.
+- Accessible image controls.
+- Optional external project links.
+
+If category filtering is implemented, it must actually work.
+
+---
+
+# 7. CONVERSION AND USER EXPERIENCE
+
+The Portfolio page should help visitors answer:
+
+- What kind of work does MemberFlow Studio do?
+- Can I see examples?
+- What services are represented in these projects?
+- Can MemberFlow help with my own community?
+
+Use clear descriptions and strong visual evidence.
+
+Do not overload the page with paragraphs.
+
+Prioritize:
+
+- Large, clear screenshots.
+- Attractive project presentation.
+- Meaningful project descriptions.
+- Clear categories.
+- Easy navigation.
+- Strong contact opportunities.
+
+Never fabricate:
+
+- Client testimonials.
+- Customer names.
+- Project performance statistics.
+- Revenue improvements.
+- Membership growth figures.
+- Verified client outcomes.
+
+Use only genuine information supplied to you.
+
+---
+
+# 8. RESPONSIVE DESIGN
+
+Desktop:
+
+- Spacious multi-column galleries.
+- Large classroom and website previews.
+- Sophisticated asymmetrical layouts.
+- Comfortable content widths.
+
+Tablet:
+
+- Two-column galleries where appropriate.
+- Maintain readable project descriptions.
+- Preserve screenshot proportions.
+
+Mobile:
+
+- Single-column project cards.
+- Readable screenshot previews.
+- Touch-friendly interactions.
+- No horizontal overflow.
+- Responsive filters.
+- Full-width CTA buttons.
+- Properly adapted navigation.
+
+The page must look premium on mobile, tablet and desktop.
+
+---
+
+# 9. TECHNICAL IMPLEMENTATION
+
+First inspect the existing website project.
+
+Preserve the existing framework, architecture and dependencies.
+
+Do not replace the existing technology stack.
+
+Create the Portfolio page at:
+
+/portfolio
+
+Use:
+
+- Existing shared components.
+- Reusable project card components.
+- Reusable gallery components.
+- Reusable lightbox component.
+- Centralized project data.
+- Existing design tokens.
+- Existing typography and icon system.
+
+Implement:
+
+- Semantic HTML.
+- Accessible navigation.
+- Optimized image loading.
+- Proper image dimensions.
+- Lazy loading for below-the-fold images.
+- SEO-friendly title and description.
+- Keyboard-accessible lightbox.
+- Functional project links.
+- Responsive layouts.
+- Smooth transitions.
+- Appropriate loading and fallback states.
+
+Do not build a static screenshot as the final website.
+
+Build the actual working Portfolio page.
+
+---
+
+# 10. PROTECT THE EXISTING WEBSITE
+
+THIS IS CRITICAL.
+
+The Homepage and Services page are already implemented.
+
+You must preserve both.
+
+Do not:
+
+- Replace the Homepage.
+- Replace the Services page.
+- Change existing page content.
+- Redesign the navigation.
+- Change the existing footer.
+- Replace the brand identity.
+- Introduce unrelated global styles.
+- Break existing routes.
+- Remove working functionality.
+
+Add only the Portfolio page and necessary navigation updates.
+
+Test these routes after implementation:
+
+/
+/services
+/portfolio
+
+Ensure all three work correctly.
+
+---
+
+# 11. PREPARE FOR THE FOURTH PAGE
+
+The final page will be:
+
+PAGE 4 — ABOUT
+
+Do not create the About page yet.
+
+Prepare the existing shared architecture so the About page can be integrated later without rebuilding the website.
+
+All four pages must share:
+
+- Logo.
+- Navigation.
+- Footer.
+- Colors.
+- Typography.
+- Buttons.
+- Spacing system.
+- Responsive behavior.
+- Overall premium visual identity.
+
+The final website must feel like one cohesive premium agency website.
+
+---
+
+# 12. FINAL QUALITY CONTROL
+
+Before finishing, verify:
+
+1. The Portfolio page closely matches the supplied reference screenshot.
+2. Both classroom and landing-page galleries are present.
+3. All image URL placeholders are editable.
+4. New project entries can be added easily.
+5. Missing images display attractive placeholders.
+6. Image previews work correctly.
+7. Category filtering works if included.
+8. Lightbox functionality works.
+9. All navigation links work.
+10. Homepage remains unchanged.
+11. Services page remains unchanged.
+12. Mobile and tablet layouts work correctly.
+13. There are no fabricated client achievements or testimonials.
+14. The page loads efficiently.
+15. The overall result matches the MemberFlow Studio brand.
+
+FINAL INSTRUCTION:
+
+Create a premium, visually distinctive, conversion-focused Portfolio page that showcases MemberFlow Studio's actual work.
+
+Use the attached screenshot as the visual blueprint.
+
+Prioritize large, beautiful project screenshots and a professional gallery experience.
+
+Make it easy for me to add more classroom screenshots and landing-page screenshots simply by inserting their image URLs.
+
+Integrate the page into the existing website without damaging the Homepage or Services page.
+
+The result must look like a custom-designed portfolio belonging to a premium community growth studio.
+
+
+
+
+
+Master developer prompt — About page
+:::writing{variant="document" id="62841"}
+# MASTER DEVELOPER PROMPT — MEMBERFLOW STUDIO ABOUT PAGE
+
+## 1. PROJECT OVERVIEW
+
+Act as a world-class UI/UX designer, senior frontend developer, creative director and conversion rate optimization specialist.
+
+I already have an existing four-page website project for:
+
+**Agency:** MemberFlow Studio  
+**Founder:** Testimony Samuel  
+**Tagline:** Better Systems. Stronger Communities.
+
+MemberFlow Studio specializes in helping Skool community owners build, organize, manage and grow their communities.
+
+Our services include:
+- Skool community setup.
+- Classroom and course organization.
+- Course uploads and structuring.
+- Member onboarding.
+- Community management.
+- Member engagement improvement.
+- Social media management.
+- Community growth support.
+- Member experience improvement.
+
+Three pages have already been created:
+
+PAGE 1 — Homepage  
+PAGE 2 — Services  
+PAGE 3 — Portfolio
+
+YOUR TASK:
+
+Build PAGE 4 — ABOUT.
+
+This is the final page of the website.
+
+Create a premium, visually impressive, personality-driven About page that introduces the founder, communicates the agency's philosophy, explains its expertise and builds trust with potential clients.
+
+IMPORTANT:
+
+Do not create a separate website.
+
+Do not rebuild the existing website.
+
+Do not replace or redesign the Homepage, Services or Portfolio pages.
+
+Integrate the About page into the existing website.
+
+---
+
+## 2. VISUAL REFERENCE — MANDATORY
+
+ABOUT PAGE REFERENCE IMAGE URL:
+
+https://cdn.phototourl.com/member/2026-11-10-cb40c7e7-ca55-4db0-94bb-140e8ce9ac68.png
+
+I will also attach the actual About page screenshot to this prompt.
+
+Study the screenshot carefully before implementation.
+
+Recreate its:
+- Overall composition.
+- Navigation.
+- Hero layout.
+- Typography hierarchy.
+- Background transitions.
+- Portrait placement.
+- Image compositions.
+- Decorative blue elements.
+- Section proportions.
+- Cards and icons.
+- Spacing.
+- Button styling.
+- Footer.
+- Overall premium technology-agency aesthetic.
+
+The screenshot is the primary design authority.
+
+Do not replace it with a generic About page template.
+
+Maintain strong visual fidelity while making the implementation responsive, accessible and functional.
+
+---
+
+## 3. PRESERVE THE EXISTING BRAND IDENTITY
+
+Use the exact MemberFlow Studio brand identity already established across the other three pages.
+
+### Official brand information
+
+Business: MemberFlow Studio  
+Founder: Testimony Samuel  
+Tagline: Better Systems. Stronger Communities.
+
+### Color palette
+
+- Midnight Navy: #10192B
+- Slate Blue: #202E43
+- Electric Blue: #2563EB
+- Soft White: #F5F7FB
+- Muted Text: #AAB7CC
+- Light Border: #DCE3EF
+
+Maintain the 60-30-10 color distribution.
+
+### Typography
+
+Headings: Sora  
+Body: DM Sans
+
+### Visual direction
+
+Premium technology / modern digital agency.
+
+Use:
+- Deep navy backgrounds.
+- Bright electric-blue accents.
+- Elegant white sections.
+- Refined geometric decorations.
+- Sophisticated interface mockups.
+- Premium typography.
+- Smooth visual transitions.
+
+Do not introduce a new logo, font pairing, color palette or unrelated visual style.
+
+---
+
+# 4. SHARED NAVIGATION
+
+Reuse the exact navigation component from the existing website.
+
+Navigation:
+
+- MemberFlow Studio logo.
+- Home
+- Services
+- Portfolio
+- About
+- FAQ
+- Get in Touch CTA.
+
+Requirements:
+
+- Highlight About as the active page.
+- Home links to the existing homepage.
+- Services links to /services.
+- Portfolio links to /portfolio.
+- About links to /about.
+- FAQ links to the existing FAQ destination, if implemented.
+- Get in Touch links to the existing contact destination.
+
+Preserve the existing:
+- Logo.
+- Navigation spacing.
+- Typography.
+- Button styling.
+- Hover states.
+- Responsive mobile navigation.
+
+Do not create a different navigation bar.
+
+---
+
+# 5. ABOUT PAGE STRUCTURE
+
+Implement the following sections in the exact order.
+
+## SECTION 1 — FOUNDER-LED HERO
+
+Eyebrow:
+
+"ABOUT MEMBERFLOW STUDIO"
+
+Main headline:
+
+"Building Communities That Grow."
+
+Emphasize the word "Grow" using the electric-blue brand accent.
+
+Supporting description:
+
+"I'm Testimony Samuel, and I help Skool community owners build, organize and grow thriving communities through strategic setup, better member experiences and ongoing support."
+
+Primary CTA:
+
+"Let's Work Together"
+
+Secondary CTA:
+
+"Watch My Story"
+
+The primary CTA should navigate to the existing contact destination.
+
+The secondary CTA should scroll to the founder story section or open an actual supplied video if one is available.
+
+Do not create a fake video player.
+
+### Hero visual composition
+
+Recreate the reference's striking founder-led composition.
+
+Include:
+- Large founder portrait on the right.
+- Bold headline and introduction on the left.
+- Layered Skool-style community interface previews behind the founder.
+- Elegant electric-blue geometric shapes.
+- Subtle lighting effects.
+- A handwritten-style annotation introducing Testimony Samuel.
+- Premium visual depth.
+
+IMPORTANT — FOUNDER PHOTOGRAPH:
+
+I will provide my actual portrait photograph separately.
+
+Create a clear editable image variable:
+
+FOUNDER_HERO_IMAGE_URL = "[INSERT TESTIMONY SAMUEL PORTRAIT URL]"
+
+Use this actual photograph in the hero.
+
+Do not use an AI-generated fictional person as a representation of the real founder.
+
+If the photograph has not yet been supplied, display an attractive neutral portrait placeholder that can be replaced later.
+
+Do not invent founder credentials, awards, qualifications or achievements.
+
+---
+
+## SECTION 2 — FOUNDER STORY
+
+Use a flowing transition from the dark hero into a bright white/light-blue section.
+
+Eyebrow:
+
+"MY STORY"
+
+Headline:
+
+"From Passion to Purpose."
+
+Description:
+
+"My journey started with a deep interest in online communities and a desire to help people connect, learn and grow.
+
+Today, through MemberFlow Studio, I focus on helping community owners create better-organized Skool experiences, improve their classroom structures and make their communities easier and more enjoyable for members to navigate.
+
+I believe a successful community is about more than simply having a platform. It's about creating an environment where people understand where to start, know what to do next and feel encouraged to participate."
+
+CTA:
+
+"Explore What I Do"
+
+Link this button to /services.
+
+### Visual composition
+
+Use a two-column layout.
+
+LEFT:
+A large founder image.
+
+Editable variable:
+
+FOUNDER_STORY_IMAGE_URL = "[INSERT FOUNDER STORY IMAGE URL]"
+
+RIGHT:
+- Story eyebrow.
+- Headline.
+- Founder introduction.
+- Short biography.
+- CTA.
+
+Add a floating expertise card featuring:
+
+- Community Growth Support.
+- Skool Setup & Management.
+- Member Experience.
+- Digital Growth Strategy.
+
+Use elegant blue icons.
+
+Do not fabricate professional achievements or claim experience that has not been verified.
+
+---
+
+## SECTION 3 — MY PHILOSOPHY
+
+Use a full-width midnight navy section with subtle electric-blue decorations.
+
+Eyebrow:
+
+"MY PHILOSOPHY"
+
+Headline:
+
+"Better Communities. Greater Impact."
+
+Supporting description:
+
+"I believe online communities can transform lives, build real connections and create lasting value when they are well structured, thoughtfully managed and designed around their members."
+
+Display four premium philosophy cards.
+
+CARD 01 — QUALITY OVER QUANTITY
+
+"Focus on creating meaningful experiences rather than simply increasing numbers."
+
+CARD 02 — MEMBERS FIRST
+
+"Make it easier for members to find value, participate and feel connected."
+
+CARD 03 — CONTINUOUS IMPROVEMENT
+
+"Keep looking for ways to improve community structure, engagement and experience."
+
+CARD 04 — LONG-TERM PARTNERSHIP
+
+"Build relationships around consistent support, collaboration and sustainable progress."
+
+### Visual requirements
+
+- Four equally balanced cards.
+- Large distinctive blue icons.
+- Dark translucent card backgrounds.
+- Subtle borders.
+- Elegant hover animations.
+- Consistent card spacing.
+
+Use the diamond, users, trending-up and handshake icons or suitable Lucide equivalents.
+
+---
+
+## SECTION 4 — SKILLS & CAPABILITIES
+
+Create a spacious light-background section.
+
+Eyebrow:
+
+"MY EXPERTISE"
+
+Headline:
+
+"Skills & Capabilities."
+
+Supporting description:
+
+"With a practical, community-focused approach, I bring together the skills needed to create organized, engaging and growth-ready community experiences."
+
+Display these six capabilities:
+
+01. Skool Community Setup.
+02. Classroom & Course Management.
+03. Member Onboarding.
+04. Engagement Improvement.
+05. Social Media Management.
+06. Community Growth Strategy.
+
+Each item should include:
+- Blue check icon.
+- Clear title.
+- Consistent spacing.
+- Good visual hierarchy.
+
+### Supporting visual
+
+On the right side, create a realistic laptop or desktop mockup showing a professional Skool-style community interface.
+
+Editable image variable:
+
+ABOUT_EXPERTISE_MOCKUP_URL = "[INSERT COMMUNITY DASHBOARD MOCKUP IMAGE URL]"
+
+If no image is supplied, create a frontend-built illustrative dashboard mockup using CSS and interface components.
+
+Do not pretend that an illustrative dashboard is a real client project.
+
+CTA:
+
+"Explore My Services"
+
+Link to /services.
+
+---
+
+## SECTION 5 — HOW I WORK
+
+Use a full-width dark navy section.
+
+Eyebrow:
+
+"MY PROCESS"
+
+Headline:
+
+"A Simple Process. A Better Experience."
+
+Supporting description:
+
+"I follow a clear, collaborative process to understand your needs, implement the right improvements and support your community's progress."
+
+Display three connected stages.
+
+STEP 01 — DISCOVER
+
+"Understand Your Goals."
+
+"We start by learning about your community, audience, current setup and the challenges you want to solve."
+
+STEP 02 — BUILD
+
+"Create the Right Structure."
+
+"I organize, configure and implement the solutions your community needs, from classroom setup to onboarding and engagement improvements."
+
+STEP 03 — GROW
+
+"Improve and Support."
+
+"We focus on maintaining a better member experience and identifying opportunities for continued improvement."
+
+### Visual requirements
+
+- Horizontal connected timeline on desktop.
+- Vertical timeline on mobile.
+- Large numbered indicators.
+- Electric-blue connecting arrows.
+- Dark translucent process cards.
+- Subtle blue highlights.
+
+Do not claim guaranteed growth or guaranteed business results.
+
+---
+
+## SECTION 6 — FINAL CONVERSION BANNER
+
+Create a visually impressive full-width electric-blue conversion section.
+
+Headline:
+
+"Let's Build Your Dream Community Together."
+
+Supporting description:
+
+"Ready to create a better Skool community experience? Let's discuss your goals and find the right way to move your community forward."
+
+Primary CTA:
+
+"Contact Me Today"
+
+Link to the existing contact destination.
+
+### Visual composition
+
+Include:
+- Beautiful electric-blue gradient.
+- Premium rocket illustration or suitable growth-related visual.
+- Subtle motion or decorative geometry.
+- White typography.
+- Prominent rounded CTA button.
+
+Keep the section clean and focused.
+
+Do not overload it with unnecessary content.
+
+---
+
+## SECTION 7 — FOOTER
+
+Reuse the exact footer from the Homepage, Services and Portfolio pages.
+
+Include:
+
+- MemberFlow Studio logo.
+- Better Systems. Stronger Communities.
+- Founded by Testimony Samuel.
+- Home.
+- Services.
+- Portfolio.
+- About.
+- FAQ.
+- Social media links.
+- Dynamic copyright year.
+
+Use the existing social URLs if already configured.
+
+If any social links are missing, leave editable placeholders.
+
+Do not invent social media profiles or URLs.
+
+---
+
+# 6. FOUNDER CONTENT MANAGEMENT
+
+Make founder-related content easy to update.
+
+Create a centralized configuration or data structure for:
+
+- Founder name.
+- Founder introduction.
+- Founder biography.
+- Founder portrait URL.
+- Founder story image URL.
+- Founder video URL.
+- Social media URLs.
+- Contact URL.
+
+Use these editable placeholders:
+
+FOUNDER_NAME = "Testimony Samuel"
+
+FOUNDER_TAGLINE = "Better Systems. Stronger Communities."
+
+FOUNDER_HERO_IMAGE_URL = "https://img.sanishtech.com/u/c66e5cbb09049c832fb7222eb75a5624.png"
+
+FOUNDER_STORY_IMAGE_URL = "https://img.sanishtech.com/u/443ac159dcce6c7643714cda0ea75c0e.png"
+
+FOUNDER_VIDEO_URL = "[I will INSERT FOUNDER VIDEO URL later ask later]"
+
+CONTACT_URL = "[femizydasilver@gmail.com]"
+
+SOCIAL_LINKEDIN_URL = "[INSERT LINKEDIN URL]"
+
+SOCIAL_INSTAGRAM_URL = "[INSERT INSTAGRAM URL]"
+
+SOCIAL_YOUTUBE_URL = "[INSERT YOUTUBE URL]"
+
+SOCIAL_X_URL = "[INSERT X URL]"
+
+If a URL has not been supplied, do not render a broken link or nonfunctional button.
+
+Do not invent founder details to fill missing information.
+
+---
+
+# 7. CONVERSION OPTIMIZATION
+
+The About page must establish credibility and encourage potential clients to take action.
+
+It should clearly answer:
+
+- Who is behind MemberFlow Studio?
+- What does the agency believe?
+- What problems does it help solve?
+- What expertise does it bring?
+- How does the working process operate?
+- How can a potential client get started?
+
+Use:
+- Personal and approachable writing.
+- Strong headlines.
+- Clear explanations.
+- Strategic CTAs.
+- Professional visual presentation.
+- Consistent messaging.
+
+Avoid generic agency buzzwords, exaggerated claims and unnecessary paragraphs.
+
+Make the founder feel approachable and the agency feel professional.
+
+---
+
+# 8. RESPONSIVE DESIGN
+
+DESKTOP:
+
+- Wide founder-led hero.
+- Large portrait composition.
+- Spacious story section.
+- Four-column philosophy cards where appropriate.
+- Balanced expertise layout.
+- Horizontal process timeline.
+
+TABLET:
+
+- Rebalance columns.
+- Maintain comfortable spacing.
+- Adjust portrait positioning.
+- Use two-column philosophy cards.
+
+MOBILE:
+
+- Stack hero content vertically.
+- Position founder portrait below the headline.
+- Use single-column philosophy cards.
+- Stack story and expertise sections.
+- Convert the process into a vertical timeline.
+- Use full-width accessible CTAs.
+- Ensure the navigation works properly.
+- Prevent horizontal overflow.
+
+Maintain the premium visual identity across all screen sizes.
+
+---
+
+# 9. TECHNICAL IMPLEMENTATION
+
+First inspect the existing website project.
+
+Preserve its:
+- Framework.
+- Routing architecture.
+- Dependencies.
+- Shared components.
+- Design tokens.
+- Styling conventions.
+- Existing functionality.
+
+Create the About page at:
+
+/about
+
+Use reusable components and clean code.
+
+Implement:
+
+- Semantic HTML.
+- Responsive layouts.
+- Accessible links and buttons.
+- Optimized images.
+- Explicit image dimensions.
+- Lazy loading for below-the-fold visuals.
+- SEO-friendly page title and meta description.
+- Proper image fallbacks.
+- Smooth scrolling.
+- Keyboard accessibility.
+- Appropriate focus and hover states.
+
+Do not build a static screenshot as the final implementation.
+
+Build a fully functioning webpage.
+
+---
+
+# 10. PROTECT THE EXISTING THREE PAGES
+
+THIS REQUIREMENT IS CRITICAL.
+
+The following pages have already been created:
+
+1. Homepage — /
+2. Services — /services
+3. Portfolio — /portfolio
+
+You must preserve all three pages.
+
+Do not:
+- Rebuild the homepage.
+- Replace the Services page.
+- Replace the Portfolio page.
+- Change their existing content.
+- Redesign their layouts.
+- Change their typography.
+- Change their color palette.
+- Remove existing functionality.
+- Break their routes.
+
+Reuse the existing shared navigation and footer.
+
+Only make necessary changes to integrate the About page and ensure navigation works across all four pages.
+
+Avoid unnecessary global CSS changes.
+
+---
+
+# 11. FINAL WEBSITE ARCHITECTURE
+
+After implementation, the website must contain four connected pages:
+
+PAGE 1 — HOMEPAGE
+URL: /
+
+PAGE 2 — SERVICES
+URL: /services
+
+PAGE 3 — PORTFOLIO
+URL: /portfolio
+
+PAGE 4 — ABOUT
+URL: /about
+
+All pages must share:
+
+- MemberFlow Studio logo.
+- Navigation.
+- Footer.
+- Typography.
+- Color palette.
+- Button system.
+- Spacing conventions.
+- Responsive behavior.
+- Premium technology-agency aesthetic.
+
+The final result must feel like one complete, cohesive digital agency website.
+
+---
+
+# 12. FINAL QUALITY CONTROL
+
+Before completing the implementation, verify:
+
+1. About page closely matches the supplied reference screenshot.
+2. Founder hero section is implemented.
+3. Founder portrait is editable.
+4. Founder story section is present.
+5. Philosophy cards are present.
+6. All six capabilities are included.
+7. The three-step process is functional and responsive.
+8. Final conversion banner is present.
+9. Footer matches the other pages.
+10. All navigation links work.
+11. All contact links work when configured.
+12. Homepage remains unchanged.
+13. Services page remains unchanged.
+14. Portfolio page remains unchanged.
+15. Mobile and tablet layouts work correctly.
+16. No broken images or fabricated founder credentials.
+17. No fake testimonials or unsupported achievements.
+18. No horizontal overflow.
+19. All four routes work correctly.
+
+FINAL INSTRUCTION:
+
+Build a premium, founder-led About page for MemberFlow Studio.
+
+Use the attached screenshot as the primary visual blueprint.
+
+Make the page personal, professional, visually distinctive and conversion-focused.
+
+The page should communicate the person, philosophy, expertise and process behind MemberFlow Studio.
+
+Integrate it into the existing website without damaging the Homepage, Services or Portfolio pages.
+
+This is the fourth and final page of the website. The finished result must feel like a complete, professionally designed digital agency website.

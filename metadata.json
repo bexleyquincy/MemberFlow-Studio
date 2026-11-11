@@ -1,0 +1,6 @@
+{
+  "name": "MemberFlow Studio",
+  "description": "Premium Skool community setup, management, member experience and growth studio founded by Testimony Samuel. Better Systems. Stronger Communities.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
