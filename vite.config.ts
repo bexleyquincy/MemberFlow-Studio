@@ -17,7 +17,14 @@ export default defineConfig(() => {
         configureServer(server) {
           server.middlewares.use(async (req, res, next) => {
             const pathname = req.url?.split('?')[0];
-            if (pathname === '/api/send-contact' || pathname === '/.netlify/functions/send-contact') {
+            const isContactRoute =
+              pathname === '/api/send-contact' ||
+              pathname === '/.netlify/functions/send-contact';
+            const isAdminAuthRoute =
+              pathname === '/api/admin-auth' ||
+              pathname === '/.netlify/functions/admin-auth';
+
+            if (isContactRoute || isAdminAuthRoute) {
               if (req.method !== 'POST') {
                 res.statusCode = 405;
                 res.setHeader('Content-Type', 'application/json');
@@ -32,13 +39,15 @@ export default defineConfig(() => {
 
               req.on('end', async () => {
                 try {
-                  const { handler } = await import('./netlify/functions/send-contact.js');
+                  const fnModule = isAdminAuthRoute
+                    ? await import('./netlify/functions/admin-auth.js')
+                    : await import('./netlify/functions/send-contact.js');
                   const event = {
                     httpMethod: req.method,
                     headers: req.headers,
                     body: body
                   };
-                  const response = await handler(event);
+                  const response = await fnModule.handler(event);
                   res.statusCode = response.statusCode;
                   if (response.headers) {
                     for (const [key, val] of Object.entries(response.headers)) {

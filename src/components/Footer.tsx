@@ -44,10 +44,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, siteConfig, onOpenCo
               </div>
               <div>
                 <span className="font-heading font-extrabold text-xl tracking-tight text-white block">
-                  MemberFlow
+                  {siteConfig.brandName}
                 </span>
                 <span className="text-[10px] tracking-[0.25em] uppercase font-bold text-blue-400 block -mt-1">
-                  STUDIO
+                  {siteConfig.brandSubtext}
                 </span>
               </div>
             </div>
@@ -56,7 +56,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, siteConfig, onOpenCo
               "{siteConfig.tagline}"
             </p>
             <p className="text-sm text-[#AAB7CC] max-w-sm">
-              Founded by <span className="text-white font-semibold">{siteConfig.founderName}</span>. We empower Skool community hosts to build, organize, manage, and scale thriving digital ecosystems.
+              Founded by <span className="text-white font-semibold">{siteConfig.founderName}</span>. {siteConfig.footer.description}
             </p>
 
             <div className="pt-2">
@@ -82,7 +82,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, siteConfig, onOpenCo
                   onClick={(e) => handleLink(e, '/')}
                   className="text-[#AAB7CC] hover:text-white transition-colors"
                 >
-                  Home — Community Growth Overview
+                  {siteConfig.navigation.homeLabel} — Community Growth Overview
                 </a>
               </li>
               <li>
@@ -91,7 +91,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, siteConfig, onOpenCo
                   onClick={(e) => handleLink(e, '/services')}
                   className="text-[#AAB7CC] hover:text-white transition-colors"
                 >
-                  Services — End-to-End Skool Solutions
+                  {siteConfig.navigation.servicesLabel} — End-to-End Skool Solutions
                 </a>
               </li>
               <li>
@@ -100,7 +100,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, siteConfig, onOpenCo
                   onClick={(e) => handleLink(e, '/portfolio')}
                   className="text-[#AAB7CC] hover:text-white transition-colors"
                 >
-                  Portfolio — Classrooms & Landing Pages
+                  {siteConfig.navigation.portfolioLabel} — Classrooms & Landing Pages
                 </a>
               </li>
               <li>
@@ -109,7 +109,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, siteConfig, onOpenCo
                   onClick={(e) => handleLink(e, '/about')}
                   className="text-[#AAB7CC] hover:text-white transition-colors"
                 >
-                  About — Testimony Samuel's Story
+                  {siteConfig.navigation.aboutLabel} — {siteConfig.founderName}'s Story
                 </a>
               </li>
               <li>
@@ -130,50 +130,58 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, siteConfig, onOpenCo
               Connect With Us
             </h4>
             <div className="flex items-center gap-3">
-              <a
-                href={siteConfig.socials.youtube}
-                target="_blank"
-                rel="noreferrer"
-                className="w-10 h-10 rounded-lg bg-[#202E43]/80 hover:bg-red-600/80 text-white flex items-center justify-center transition-colors"
-                aria-label="YouTube"
-              >
-                <Youtube className="w-5 h-5" />
-              </a>
-              <a
-                href={siteConfig.socials.instagram}
-                target="_blank"
-                rel="noreferrer"
-                className="w-10 h-10 rounded-lg bg-[#202E43]/80 hover:bg-pink-600/80 text-white flex items-center justify-center transition-colors"
-                aria-label="Instagram"
-              >
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a
-                href={siteConfig.socials.linkedin}
-                target="_blank"
-                rel="noreferrer"
-                className="w-10 h-10 rounded-lg bg-[#202E43]/80 hover:bg-blue-600/80 text-white flex items-center justify-center transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a
-                href={siteConfig.socials.x}
-                target="_blank"
-                rel="noreferrer"
-                className="w-10 h-10 rounded-lg bg-[#202E43]/80 hover:bg-slate-700 text-white flex items-center justify-center transition-colors"
-                aria-label="X / Twitter"
-              >
-                <Twitter className="w-5 h-5" />
-              </a>
+              {siteConfig.socials.youtube && (
+                <a
+                  href={siteConfig.socials.youtube}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-10 h-10 rounded-lg bg-[#202E43]/80 hover:bg-red-600/80 text-white flex items-center justify-center transition-colors"
+                  aria-label="YouTube"
+                >
+                  <Youtube className="w-5 h-5" />
+                </a>
+              )}
+              {siteConfig.socials.instagram && (
+                <a
+                  href={siteConfig.socials.instagram}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-10 h-10 rounded-lg bg-[#202E43]/80 hover:bg-pink-600/80 text-white flex items-center justify-center transition-colors"
+                  aria-label="Instagram"
+                >
+                  <Instagram className="w-5 h-5" />
+                </a>
+              )}
+              {siteConfig.socials.linkedin && (
+                <a
+                  href={siteConfig.socials.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-10 h-10 rounded-lg bg-[#202E43]/80 hover:bg-blue-600/80 text-white flex items-center justify-center transition-colors"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin className="w-5 h-5" />
+                </a>
+              )}
+              {siteConfig.socials.x && (
+                <a
+                  href={siteConfig.socials.x}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-10 h-10 rounded-lg bg-[#202E43]/80 hover:bg-slate-700 text-white flex items-center justify-center transition-colors"
+                  aria-label="X / Twitter"
+                >
+                  <Twitter className="w-5 h-5" />
+                </a>
+              )}
             </div>
 
             <div className="pt-3">
               <span className="text-xs text-slate-500 block">
-                Primary Specialty: Skool Communities
+                {siteConfig.footer.specialtyPrimary}
               </span>
               <span className="text-xs text-slate-500 block mt-1">
-                Also supporting: Circle, Kajabi, Mighty Networks
+                {siteConfig.footer.specialtySecondary}
               </span>
             </div>
           </div>
@@ -181,11 +189,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, siteConfig, onOpenCo
 
         {/* Bottom Bar: Copyright */}
         <div className="mt-14 pt-8 border-t border-[#202E43]/40 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <p>© {currentYear} MemberFlow Studio. All rights reserved.</p>
+          <p>© {currentYear} {siteConfig.footer.copyrightText}</p>
           <div className="flex items-center gap-4">
-            <span>Founded by Testimony Samuel</span>
+            <span>{siteConfig.footer.foundedByText}</span>
             <span>·</span>
-            <span>Better Systems. Stronger Communities.</span>
+            <span>{siteConfig.tagline}</span>
           </div>
         </div>
       </div>

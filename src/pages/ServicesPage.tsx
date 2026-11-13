@@ -1,26 +1,23 @@
 import React from 'react';
-import { 
-  Settings, 
-  BookOpen, 
-  Compass, 
-  Users, 
-  Sparkles, 
-  TrendingUp, 
-  ArrowRight, 
-  CheckCircle2, 
-  Play, 
-  Layers,
+import {
+  Settings,
+  BookOpen,
+  Compass,
+  Users,
+  Sparkles,
+  TrendingUp,
+  ArrowRight,
+  CheckCircle2,
+  Play,
   Check,
   Zap,
-  Clock,
-  ChevronRight
+  Share2,
+  Plus
 } from 'lucide-react';
 import {
-  CORE_SERVICES,
+  ServiceItem,
   SiteConfig,
-  DY_SALSA_CLASSROOM_URL,
-  GLAM_CRAFTER_CLASSROOM_URL,
-  SERVICES_ONBOARDING_IMAGE,
+  SERVICES_HERO_DEFAULT_IMAGE,
   WHY_CHOOSE_GROWTH_IMAGE,
   CLASSROOM_DESIGN_HUB_IMAGE
 } from '../data/siteData';
@@ -28,44 +25,81 @@ import {
 interface ServicesPageProps {
   onNavigate: (path: string) => void;
   siteConfig: SiteConfig;
+  services: ServiceItem[];
   onOpenContact: () => void;
 }
 
 export const ServicesPage: React.FC<ServicesPageProps> = ({
-  onNavigate,
   siteConfig,
+  services,
   onOpenContact
 }) => {
+  const sp = siteConfig.servicesPage;
+
+  const getServiceIcon = (iconName: string) => {
+    switch (iconName) {
+      case 'Settings':
+        return Settings;
+      case 'BookOpen':
+        return BookOpen;
+      case 'Compass':
+        return Compass;
+      case 'Users':
+        return Users;
+      case 'Sparkles':
+        return Sparkles;
+      case 'Share2':
+        return Share2;
+      case 'Zap':
+        return Zap;
+      case 'Plus':
+        return Plus;
+      default:
+        return TrendingUp;
+    }
+  };
+
+  const indicatorIcons = [Users, Zap, CheckCircle2];
+
   return (
     <div className="min-h-screen text-slate-100 bg-[#10192B]">
-      {/* =========================================================================
-          SECTION 1 — SERVICES HERO (Visual match to Reference 2)
-      ========================================================================== */}
+      {/* SECTION 1 — SERVICES HERO */}
       <section className="relative overflow-hidden pt-8 pb-16 lg:pt-14 lg:pb-24 border-b border-[#202E43]/60 bg-radial-gradient">
-        <div className="absolute top-1/4 right-10 w-96 h-96 bg-blue-600/15 rounded-full blur-3xl pointer-events-none" />
+        {siteConfig.theme.showAmbientGlow && (
+          <div className="absolute top-1/4 right-10 w-96 h-96 bg-blue-600/15 rounded-full blur-3xl pointer-events-none" />
+        )}
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
-            {/* Left Hero Content */}
             <div className="lg:col-span-6 space-y-6">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-600/15 border border-blue-500/30 text-blue-400 text-xs font-semibold tracking-wide">
                 <span>⭐</span>
-                <span>Our Services</span>
+                <span>{sp.heroEyebrow}</span>
               </div>
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-heading text-white tracking-tight leading-[1.12]">
-                Complete Skool <br />
-                Community <span className="text-blue-500 relative inline-block">
-                  Solutions
-                  <svg className="absolute -bottom-2 left-0 w-full h-3 text-blue-500" viewBox="0 0 200 12" fill="none" preserveAspectRatio="none">
-                    <path d="M2 9C58 3 142 3 198 9" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
+                {sp.heroHeadlineLine1} <br />
+                {sp.heroHeadlineLine2}{' '}
+                <span className="text-blue-500 relative inline-block">
+                  {sp.heroHighlightWord}
+                  <svg
+                    className="absolute -bottom-2 left-0 w-full h-3 text-blue-500"
+                    viewBox="0 0 200 12"
+                    fill="none"
+                    preserveAspectRatio="none"
+                  >
+                    <path
+                      d="M2 9C58 3 142 3 198 9"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                    />
                   </svg>
                 </span>
               </h1>
 
               <p className="text-base sm:text-lg text-[#AAB7CC] leading-relaxed max-w-xl">
-                From setup to growth, we provide the expertise and support you need to build, manage and scale thriving online communities.
+                {sp.heroSubtitle}
               </p>
 
               <div className="flex flex-wrap items-center gap-4 pt-2">
@@ -73,7 +107,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
                   onClick={onOpenContact}
                   className="px-7 py-3.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm shadow-xl shadow-blue-600/30 active:scale-95 transition-all flex items-center gap-2"
                 >
-                  <span>Explore Our Services</span>
+                  <span>{sp.heroPrimaryCta}</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
 
@@ -87,84 +121,64 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
                   <div className="w-6 h-6 rounded-full bg-blue-600/20 text-blue-400 flex items-center justify-center">
                     <Play className="w-3 h-3 fill-current ml-0.5" />
                   </div>
-                  <span>Watch How It Works</span>
+                  <span>{sp.heroSecondaryCta}</span>
                 </button>
               </div>
 
-              {/* 3 Indicators */}
               <div className="grid grid-cols-3 gap-4 pt-8 border-t border-[#202E43]/60">
-                <div className="flex items-center gap-2">
-                  <div className="p-2 rounded-lg bg-blue-600/20 text-blue-400">
-                    <Users className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <div className="font-bold text-xs sm:text-sm text-white">Expert Support</div>
-                    <div className="text-[10px] sm:text-xs text-[#AAB7CC]">Every Step of the Way</div>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <div className="p-2 rounded-lg bg-blue-600/20 text-blue-400">
-                    <Zap className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <div className="font-bold text-xs sm:text-sm text-white">Proven Strategies</div>
-                    <div className="text-[10px] sm:text-xs text-[#AAB7CC]">for Real Growth</div>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <div className="p-2 rounded-lg bg-blue-600/20 text-blue-400">
-                    <CheckCircle2 className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <div className="font-bold text-xs sm:text-sm text-white">Trusted by</div>
-                    <div className="text-[10px] sm:text-xs text-[#AAB7CC]">Community Owners</div>
-                  </div>
-                </div>
+                {sp.heroIndicators.map((ind, idx) => {
+                  const IconComp = indicatorIcons[idx % indicatorIcons.length];
+                  return (
+                    <div key={idx} className="flex items-center gap-2">
+                      <div className="p-2 rounded-lg bg-blue-600/20 text-blue-400">
+                        <IconComp className="w-4 h-4" />
+                      </div>
+                      <div>
+                        <div className="font-bold text-xs sm:text-sm text-white">{ind.title}</div>
+                        <div className="text-[10px] sm:text-xs text-[#AAB7CC]">{ind.subtitle}</div>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
-            {/* Right Hero Visual matching Reference 2 */}
             <div className="lg:col-span-6">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-[#202E43] bg-gradient-to-b from-[#18253B] to-[#10192B]">
                 <img
-                  src="/assets/aistudio/MemberFlow_Studio_Services_Showcase_353900ae.png"
-                  alt="MemberFlow Studio Services Showcase"
+                  src={sp.heroImage || SERVICES_HERO_DEFAULT_IMAGE}
+                  alt={`${siteConfig.brandName} Services Showcase`}
+                  referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    const img = e.currentTarget;
+                    if (!img.src.includes('MemberFlow_Studio_Services_Showcase')) {
+                      img.src = SERVICES_HERO_DEFAULT_IMAGE;
+                    }
+                  }}
                   className="w-full h-auto object-cover object-top max-h-[500px]"
                 />
               </div>
             </div>
-
           </div>
         </div>
       </section>
 
-      {/* =========================================================================
-          SECTION 2 — CORE SERVICES OVERVIEW (Soft White Surface)
-      ========================================================================== */}
+      {/* SECTION 2 — CORE SERVICES OVERVIEW */}
       <section id="core-services" className="py-20 bg-[#F5F7FB] text-slate-900 border-b border-[#DCE3EF]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
             <span className="inline-block px-3 py-1 rounded-full bg-blue-600/10 text-blue-600 text-xs font-bold uppercase tracking-wider">
-              What We Offer
+              {sp.coreEyebrow}
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold font-heading text-slate-900 tracking-tight">
-              Our Core Services
+              {sp.coreHeading}
             </h2>
-            <p className="text-base text-slate-600">
-              Everything you need to build, manage and grow a successful Skool community.
-            </p>
+            <p className="text-base text-slate-600">{sp.coreSubtitle}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {CORE_SERVICES.map((s) => {
-              const IconComponent = 
-                s.id === 'service-01' ? Settings :
-                s.id === 'service-02' ? BookOpen :
-                s.id === 'service-03' ? Compass :
-                s.id === 'service-04' ? Users :
-                s.id === 'service-05' ? Sparkles : TrendingUp;
+            {services.map((s) => {
+              const IconComponent = getServiceIcon(s.iconName);
 
               return (
                 <div
@@ -176,20 +190,14 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
                       <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors">
                         <IconComponent className="w-6 h-6" />
                       </div>
-                      <span className="text-xs font-bold font-mono text-slate-400">
-                        {s.number}
-                      </span>
+                      <span className="text-xs font-bold font-mono text-slate-400">{s.number}</span>
                     </div>
 
-                    <h3 className="text-lg font-bold font-heading text-slate-900 mb-2">
-                      {s.title}
-                    </h3>
-                    <p className="text-sm text-slate-600 mb-4 leading-relaxed">
-                      {s.description}
-                    </p>
+                    <h3 className="text-lg font-bold font-heading text-slate-900 mb-2">{s.title}</h3>
+                    <p className="text-sm text-slate-600 mb-4 leading-relaxed">{s.description}</p>
 
                     <ul className="space-y-1.5 pt-3 border-t border-slate-100 text-xs text-slate-500">
-                      {s.deliverables.slice(0, 3).map((item, idx) => (
+                      {s.deliverables.slice(0, 4).map((item, idx) => (
                         <li key={idx} className="flex items-center gap-2">
                           <Check className="w-3.5 h-3.5 text-blue-600 shrink-0" />
                           <span>{item}</span>
@@ -214,247 +222,116 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
         </div>
       </section>
 
-      {/* =========================================================================
-          SECTION 3 — DETAILED SERVICE SHOWCASE (Dark Navy Alternating)
-      ========================================================================== */}
+      {/* SECTION 3 — DETAILED SERVICE SHOWCASE */}
       <section className="py-20 bg-[#10192B] border-b border-[#202E43]/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
           <div className="text-center max-w-3xl mx-auto space-y-3">
             <span className="inline-block px-3 py-1 rounded-full bg-blue-600/15 text-blue-400 text-xs font-bold uppercase tracking-wider">
-              Service Details
+              {sp.detailsEyebrow}
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold font-heading text-white tracking-tight">
-              In-Depth Services <span className="text-blue-500">for Maximum Impact</span>
+              {sp.detailsHeading}{' '}
+              <span className="text-blue-500">{sp.detailsHighlight}</span>
             </h2>
-            <p className="text-base text-[#AAB7CC]">
-              Get expert solutions tailored to your community's unique needs.
-            </p>
+            <p className="text-base text-[#AAB7CC]">{sp.detailsSubtitle}</p>
           </div>
 
-          {/* Block A: Build & Organize */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            <div className="lg:col-span-6 space-y-5">
-              <span className="text-xs font-bold uppercase tracking-wider text-blue-400">
-                Block A — Foundation
-              </span>
-              <h3 className="text-2xl sm:text-3xl font-extrabold font-heading text-white">
-                Skool Community Setup & Classroom Architecture
-              </h3>
-              <p className="text-sm sm:text-base text-[#AAB7CC] leading-relaxed">
-                From initial group settings and permissions to full curriculum layout, we construct an intuitive learning space that keeps students engaged and prevents drop-off.
-              </p>
-              <ul className="space-y-2.5 text-sm text-slate-300">
-                <li className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-blue-400 shrink-0" />
-                  <span>Custom thumbnail graphics and unified color styling</span>
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-blue-400 shrink-0" />
-                  <span>Sequential course progression and resource attachments</span>
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-blue-400 shrink-0" />
-                  <span>Clear category guidelines that eliminate discussion clutter</span>
-                </li>
-              </ul>
-              <div className="pt-2">
-                <button
-                  onClick={onOpenContact}
-                  className="px-6 py-2.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs tracking-wide inline-flex items-center gap-2"
-                >
-                  <span>Build My Classroom</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
-              </div>
-            </div>
+          {sp.blocks.map((block, index) => {
+            const imageLeft = index % 2 === 1;
+            return (
+              <div key={index} className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                <div className={`lg:col-span-6 space-y-5 ${imageLeft ? 'order-1 lg:order-2' : ''}`}>
+                  <span className="text-xs font-bold uppercase tracking-wider text-blue-400">
+                    {block.tag}
+                  </span>
+                  <h3 className="text-2xl sm:text-3xl font-extrabold font-heading text-white">
+                    {block.title}
+                  </h3>
+                  <p className="text-sm sm:text-base text-[#AAB7CC] leading-relaxed">
+                    {block.description}
+                  </p>
+                  <ul className="space-y-2.5 text-sm text-slate-300">
+                    {block.bullets.map((bullet, bIdx) => (
+                      <li key={bIdx} className="flex items-center gap-2.5">
+                        <CheckCircle2 className="w-4 h-4 text-blue-400 shrink-0" />
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="pt-2">
+                    <button
+                      onClick={onOpenContact}
+                      className="px-6 py-2.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs tracking-wide inline-flex items-center gap-2"
+                    >
+                      <span>{block.ctaText}</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                </div>
 
-            <div className="lg:col-span-6">
-              <div className="rounded-2xl overflow-hidden border border-[#202E43] bg-[#152033] shadow-xl p-3">
-                <img
-                  src={DY_SALSA_CLASSROOM_URL}
-                  alt="DY Salsa Dance Academy Skool Classroom Architecture"
-                  referrerPolicy="no-referrer"
-                  onError={(e) => {
-                    const img = e.currentTarget;
-                    if (img.src !== CLASSROOM_DESIGN_HUB_IMAGE) {
-                      img.src = CLASSROOM_DESIGN_HUB_IMAGE;
-                    }
-                  }}
-                  className="w-full h-auto rounded-xl object-cover"
-                />
+                <div className={`lg:col-span-6 ${imageLeft ? 'order-2 lg:order-1' : ''}`}>
+                  <div className="rounded-2xl overflow-hidden border border-[#202E43] bg-[#152033] shadow-xl p-3">
+                    <img
+                      src={block.imageUrl}
+                      alt={block.title}
+                      referrerPolicy="no-referrer"
+                      onError={(e) => {
+                        const img = e.currentTarget;
+                        if (img.src !== CLASSROOM_DESIGN_HUB_IMAGE) {
+                          img.src = CLASSROOM_DESIGN_HUB_IMAGE;
+                        }
+                      }}
+                      className="w-full h-auto rounded-xl object-cover"
+                    />
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-
-          {/* Block B: Welcome & Engage */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            <div className="lg:col-span-6 order-2 lg:order-1">
-              <div className="rounded-2xl overflow-hidden border border-[#202E43] bg-[#152033] shadow-xl p-3">
-                <img
-                  src={SERVICES_ONBOARDING_IMAGE}
-                  alt="Member Onboarding and Active Engagement Systems"
-                  className="w-full h-auto rounded-xl object-cover"
-                />
-              </div>
-            </div>
-
-            <div className="lg:col-span-6 order-1 lg:order-2 space-y-5">
-              <span className="text-xs font-bold uppercase tracking-wider text-blue-400">
-                Block B — Retention
-              </span>
-              <h3 className="text-2xl sm:text-3xl font-extrabold font-heading text-white">
-                Member Onboarding & Active Engagement Systems
-              </h3>
-              <p className="text-sm sm:text-base text-[#AAB7CC] leading-relaxed">
-                First impressions dictate whether members stay for months or vanish in days. We craft welcome checklists, automated introductions, and community gamification.
-              </p>
-              <ul className="space-y-2.5 text-sm text-slate-300">
-                <li className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-blue-400 shrink-0" />
-                  <span>3-step "Start Here" orientation flow for quick wins</span>
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-blue-400 shrink-0" />
-                  <span>Weekly prompts, member spotlights, and win-sharing routines</span>
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-blue-400 shrink-0" />
-                  <span>Leaderboard rewards and level unlock strategies</span>
-                </li>
-              </ul>
-              <div className="pt-2">
-                <button
-                  onClick={onOpenContact}
-                  className="px-6 py-2.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs tracking-wide inline-flex items-center gap-2"
-                >
-                  <span>Improve Engagement</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Block C: Manage & Grow */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            <div className="lg:col-span-6 space-y-5">
-              <span className="text-xs font-bold uppercase tracking-wider text-blue-400">
-                Block C — Scaling
-              </span>
-              <h3 className="text-2xl sm:text-3xl font-extrabold font-heading text-white">
-                Community Management, Social Media & Growth
-              </h3>
-              <p className="text-sm sm:text-base text-[#AAB7CC] leading-relaxed">
-                Free up your time as a founder. We handle moderation, daily community operations, announcement broadcasting, and strategic social funnel generation.
-              </p>
-              <ul className="space-y-2.5 text-sm text-slate-300">
-                <li className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-blue-400 shrink-0" />
-                  <span>Daily queue moderation and spam suppression</span>
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-blue-400 shrink-0" />
-                  <span>Organic social-to-Skool lead funnel architecture</span>
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-blue-400 shrink-0" />
-                  <span>Dedicated routine operational reports and metrics</span>
-                </li>
-              </ul>
-              <div className="pt-2">
-                <button
-                  onClick={onOpenContact}
-                  className="px-6 py-2.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs tracking-wide inline-flex items-center gap-2"
-                >
-                  <span>Scale My Community</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
-              </div>
-            </div>
-
-            <div className="lg:col-span-6">
-              <div className="rounded-2xl overflow-hidden border border-[#202E43] bg-[#152033] shadow-xl p-3">
-                <img
-                  src={GLAM_CRAFTER_CLASSROOM_URL}
-                  alt="The Glam Crafter Empire Community Management Systems"
-                  referrerPolicy="no-referrer"
-                  onError={(e) => {
-                    const img = e.currentTarget;
-                    if (img.src !== CLASSROOM_DESIGN_HUB_IMAGE) {
-                      img.src = CLASSROOM_DESIGN_HUB_IMAGE;
-                    }
-                  }}
-                  className="w-full h-auto rounded-xl object-cover"
-                />
-              </div>
-            </div>
-          </div>
+            );
+          })}
         </div>
       </section>
 
-      {/* =========================================================================
-          SECTION 4 — HOW WE WORK (Process Timeline)
-      ========================================================================== */}
+      {/* SECTION 4 — HOW WE WORK */}
       <section className="py-20 bg-[#F5F7FB] text-slate-900 border-b border-[#DCE3EF]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
             <span className="inline-block px-3 py-1 rounded-full bg-blue-600/10 text-blue-600 text-xs font-bold uppercase tracking-wider">
-              Our Process
+              {sp.processEyebrow}
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold font-heading text-slate-900 tracking-tight">
-              How It Works
+              {sp.processHeading}
             </h2>
-            <p className="text-base text-slate-600">
-              Getting started is simple. Just follow these easy steps:
-            </p>
+            <p className="text-base text-slate-600">{sp.processSubtitle}</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-3 gap-6 relative">
-              {/* Step 1 */}
-              <div className="bg-white rounded-2xl p-6 border border-[#DCE3EF] shadow-sm relative space-y-4">
-                <div className="w-11 h-11 rounded-xl bg-blue-600 text-white font-extrabold text-lg flex items-center justify-center font-heading">
-                  1
+              {sp.processSteps.map((step, idx) => (
+                <div
+                  key={idx}
+                  className="bg-white rounded-2xl p-6 border border-[#DCE3EF] shadow-sm relative space-y-4"
+                >
+                  <div className="w-11 h-11 rounded-xl bg-blue-600 text-white font-extrabold text-lg flex items-center justify-center font-heading">
+                    {idx + 1}
+                  </div>
+                  <h3 className="text-lg font-bold font-heading text-slate-900">{step.title}</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">{step.description}</p>
                 </div>
-                <h3 className="text-lg font-bold font-heading text-slate-900">
-                  Share Your Goals
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  Tell us about your community, audience, current bottlenecks, and what you want to achieve with your Skool group.
-                </p>
-              </div>
-
-              {/* Step 2 */}
-              <div className="bg-white rounded-2xl p-6 border border-[#DCE3EF] shadow-sm relative space-y-4">
-                <div className="w-11 h-11 rounded-xl bg-blue-600 text-white font-extrabold text-lg flex items-center justify-center font-heading">
-                  2
-                </div>
-                <h3 className="text-lg font-bold font-heading text-slate-900">
-                  Get a Strategy
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  Receive a custom action plan tailored to your community needs, covering classroom architecture, onboarding, and growth.
-                </p>
-              </div>
-
-              {/* Step 3 */}
-              <div className="bg-white rounded-2xl p-6 border border-[#DCE3EF] shadow-sm relative space-y-4">
-                <div className="w-11 h-11 rounded-xl bg-blue-600 text-white font-extrabold text-lg flex items-center justify-center font-heading">
-                  3
-                </div>
-                <h3 className="text-lg font-bold font-heading text-slate-900">
-                  See the Results
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  We implement and organize everything. Watch your members navigate seamlessly, engage actively, and grow sustainably.
-                </p>
-              </div>
+              ))}
             </div>
 
             <div className="lg:col-span-4">
               <div className="rounded-2xl overflow-hidden border border-[#DCE3EF] bg-white shadow-lg p-2">
                 <img
-                  src={WHY_CHOOSE_GROWTH_IMAGE}
-                  alt="MemberFlow Studio Growth Strategy Visualization"
+                  src={sp.processImage || WHY_CHOOSE_GROWTH_IMAGE}
+                  alt={sp.processHeading}
+                  referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    const img = e.currentTarget;
+                    if (img.src !== WHY_CHOOSE_GROWTH_IMAGE) {
+                      img.src = WHY_CHOOSE_GROWTH_IMAGE;
+                    }
+                  }}
                   className="w-full h-auto rounded-xl object-cover"
                   loading="lazy"
                 />
@@ -464,19 +341,15 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
         </div>
       </section>
 
-      {/* =========================================================================
-          SECTION 5 — FINAL CONVERSION BANNER
-      ========================================================================== */}
+      {/* SECTION 5 — FINAL CONVERSION BANNER */}
       <section className="py-16 sm:py-20 bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 text-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
             <div className="space-y-2 text-center lg:text-left max-w-2xl">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading tracking-tight leading-tight">
-                Ready to Transform Your Skool Community?
+                {sp.ctaHeading}
               </h2>
-              <p className="text-base sm:text-lg text-blue-100">
-                Let's build, grow and manage your community together.
-              </p>
+              <p className="text-base sm:text-lg text-blue-100">{sp.ctaSubtitle}</p>
             </div>
 
             <div className="shrink-0">
@@ -484,7 +357,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
                 onClick={onOpenContact}
                 className="px-8 py-4 rounded-full bg-white text-blue-700 hover:bg-slate-100 font-extrabold text-base shadow-2xl active:scale-95 transition-all flex items-center gap-2"
               >
-                <span>Contact Us Today</span>
+                <span>{sp.ctaButtonText}</span>
                 <ArrowRight className="w-5 h-5 text-blue-700" />
               </button>
             </div>
