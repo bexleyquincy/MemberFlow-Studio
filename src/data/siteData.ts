@@ -1,3 +1,28 @@
+import founderStoryImg from '../assets/images/founder_story_speaking_1794571670334.jpg';
+import classroomDesignHubImg from '../assets/images/classroom_design_hub_1794571671497.jpg';
+import landingRealEstateImg from '../assets/images/landing_realestate_community_1794571671436.jpg';
+import landingApparelImg from '../assets/images/landing_apparel_community_1794571672541.jpg';
+import whyChooseGrowthImg from '../assets/images/why_choose_growth_3d_1794571672462.jpg';
+import servicesOnboardingImg from '../assets/images/services_onboarding_ui_1794571674072.jpg';
+import avatarSarahImg from '../assets/images/avatar_sarah_mitchell_1794571673583.jpg';
+import avatarDavidImg from '../assets/images/avatar_david_harrison_1794571674316.jpg';
+import avatarJessicaImg from '../assets/images/avatar_jessica_brown_1794571675652.jpg';
+
+export const GLAM_CRAFTER_CLASSROOM_URL =
+  'https://i.ibb.co/twQ11fFX/The-Glam-Crafter-Empire-Classroom.png';
+export const DY_SALSA_CLASSROOM_URL =
+  'https://i.ibb.co/Q3f07sKw/DY-Salsa-Dance-Academy-Classroom.png';
+export const DY_SALSA_LANDING_URL =
+  'https://i.ibb.co/pBkd0cCS/DY-Salsa-Dance-Academy-Landing-Page.png';
+
+export const FOUNDER_HERO_IMAGE = '/assets/aistudio/Skool_Community_Growth_Dashboard_1f90cb40.png';
+export const FOUNDER_STORY_IMAGE = founderStoryImg;
+export const CLASSROOM_DESIGN_HUB_IMAGE = classroomDesignHubImg;
+export const LANDING_REAL_ESTATE_IMAGE = landingRealEstateImg;
+export const LANDING_APPAREL_IMAGE = landingApparelImg;
+export const WHY_CHOOSE_GROWTH_IMAGE = whyChooseGrowthImg;
+export const SERVICES_ONBOARDING_IMAGE = servicesOnboardingImg;
+
 export interface Project {
   id: string;
   title: string;
@@ -67,8 +92,8 @@ I believe a successful community is about more than simply having a platform. It
   tagline: 'Better Systems. Stronger Communities.',
   positioning: 'Skool Community Setup, Management, Member Experience and Growth',
   contactEmail: 'femizydasilver@gmail.com',
-  founderHeroImage: 'https://img.sanishtech.com/u/1b9a49150fc8f17bc1af30c311420a85.png',
-  founderStoryImage: 'https://img.sanishtech.com/u/443ac159dcce6c7643714cda0ea75c0e.png',
+  founderHeroImage: FOUNDER_HERO_IMAGE,
+  founderStoryImage: FOUNDER_STORY_IMAGE,
   founderVideoUrl: '',
   socials: {
     linkedin: 'https://linkedin.com/in/testimony-samuel',
@@ -88,30 +113,30 @@ I believe a successful community is about more than simply having a platform. It
 export const INITIAL_CLASSROOM_PROJECTS: Project[] = [
   {
     id: 'classroom-01',
-    title: 'DY Salsa Dance Academy Classroom',
-    category: 'Skool Classroom Design',
-    description: 'A vibrant, structured online dance academy organized with clear sequential course levels, video modules, and practice drills.',
-    imageUrl: 'https://img.sanishtech.com/u/b23962d874c57145a61ed60d99809bf2.png',
-    highlight: 'Engaging & Organized',
-    services: 'Classroom architecture, curriculum hierarchy, course thumbnail design',
-    overview: 'Revamped the entire curriculum structure to eliminate student drop-off and make step-by-step progress effortless.'
-  },
-  {
-    id: 'classroom-02',
     title: 'The Glam Crafter Empire Classroom',
     category: 'Premium Community Classroom',
     description: 'Multi-tiered craft masterclass with categorized visual resource libraries, downloadable patterns, and weekly project workshops.',
-    imageUrl: 'https://img.sanishtech.com/u/d18df1c25ca09bab0a6239b84996b116.png',
+    imageUrl: GLAM_CRAFTER_CLASSROOM_URL,
     highlight: 'Modern Classroom Setup',
     services: 'Community setup, course upload, lesson structuring, engagement badges',
     overview: 'Transformed an overwhelming video archive into a pristine structured learning pathway that members love.'
+  },
+  {
+    id: 'classroom-02',
+    title: 'DY Salsa Dance Academy Classroom',
+    category: 'Skool Classroom Design',
+    description: 'A vibrant, structured online dance academy organized with clear sequential course levels, video modules, and practice drills.',
+    imageUrl: DY_SALSA_CLASSROOM_URL,
+    highlight: 'Engaging & Organized',
+    services: 'Classroom architecture, curriculum hierarchy, course thumbnail design',
+    overview: 'Revamped the entire curriculum structure to eliminate student drop-off and make step-by-step progress effortless.'
   },
   {
     id: 'classroom-03',
     title: 'Design & Creativity Hub Classroom',
     category: 'Creative Community Classroom',
     description: 'Design workshops, portfolio review spaces, and software workflow tutorials structured for active daily member engagement.',
-    imageUrl: 'https://img.sanishtech.com/u/b23962d874c57145a61ed60d99809bf2.png',
+    imageUrl: CLASSROOM_DESIGN_HUB_IMAGE,
     highlight: 'Learning Experience',
     services: 'Course organization, weekly challenge threads, onboarding videos'
   },
@@ -120,7 +145,7 @@ export const INITIAL_CLASSROOM_PROJECTS: Project[] = [
     title: 'Creator Community Masterclass',
     category: 'Course Organization',
     description: 'Streamlined creator monetization course modules with step-by-step action sheets and companion video series.',
-    imageUrl: 'https://img.sanishtech.com/u/d18df1c25ca09bab0a6239b84996b116.png',
+    imageUrl: SERVICES_ONBOARDING_IMAGE,
     highlight: 'Course Upload & Structuring',
     services: 'Content upload, thumbnail branding, category tagging'
   }
@@ -129,39 +154,39 @@ export const INITIAL_CLASSROOM_PROJECTS: Project[] = [
 export const INITIAL_LANDING_PAGE_PROJECTS: Project[] = [
   {
     id: 'landing-01',
-    title: 'Evergreen Real Estate Community Landing Page',
-    category: 'Real Estate Community',
-    description: 'High-converting investor portal landing page designed with clear value propositions, interactive tools showcase, and trust signals.',
-    imageUrl: 'https://img.sanishtech.com/u/f37e41f7ca3c29592e3dde20e6a5e849.png',
+    title: 'DY Salsa Dance Academy Landing Page',
+    category: 'Dance & Fitness Community',
+    description: 'Vibrant conversion-focused landing page showcasing dance programs, step-by-step beginner tracks, and instant community membership.',
+    imageUrl: DY_SALSA_LANDING_URL,
     highlight: 'High-Converting Page',
-    services: 'Landing page UI/UX, responsive layout, lead capture, community pitch'
+    services: 'Landing page UI/UX, responsive layout, offer positioning, member conversion flow'
   },
   {
     id: 'landing-02',
+    title: 'Evergreen Real Estate Community Landing Page',
+    category: 'Real Estate Community',
+    description: 'High-converting investor portal landing page designed with clear value propositions, interactive tools showcase, and trust signals.',
+    imageUrl: LANDING_REAL_ESTATE_IMAGE,
+    highlight: 'Investor Portal Funnel',
+    services: 'Landing page UI/UX, responsive layout, lead capture, community pitch'
+  },
+  {
+    id: 'landing-03',
     title: 'The Glam Crafter Empire Landing Page',
     category: 'Digital Creator Community',
     description: 'Chic, premium sales and community landing page presenting membership tiers, exclusive digital resources, and member perks.',
-    imageUrl: 'https://img.sanishtech.com/u/7b9e61d8e6f0a3f5cf3e3f287d13c677.png',
+    imageUrl: GLAM_CRAFTER_CLASSROOM_URL,
     highlight: 'Premium Landing Page',
     services: 'Community positioning, sales page architecture, visual branding'
   },
   {
-    id: 'landing-03',
+    id: 'landing-04',
     title: 'Design & Apparel Community Landing Page',
     category: 'Design & Apparel Community',
     description: 'Bold streetwear creator hub showcasing print-on-demand resources, mockups, and private manufacturer connections.',
-    imageUrl: 'https://img.sanishtech.com/u/d6253575a28ac741cb6d70f4ee7a3f48.png',
+    imageUrl: LANDING_APPAREL_IMAGE,
     highlight: 'Brand Presentation',
     services: 'Apparel community branding, value messaging, conversion optimization'
-  },
-  {
-    id: 'landing-04',
-    title: 'Digital Creator Pro Landing Experience',
-    category: 'Sales Page Design',
-    description: 'Clean conversion-focused landing page turning YouTube and social media subscribers into engaged recurring members.',
-    imageUrl: 'https://img.sanishtech.com/u/b6f1c88dadfc9dcdaa1aa1408c238b2a.png',
-    highlight: 'Conversion-Focused Layout',
-    services: 'Offer framing, FAQ setup, direct call-to-action flows'
   }
 ];
 
@@ -170,7 +195,7 @@ export const FEATURED_CASE_STUDY: Project = {
   title: 'The Glam Crafter Empire — From Vision to a Thriving Community',
   category: 'Community Setup & Growth',
   description: 'How we transformed a scattered content library into a fully branded, thriving Skool community with high onboarding completion and daily active discussions.',
-  imageUrl: 'https://img.sanishtech.com/u/d18df1c25ca09bab0a6239b84996b116.png',
+  imageUrl: GLAM_CRAFTER_CLASSROOM_URL,
   highlight: 'Complete Skool Transformation',
   services: 'Community setup, course upload, landing page design, and growth/marketing',
   overview: 'The client had exceptional content but members felt overwhelmed navigating raw files. MemberFlow Studio structured four distinct course levels, designed custom thumbnails, created a welcoming 3-step onboarding pipeline, and built a dedicated landing page.',
@@ -275,7 +300,7 @@ export const INITIAL_TESTIMONIALS: Testimonial[] = [
     id: 'test-01',
     name: 'Sarah Mitchell',
     role: 'Community Owner & Creative Mentor',
-    avatarUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80',
+    avatarUrl: avatarSarahImg,
     quote: 'MemberFlow Studio transformed our Skool community. The setup, engagement structure, and classroom layout are amazing! Our students actually finish courses now.',
     rating: 5
   },
@@ -283,7 +308,7 @@ export const INITIAL_TESTIMONIALS: Testimonial[] = [
     id: 'test-02',
     name: 'David Harrison',
     role: 'Coach & Digital Creator',
-    avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
+    avatarUrl: avatarDavidImg,
     quote: 'Professional, reliable and highly skilled. Our community is now more organized and active than ever before. Testimony knows Skool inside out.',
     rating: 5
   },
@@ -291,11 +316,54 @@ export const INITIAL_TESTIMONIALS: Testimonial[] = [
     id: 'test-03',
     name: 'Jessica Brown',
     role: 'Business Strategist & Community Host',
-    avatarUrl: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=80',
+    avatarUrl: avatarJessicaImg,
     quote: 'The best Skool community support we have ever had. Seamless onboarding, gorgeous thumbnails, and strategic advice that drove real engagement.',
     rating: 5
   }
 ];
+
+export function isExpiredOrLegacyImageUrl(url?: string): boolean {
+  if (!url || !url.trim()) return true;
+  return url.includes('img.sanishtech.com') || url.includes('images.unsplash.com');
+}
+
+export function sanitizeSiteConfig(saved: SiteConfig): SiteConfig {
+  return {
+    ...INITIAL_SITE_CONFIG,
+    ...saved,
+    founderHeroImage: isExpiredOrLegacyImageUrl(saved.founderHeroImage)
+      ? INITIAL_SITE_CONFIG.founderHeroImage
+      : saved.founderHeroImage,
+    founderStoryImage: isExpiredOrLegacyImageUrl(saved.founderStoryImage)
+      ? INITIAL_SITE_CONFIG.founderStoryImage
+      : saved.founderStoryImage
+  };
+}
+
+export function sanitizeProjects(saved: Project[], defaults: Project[], fallbackImage: string): Project[] {
+  const defaultById = new Map(defaults.map((p) => [p.id, p]));
+  return saved.map((item) => {
+    const def = defaultById.get(item.id);
+    if (isExpiredOrLegacyImageUrl(item.imageUrl)) {
+      return def ? { ...def } : { ...item, imageUrl: fallbackImage };
+    }
+    return item;
+  });
+}
+
+export function sanitizeTestimonials(saved: Testimonial[]): Testimonial[] {
+  const defaultById = new Map(INITIAL_TESTIMONIALS.map((t) => [t.id, t]));
+  return saved.map((item) => {
+    const def = defaultById.get(item.id);
+    if (isExpiredOrLegacyImageUrl(item.avatarUrl)) {
+      return {
+        ...item,
+        avatarUrl: def ? def.avatarUrl : INITIAL_TESTIMONIALS[0].avatarUrl
+      };
+    }
+    return item;
+  });
+}
 
 export const FAQ_ITEMS = [
   {

@@ -15,7 +15,12 @@ import {
   INITIAL_SITE_CONFIG, 
   INITIAL_CLASSROOM_PROJECTS, 
   INITIAL_LANDING_PAGE_PROJECTS, 
-  INITIAL_TESTIMONIALS 
+  INITIAL_TESTIMONIALS,
+  CLASSROOM_DESIGN_HUB_IMAGE,
+  LANDING_REAL_ESTATE_IMAGE,
+  sanitizeSiteConfig,
+  sanitizeProjects,
+  sanitizeTestimonials
 } from './data/siteData';
 
 export default function App() {
@@ -28,11 +33,15 @@ export default function App() {
     return '/';
   });
 
-  // Persisted or live configuration states
+  // Persisted or live configuration states (auto-migrating expired external URLs)
   const [siteConfig, setSiteConfig] = useState<SiteConfig>(() => {
     try {
       const saved = localStorage.getItem('memberflow_site_config');
-      if (saved) return JSON.parse(saved);
+      if (saved) {
+        const sanitized = sanitizeSiteConfig(JSON.parse(saved));
+        localStorage.setItem('memberflow_site_config', JSON.stringify(sanitized));
+        return sanitized;
+      }
     } catch (e) {
       console.error(e);
     }
@@ -42,7 +51,15 @@ export default function App() {
   const [classroomProjects, setClassroomProjects] = useState<Project[]>(() => {
     try {
       const saved = localStorage.getItem('memberflow_classroom_projects');
-      if (saved) return JSON.parse(saved);
+      if (saved) {
+        const sanitized = sanitizeProjects(
+          JSON.parse(saved),
+          INITIAL_CLASSROOM_PROJECTS,
+          CLASSROOM_DESIGN_HUB_IMAGE
+        );
+        localStorage.setItem('memberflow_classroom_projects', JSON.stringify(sanitized));
+        return sanitized;
+      }
     } catch (e) {
       console.error(e);
     }
@@ -52,7 +69,15 @@ export default function App() {
   const [landingProjects, setLandingProjects] = useState<Project[]>(() => {
     try {
       const saved = localStorage.getItem('memberflow_landing_projects');
-      if (saved) return JSON.parse(saved);
+      if (saved) {
+        const sanitized = sanitizeProjects(
+          JSON.parse(saved),
+          INITIAL_LANDING_PAGE_PROJECTS,
+          LANDING_REAL_ESTATE_IMAGE
+        );
+        localStorage.setItem('memberflow_landing_projects', JSON.stringify(sanitized));
+        return sanitized;
+      }
     } catch (e) {
       console.error(e);
     }
@@ -62,7 +87,11 @@ export default function App() {
   const [testimonials, setTestimonials] = useState<Testimonial[]>(() => {
     try {
       const saved = localStorage.getItem('memberflow_testimonials');
-      if (saved) return JSON.parse(saved);
+      if (saved) {
+        const sanitized = sanitizeTestimonials(JSON.parse(saved));
+        localStorage.setItem('memberflow_testimonials', JSON.stringify(sanitized));
+        return sanitized;
+      }
     } catch (e) {
       console.error(e);
     }

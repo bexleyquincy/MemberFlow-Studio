@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 import { X, Shield, Plus, Trash2, Edit3, Save, Check, RefreshCw, Key } from 'lucide-react';
-import { SiteConfig, Project, ServiceItem, Testimonial } from '../data/siteData';
+import {
+  SiteConfig,
+  Project,
+  Testimonial,
+  DY_SALSA_CLASSROOM_URL,
+  DY_SALSA_LANDING_URL,
+  CLASSROOM_DESIGN_HUB_IMAGE,
+  LANDING_REAL_ESTATE_IMAGE
+} from '../data/siteData';
 
 interface AdminModalProps {
   isOpen: boolean;
@@ -59,7 +67,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
       title: newProject.title,
       category: newProject.category,
       description: newProject.description,
-      imageUrl: newProject.imageUrl || 'https://img.sanishtech.com/u/b23962d874c57145a61ed60d99809bf2.png',
+      imageUrl: newProject.imageUrl || DY_SALSA_CLASSROOM_URL,
       highlight: newProject.highlight
     };
     onUpdateClassrooms([...classroomProjects, project]);
@@ -80,7 +88,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
       title: newProject.title,
       category: newProject.category,
       description: newProject.description,
-      imageUrl: newProject.imageUrl || 'https://img.sanishtech.com/u/f37e41f7ca3c29592e3dde20e6a5e849.png',
+      imageUrl: newProject.imageUrl || DY_SALSA_LANDING_URL,
       highlight: newProject.highlight
     };
     onUpdateLandings([...landingProjects, project]);
@@ -403,6 +411,13 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                       <img
                         src={p.imageUrl}
                         alt={p.title}
+                        referrerPolicy="no-referrer"
+                        onError={(e) => {
+                          const img = e.currentTarget;
+                          if (img.src !== CLASSROOM_DESIGN_HUB_IMAGE) {
+                            img.src = CLASSROOM_DESIGN_HUB_IMAGE;
+                          }
+                        }}
                         className="w-16 h-11 object-cover rounded border border-[#202E43] shrink-0"
                       />
                       <div className="min-w-0">
@@ -492,6 +507,13 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                       <img
                         src={p.imageUrl}
                         alt={p.title}
+                        referrerPolicy="no-referrer"
+                        onError={(e) => {
+                          const img = e.currentTarget;
+                          if (img.src !== LANDING_REAL_ESTATE_IMAGE) {
+                            img.src = LANDING_REAL_ESTATE_IMAGE;
+                          }
+                        }}
                         className="w-16 h-11 object-cover rounded border border-[#202E43] shrink-0"
                       />
                       <div className="min-w-0">

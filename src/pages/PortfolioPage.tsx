@@ -15,7 +15,13 @@ import {
   Layout,
   Maximize2
 } from 'lucide-react';
-import { Project, SiteConfig, FEATURED_CASE_STUDY } from '../data/siteData';
+import {
+  Project,
+  SiteConfig,
+  FEATURED_CASE_STUDY,
+  CLASSROOM_DESIGN_HUB_IMAGE,
+  LANDING_REAL_ESTATE_IMAGE
+} from '../data/siteData';
 
 interface PortfolioPageProps {
   onNavigate: (path: string) => void;
@@ -246,6 +252,13 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
                     <img
                       src={p.imageUrl}
                       alt={p.title}
+                      referrerPolicy="no-referrer"
+                      onError={(e) => {
+                        const img = e.currentTarget;
+                        if (img.src !== CLASSROOM_DESIGN_HUB_IMAGE) {
+                          img.src = CLASSROOM_DESIGN_HUB_IMAGE;
+                        }
+                      }}
                       className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
                       loading="lazy"
                     />
@@ -331,6 +344,13 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
                     <img
                       src={p.imageUrl}
                       alt={p.title}
+                      referrerPolicy="no-referrer"
+                      onError={(e) => {
+                        const img = e.currentTarget;
+                        if (img.src !== LANDING_REAL_ESTATE_IMAGE) {
+                          img.src = LANDING_REAL_ESTATE_IMAGE;
+                        }
+                      }}
                       className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
                       loading="lazy"
                     />
@@ -426,8 +446,15 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
               >
                 <div className="relative aspect-[16/10] rounded-xl overflow-hidden bg-slate-900">
                   <img
-                    src="https://img.sanishtech.com/u/d18df1c25ca09bab0a6239b84996b116.png"
-                    alt="The Glam Crafter Empire"
+                    src={FEATURED_CASE_STUDY.imageUrl}
+                    alt="The Glam Crafter Empire Classroom Showcase"
+                    referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      const img = e.currentTarget;
+                      if (img.src !== CLASSROOM_DESIGN_HUB_IMAGE) {
+                        img.src = CLASSROOM_DESIGN_HUB_IMAGE;
+                      }
+                    }}
                     className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>

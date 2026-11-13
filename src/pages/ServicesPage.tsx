@@ -15,7 +15,15 @@ import {
   Clock,
   ChevronRight
 } from 'lucide-react';
-import { CORE_SERVICES, SiteConfig } from '../data/siteData';
+import {
+  CORE_SERVICES,
+  SiteConfig,
+  DY_SALSA_CLASSROOM_URL,
+  GLAM_CRAFTER_CLASSROOM_URL,
+  SERVICES_ONBOARDING_IMAGE,
+  WHY_CHOOSE_GROWTH_IMAGE,
+  CLASSROOM_DESIGN_HUB_IMAGE
+} from '../data/siteData';
 
 interface ServicesPageProps {
   onNavigate: (path: string) => void;
@@ -263,8 +271,15 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
             <div className="lg:col-span-6">
               <div className="rounded-2xl overflow-hidden border border-[#202E43] bg-[#152033] shadow-xl p-3">
                 <img
-                  src="https://img.sanishtech.com/u/b23962d874c57145a61ed60d99809bf2.png"
-                  alt="Skool Classroom Architecture"
+                  src={DY_SALSA_CLASSROOM_URL}
+                  alt="DY Salsa Dance Academy Skool Classroom Architecture"
+                  referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    const img = e.currentTarget;
+                    if (img.src !== CLASSROOM_DESIGN_HUB_IMAGE) {
+                      img.src = CLASSROOM_DESIGN_HUB_IMAGE;
+                    }
+                  }}
                   className="w-full h-auto rounded-xl object-cover"
                 />
               </div>
@@ -276,8 +291,8 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
             <div className="lg:col-span-6 order-2 lg:order-1">
               <div className="rounded-2xl overflow-hidden border border-[#202E43] bg-[#152033] shadow-xl p-3">
                 <img
-                  src="https://img.sanishtech.com/u/7b9e61d8e6f0a3f5cf3e3f287d13c677.png"
-                  alt="Member Onboarding Journey"
+                  src={SERVICES_ONBOARDING_IMAGE}
+                  alt="Member Onboarding and Active Engagement Systems"
                   className="w-full h-auto rounded-xl object-cover"
                 />
               </div>
@@ -359,8 +374,15 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
             <div className="lg:col-span-6">
               <div className="rounded-2xl overflow-hidden border border-[#202E43] bg-[#152033] shadow-xl p-3">
                 <img
-                  src="https://img.sanishtech.com/u/d18df1c25ca09bab0a6239b84996b116.png"
-                  alt="Community Management Systems"
+                  src={GLAM_CRAFTER_CLASSROOM_URL}
+                  alt="The Glam Crafter Empire Community Management Systems"
+                  referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    const img = e.currentTarget;
+                    if (img.src !== CLASSROOM_DESIGN_HUB_IMAGE) {
+                      img.src = CLASSROOM_DESIGN_HUB_IMAGE;
+                    }
+                  }}
                   className="w-full h-auto rounded-xl object-cover"
                 />
               </div>
@@ -386,44 +408,57 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-            {/* Step 1 */}
-            <div className="bg-white rounded-2xl p-8 border border-[#DCE3EF] shadow-sm relative space-y-4">
-              <div className="w-12 h-12 rounded-xl bg-blue-600 text-white font-extrabold text-lg flex items-center justify-center font-heading">
-                1
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+              {/* Step 1 */}
+              <div className="bg-white rounded-2xl p-6 border border-[#DCE3EF] shadow-sm relative space-y-4">
+                <div className="w-11 h-11 rounded-xl bg-blue-600 text-white font-extrabold text-lg flex items-center justify-center font-heading">
+                  1
+                </div>
+                <h3 className="text-lg font-bold font-heading text-slate-900">
+                  Share Your Goals
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  Tell us about your community, audience, current bottlenecks, and what you want to achieve with your Skool group.
+                </p>
               </div>
-              <h3 className="text-xl font-bold font-heading text-slate-900">
-                Share Your Goals
-              </h3>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                Tell us about your community, audience, current bottlenecks, and what you want to achieve with your Skool group.
-              </p>
+
+              {/* Step 2 */}
+              <div className="bg-white rounded-2xl p-6 border border-[#DCE3EF] shadow-sm relative space-y-4">
+                <div className="w-11 h-11 rounded-xl bg-blue-600 text-white font-extrabold text-lg flex items-center justify-center font-heading">
+                  2
+                </div>
+                <h3 className="text-lg font-bold font-heading text-slate-900">
+                  Get a Strategy
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  Receive a custom action plan tailored to your community needs, covering classroom architecture, onboarding, and growth.
+                </p>
+              </div>
+
+              {/* Step 3 */}
+              <div className="bg-white rounded-2xl p-6 border border-[#DCE3EF] shadow-sm relative space-y-4">
+                <div className="w-11 h-11 rounded-xl bg-blue-600 text-white font-extrabold text-lg flex items-center justify-center font-heading">
+                  3
+                </div>
+                <h3 className="text-lg font-bold font-heading text-slate-900">
+                  See the Results
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  We implement and organize everything. Watch your members navigate seamlessly, engage actively, and grow sustainably.
+                </p>
+              </div>
             </div>
 
-            {/* Step 2 */}
-            <div className="bg-white rounded-2xl p-8 border border-[#DCE3EF] shadow-sm relative space-y-4">
-              <div className="w-12 h-12 rounded-xl bg-blue-600 text-white font-extrabold text-lg flex items-center justify-center font-heading">
-                2
+            <div className="lg:col-span-4">
+              <div className="rounded-2xl overflow-hidden border border-[#DCE3EF] bg-white shadow-lg p-2">
+                <img
+                  src={WHY_CHOOSE_GROWTH_IMAGE}
+                  alt="MemberFlow Studio Growth Strategy Visualization"
+                  className="w-full h-auto rounded-xl object-cover"
+                  loading="lazy"
+                />
               </div>
-              <h3 className="text-xl font-bold font-heading text-slate-900">
-                Get a Strategy
-              </h3>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                Receive a custom action plan tailored to your community needs, covering classroom architecture, onboarding, and growth.
-              </p>
-            </div>
-
-            {/* Step 3 */}
-            <div className="bg-white rounded-2xl p-8 border border-[#DCE3EF] shadow-sm relative space-y-4">
-              <div className="w-12 h-12 rounded-xl bg-blue-600 text-white font-extrabold text-lg flex items-center justify-center font-heading">
-                3
-              </div>
-              <h3 className="text-xl font-bold font-heading text-slate-900">
-                See the Results
-              </h3>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                We implement and organize everything. Watch your members navigate seamlessly, engage actively, and grow sustainably.
-              </p>
             </div>
           </div>
         </div>

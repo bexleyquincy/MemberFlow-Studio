@@ -1,20 +1,23 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
+import { fileURLToPath } from 'url';
 import path from 'path';
-import {defineConfig} from 'vite';
-import dotenv from 'dotenv';
-dotenv.config();
+import { defineConfig } from 'vite';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export default defineConfig(() => {
   return {
     plugins: [
       react(), 
-      tailwindocsPlugin(),
+      tailwindcss(),
       {
         name: 'netlify-functions-dev-proxy',
         configureServer(server) {
           server.middlewares.use(async (req, res, next) => {
-            if (req.url === '/api/send-contact' || req.url === '/.netlify/functions/send-contact') {
+            const pathname = req.url?.split('?')[0];
+            if (pathname === '/api/send-contact' || pathname === '/.netlify/functions/send-contact') {
               if (req.method !== 'POST') {
                 res.statusCode = 405;
                 res.setHeader('Content-Type', 'application/json');
@@ -62,12 +65,14 @@ export default defineConfig(() => {
       },
     },
     server: {
+      port: 3000,
+      host: '0.0.0.0',
+      allowedHosts: true,
+      // HMR is disabled in AI Studio via DISABLE_HMR env var.
+      // Do not modify—file watching is disabled to prevent flickering during agent edits.
       hmr: process.env.DISABLE_HMR !== 'true',
+      // Disable file watching when DISABLE_HMR is true to save CPU during agent edits.
       watch: process.env.DISABLE_HMR === 'true' ? null : {},
     },
   };
 });
-
-function tailwindocsPlugin() {
-  return tailwindcss();
-}

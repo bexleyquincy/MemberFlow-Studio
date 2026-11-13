@@ -20,7 +20,18 @@ import {
   HelpCircle,
   ChevronDown
 } from 'lucide-react';
-import { SiteConfig, Project, Testimonial, FAQ_ITEMS } from '../data/siteData';
+import {
+  SiteConfig,
+  Project,
+  Testimonial,
+  FAQ_ITEMS,
+  GLAM_CRAFTER_CLASSROOM_URL,
+  DY_SALSA_CLASSROOM_URL,
+  DY_SALSA_LANDING_URL,
+  LANDING_REAL_ESTATE_IMAGE,
+  WHY_CHOOSE_GROWTH_IMAGE,
+  CLASSROOM_DESIGN_HUB_IMAGE
+} from '../data/siteData';
 
 interface HomePageProps {
   onNavigate: (path: string) => void;
@@ -47,31 +58,31 @@ export const HomePage: React.FC<HomePageProps> = ({
   const featuredFourProjects = [
     classroomProjects[0] || {
       id: 'h-1',
-      title: 'Skool Classroom Design',
-      category: 'Engaging & Organized',
-      description: 'Structured sequential course levels and video modules.',
-      imageUrl: 'https://img.sanishtech.com/u/b23962d874c57145a61ed60d99809bf2.png'
-    },
-    landingProjects[1] || {
-      id: 'h-2',
-      title: 'Digital Creator Community',
-      category: 'Premium Landing Page',
-      description: 'Chic sales and community landing page presenting membership tiers.',
-      imageUrl: 'https://img.sanishtech.com/u/7b9e61d8e6f0a3f5cf3e3f287d13c677.png'
+      title: 'The Glam Crafter Empire Classroom',
+      category: 'Premium Community Classroom',
+      description: 'Multi-tiered craft masterclass with categorized visual resource libraries.',
+      imageUrl: GLAM_CRAFTER_CLASSROOM_URL
     },
     landingProjects[0] || {
+      id: 'h-2',
+      title: 'DY Salsa Dance Academy Landing Page',
+      category: 'Dance & Fitness Community',
+      description: 'Vibrant conversion-focused landing page for an online dance academy.',
+      imageUrl: DY_SALSA_LANDING_URL
+    },
+    landingProjects[1] || {
       id: 'h-3',
-      title: 'Real Estate Community',
-      category: 'High-Converting Page',
+      title: 'Evergreen Real Estate Community Landing Page',
+      category: 'Real Estate Community',
       description: 'Investor portal landing page designed with clear value propositions.',
-      imageUrl: 'https://img.sanishtech.com/u/f37e41f7ca3c29592e3dde20e6a5e849.png'
+      imageUrl: LANDING_REAL_ESTATE_IMAGE
     },
     classroomProjects[1] || {
       id: 'h-4',
-      title: 'Design & Apparel Community',
-      category: 'Modern Classroom Setup',
-      description: 'Multi-tiered craft masterclass with visual resource libraries.',
-      imageUrl: 'https://img.sanishtech.com/u/d18df1c25ca09bab0a6239b84996b116.png'
+      title: 'DY Salsa Dance Academy Classroom',
+      category: 'Skool Classroom Design',
+      description: 'Structured sequential course levels, video modules, and practice drills.',
+      imageUrl: DY_SALSA_CLASSROOM_URL
     }
   ];
 
@@ -421,6 +432,13 @@ export const HomePage: React.FC<HomePageProps> = ({
                   <img
                     src={p.imageUrl}
                     alt={p.title}
+                    referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      const img = e.currentTarget;
+                      if (img.src !== CLASSROOM_DESIGN_HUB_IMAGE) {
+                        img.src = CLASSROOM_DESIGN_HUB_IMAGE;
+                      }
+                    }}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     loading="lazy"
                   />
@@ -524,29 +542,34 @@ export const HomePage: React.FC<HomePageProps> = ({
               </div>
             </div>
 
-            {/* Right Column: 3D-inspired growth illustration visual */}
+            {/* Right Column: 3D growth illustration visual */}
             <div className="lg:col-span-5 flex justify-center">
-              <div className="relative w-full max-w-md rounded-2xl overflow-hidden p-6 bg-gradient-to-br from-blue-500/10 via-white to-blue-600/10 border border-blue-200 shadow-xl">
-                <div className="text-center space-y-4">
-                  {/* Visual 3D blocks / trophy illustration element */}
-                  <div className="w-24 h-24 mx-auto rounded-3xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center text-white shadow-2xl shadow-blue-500/40">
-                    <TrendingUp className="w-12 h-12" />
+              <div className="relative w-full max-w-md rounded-2xl overflow-hidden bg-white border border-[#DCE3EF] shadow-xl">
+                <div className="relative aspect-[4/3] overflow-hidden bg-[#F5F7FB]">
+                  <img
+                    src={WHY_CHOOSE_GROWTH_IMAGE}
+                    alt="Community Growth Engine — Member Retention and Course Completion"
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-5 space-y-3 bg-white">
+                  <div className="text-center">
+                    <h3 className="font-heading font-extrabold text-lg text-slate-900">
+                      Community Growth Engine
+                    </h3>
+                    <p className="text-xs text-slate-600 mt-1">
+                      Transform passive spectators into engaged members with systematic gamification and structured learning paths.
+                    </p>
                   </div>
-                  <h3 className="font-heading font-extrabold text-xl text-slate-900">
-                    Community Growth Engine
-                  </h3>
-                  <p className="text-xs text-slate-600 max-w-xs mx-auto">
-                    Transform passive spectators into vocal, engaged brand ambassadors with systematic gamification and structured learning paths.
-                  </p>
-                  
-                  <div className="pt-3 border-t border-slate-200 grid grid-cols-2 gap-3 text-left">
-                    <div className="bg-white p-3 rounded-xl border border-slate-200">
-                      <span className="text-[10px] text-slate-400 font-bold uppercase">Member Retention</span>
-                      <div className="text-lg font-bold text-blue-600">High Engagement</div>
+                  <div className="pt-3 border-t border-slate-100 grid grid-cols-2 gap-3 text-left">
+                    <div className="bg-[#F5F7FB] p-3 rounded-xl border border-slate-200">
+                      <span className="text-[10px] text-slate-500 font-bold uppercase">Member Retention</span>
+                      <div className="text-sm font-bold text-blue-600">High Engagement</div>
                     </div>
-                    <div className="bg-white p-3 rounded-xl border border-slate-200">
-                      <span className="text-[10px] text-slate-400 font-bold uppercase">Course Completion</span>
-                      <div className="text-lg font-bold text-blue-600">Structured Paths</div>
+                    <div className="bg-[#F5F7FB] p-3 rounded-xl border border-slate-200">
+                      <span className="text-[10px] text-slate-500 font-bold uppercase">Course Completion</span>
+                      <div className="text-sm font-bold text-blue-600">Structured Paths</div>
                     </div>
                   </div>
                 </div>
@@ -596,6 +619,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                   <img
                     src={t.avatarUrl}
                     alt={t.name}
+                    referrerPolicy="no-referrer"
                     className="w-10 h-10 rounded-full object-cover border border-blue-500/40"
                   />
                   <div>

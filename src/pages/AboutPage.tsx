@@ -16,7 +16,12 @@ import {
   Zap,
   Mail
 } from 'lucide-react';
-import { SiteConfig } from '../data/siteData';
+import {
+  SiteConfig,
+  FOUNDER_HERO_IMAGE,
+  FOUNDER_STORY_IMAGE,
+  CLASSROOM_DESIGN_HUB_IMAGE
+} from '../data/siteData';
 
 interface AboutPageProps {
   onNavigate: (path: string) => void;
@@ -107,12 +112,12 @@ export const AboutPage: React.FC<AboutPageProps> = ({
               <div className="relative mx-auto max-w-lg lg:max-w-none">
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-[#202E43] bg-gradient-to-b from-[#18253B] to-[#10192B]">
                   <img
-                    src={siteConfig.founderHeroImage || "/assets/aistudio/Skool_Community_Growth_Dashboard_1f90cb40.png"}
+                    src={siteConfig.founderHeroImage || FOUNDER_HERO_IMAGE}
+                    referrerPolicy="no-referrer"
                     onError={(e) => {
-                      // Fallback to local asset if external image fails
                       const target = e.currentTarget;
                       if (!target.src.includes('Skool_Community_Growth_Dashboard_1f90cb40.png')) {
-                        target.src = '/assets/aistudio/Skool_Community_Growth_Dashboard_1f90cb40.png';
+                        target.src = FOUNDER_HERO_IMAGE;
                       }
                     }}
                     alt={siteConfig.founderName}
@@ -150,7 +155,14 @@ export const AboutPage: React.FC<AboutPageProps> = ({
               <div className="relative rounded-2xl overflow-hidden border border-[#DCE3EF] bg-white shadow-xl p-3">
                 <div className="aspect-[4/5] rounded-xl overflow-hidden bg-slate-900 relative">
                   <img
-                    src="https://img.sanishtech.com/u/443ac159dcce6c7643714cda0ea75c0e.png"
+                    src={siteConfig.founderStoryImage || FOUNDER_STORY_IMAGE}
+                    referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      if (target.src !== FOUNDER_STORY_IMAGE) {
+                        target.src = FOUNDER_STORY_IMAGE;
+                      }
+                    }}
                     alt={`${siteConfig.founderName} Speaking`}
                     className="w-full h-full object-cover object-top"
                   />
@@ -385,7 +397,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
               <div className="rounded-2xl overflow-hidden border border-[#DCE3EF] bg-white shadow-xl p-3">
                 <div className="rounded-xl overflow-hidden bg-slate-900 border border-slate-800">
                   <img
-                    src="https://img.sanishtech.com/u/d18df1c25ca09bab0a6239b84996b116.png"
+                    src={CLASSROOM_DESIGN_HUB_IMAGE}
                     alt="Skool Dashboard Showcase"
                     className="w-full h-auto object-cover"
                   />

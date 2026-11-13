@@ -1,6 +1,6 @@
 import React from 'react';
 import { X, ExternalLink, ArrowRight } from 'lucide-react';
-import { Project } from '../data/siteData';
+import { Project, CLASSROOM_DESIGN_HUB_IMAGE } from '../data/siteData';
 
 interface LightboxModalProps {
   project: Project | null;
@@ -45,6 +45,13 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({
             <img
               src={project.imageUrl}
               alt={project.title}
+              referrerPolicy="no-referrer"
+              onError={(e) => {
+                const img = e.currentTarget;
+                if (img.src !== CLASSROOM_DESIGN_HUB_IMAGE) {
+                  img.src = CLASSROOM_DESIGN_HUB_IMAGE;
+                }
+              }}
               className="w-full max-h-[58vh] object-contain mx-auto"
             />
           </div>
