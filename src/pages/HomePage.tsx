@@ -18,6 +18,7 @@ import {
   ChevronDown
 } from 'lucide-react';
 import {
+  CtaConfig,
   SiteConfig,
   Project,
   ServiceItem,
@@ -31,6 +32,7 @@ import {
   WHY_CHOOSE_GROWTH_IMAGE,
   CLASSROOM_DESIGN_HUB_IMAGE
 } from '../data/siteData';
+import { LinkableImage } from '../components/LinkableImage';
 
 interface HomePageProps {
   onNavigate: (path: string) => void;
@@ -42,6 +44,7 @@ interface HomePageProps {
   faqItems: FaqItem[];
   onOpenContact: () => void;
   onSelectProject: (project: Project) => void;
+  onExecuteCta: (cta: CtaConfig | undefined, fallbackAction?: () => void) => void;
 }
 
 export const HomePage: React.FC<HomePageProps> = ({
@@ -53,7 +56,8 @@ export const HomePage: React.FC<HomePageProps> = ({
   testimonials,
   faqItems,
   onOpenContact,
-  onSelectProject
+  onSelectProject,
+  onExecuteCta
 }) => {
   const [openFaqIndex, setOpenFaqIndex] = React.useState<number | null>(0);
   const hp = siteConfig.homePage;
@@ -163,25 +167,29 @@ export const HomePage: React.FC<HomePageProps> = ({
 
               <div className="flex flex-wrap items-center gap-4 pt-2">
                 <button
-                  onClick={() => onNavigate('/services')}
+                  onClick={() =>
+                    onExecuteCta(hp.heroPrimaryCtaAction, () => onNavigate('/services'))
+                  }
                   className="px-7 py-3.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm shadow-xl shadow-blue-600/30 active:scale-95 transition-all flex items-center gap-2"
                 >
-                  <span>{hp.heroPrimaryCta}</span>
+                  <span>{hp.heroPrimaryCtaAction?.label || hp.heroPrimaryCta}</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
 
                 <button
-                  onClick={() => {
-                    const el = document.getElementById('portfolio-section');
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                    else onNavigate('/portfolio');
-                  }}
+                  onClick={() =>
+                    onExecuteCta(hp.heroSecondaryCtaAction, () => {
+                      const el = document.getElementById('portfolio-section');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                      else onNavigate('/portfolio');
+                    })
+                  }
                   className="px-6 py-3.5 rounded-full bg-[#152033] hover:bg-[#202E43] text-white font-semibold text-sm border border-[#202E43] flex items-center gap-2.5 transition-colors"
                 >
                   <div className="w-6 h-6 rounded-full bg-blue-600/20 text-blue-400 flex items-center justify-center">
                     <Play className="w-3 h-3 fill-current ml-0.5" />
                   </div>
-                  <span>{hp.heroSecondaryCta}</span>
+                  <span>{hp.heroSecondaryCtaAction?.label || hp.heroSecondaryCta}</span>
                 </button>
               </div>
 
@@ -235,16 +243,12 @@ export const HomePage: React.FC<HomePageProps> = ({
             <div className="lg:col-span-6 relative">
               <div className="relative mx-auto max-w-lg lg:max-w-none">
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-[#202E43] bg-gradient-to-b from-[#18253B] to-[#10192B]">
-                  <img
+                  <LinkableImage
                     src={hp.heroImage || HOME_HERO_DEFAULT_IMAGE}
                     alt={`${siteConfig.brandName} Community Growth`}
-                    referrerPolicy="no-referrer"
-                    onError={(e) => {
-                      const img = e.currentTarget;
-                      if (!img.src.includes('MemberFlow_Studio_Community_Growth_Landing_Page')) {
-                        img.src = HOME_HERO_DEFAULT_IMAGE;
-                      }
-                    }}
+                    fallbackSrc={HOME_HERO_DEFAULT_IMAGE}
+                    imageLink={hp.heroImageLink}
+                    onExecuteAction={onExecuteCta}
                     className="w-full h-auto object-cover object-top max-h-[520px]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#10192B] via-transparent to-transparent opacity-40 pointer-events-none" />
@@ -353,10 +357,10 @@ export const HomePage: React.FC<HomePageProps> = ({
 
             <div className="text-center mt-12">
               <button
-                onClick={() => onNavigate('/services')}
+                onClick={() => onExecuteCta(hp.servicesCtaAction, () => onNavigate('/services'))}
                 className="px-8 py-3.5 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow-md shadow-blue-600/25 inline-flex items-center gap-2 transition-all"
               >
-                <span>{hp.servicesCtaText}</span>
+                <span>{hp.servicesCtaAction?.label || hp.servicesCtaText}</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
@@ -383,10 +387,10 @@ export const HomePage: React.FC<HomePageProps> = ({
               </div>
 
               <button
-                onClick={() => onNavigate('/portfolio')}
+                onClick={() => onExecuteCta(hp.portfolioCtaAction, () => onNavigate('/portfolio'))}
                 className="px-6 py-2.5 rounded-full border border-blue-500 text-blue-400 hover:bg-blue-600 hover:text-white text-xs font-bold tracking-wide transition-all inline-flex items-center gap-2 shrink-0"
               >
-                <span>{hp.portfolioCtaText}</span>
+                <span>{hp.portfolioCtaAction?.label || hp.portfolioCtaText}</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>
@@ -395,7 +399,13 @@ export const HomePage: React.FC<HomePageProps> = ({
               {featuredFourProjects.map((p) => (
                 <div
                   key={p.id}
-                  onClick={() => onSelectProject(p)}
+                  onClick={() => {
+                    if (p.clickAction && p.clickAction.actionType !== 'none') {
+                      onExecuteCta(p.clickAction, () => onSelectProject(p));
+                    } else {
+                      onSelectProject(p);
+                    }
+                  }}
                   className="group cursor-pointer rounded-2xl overflow-hidden bg-[#152033] border border-[#202E43] hover:border-blue-500/60 shadow-lg hover:shadow-2xl transition-all duration-200 flex flex-col"
                 >
                   <div className="relative aspect-[16/10] overflow-hidden bg-[#0A101D]">
@@ -479,10 +489,10 @@ export const HomePage: React.FC<HomePageProps> = ({
 
                 <div className="pt-2">
                   <button
-                    onClick={onOpenContact}
+                    onClick={() => onExecuteCta(hp.whyCtaAction, onOpenContact)}
                     className="px-7 py-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow-md inline-flex items-center gap-2"
                   >
-                    <span>{hp.whyCtaText}</span>
+                    <span>{hp.whyCtaAction?.label || hp.whyCtaText}</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
@@ -491,17 +501,14 @@ export const HomePage: React.FC<HomePageProps> = ({
               <div className="lg:col-span-5 flex justify-center">
                 <div className="relative w-full max-w-md rounded-2xl overflow-hidden bg-white border border-[#DCE3EF] shadow-xl">
                   <div className="relative aspect-[4/3] overflow-hidden bg-[#F5F7FB]">
-                    <img
+                    <LinkableImage
                       src={hp.whyGrowthImage || WHY_CHOOSE_GROWTH_IMAGE}
                       alt={hp.whyEngineTitle}
-                      referrerPolicy="no-referrer"
-                      onError={(e) => {
-                        const img = e.currentTarget;
-                        if (img.src !== WHY_CHOOSE_GROWTH_IMAGE) {
-                          img.src = WHY_CHOOSE_GROWTH_IMAGE;
-                        }
-                      }}
+                      fallbackSrc={WHY_CHOOSE_GROWTH_IMAGE}
+                      imageLink={hp.whyGrowthImageLink}
+                      onExecuteAction={onExecuteCta}
                       className="w-full h-full object-cover"
+                      wrapperClassName="w-full h-full"
                       loading="lazy"
                     />
                   </div>
@@ -650,10 +657,10 @@ export const HomePage: React.FC<HomePageProps> = ({
 
             <div className="shrink-0">
               <button
-                onClick={onOpenContact}
+                onClick={() => onExecuteCta(hp.ctaButtonAction, onOpenContact)}
                 className="px-8 py-4 rounded-full bg-white text-blue-700 hover:bg-slate-100 font-extrabold text-base shadow-2xl active:scale-95 transition-all flex items-center gap-2"
               >
-                <span>{hp.ctaButtonText}</span>
+                <span>{hp.ctaButtonAction?.label || hp.ctaButtonText}</span>
                 <ArrowRight className="w-5 h-5 text-blue-700" />
               </button>
             </div>

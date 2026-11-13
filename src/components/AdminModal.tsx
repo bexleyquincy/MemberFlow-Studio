@@ -48,6 +48,7 @@ import {
 import { AdminSecurityGate } from './admin/AdminSecurityGate';
 import { ImageInputField } from './admin/ImageInputField';
 import { AdminProjectListEditor } from './admin/AdminProjectListEditor';
+import { CtaActionEditor } from './admin/CtaActionEditor';
 
 interface AdminModalProps {
   isOpen: boolean;
@@ -246,7 +247,12 @@ export const AdminModal: React.FC<AdminModalProps> = ({
       title: 'New Skool Service',
       description: 'Describe how this service helps Skool community owners scale.',
       iconName: 'Sparkles',
-      deliverables: ['Custom strategy call', 'Full implementation', 'Member walkthrough']
+      deliverables: ['Custom strategy call', 'Full implementation', 'Member walkthrough'],
+      cta: {
+        label: 'Inquire About New Skool Service',
+        actionType: 'contact_popup',
+        target: ''
+      }
     };
     onUpdateServices([...services, created]);
   };
@@ -642,21 +648,22 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                         className={inputCls}
                       />
                     </div>
-                    <div>
-                      <InputLabel>Header CTA Button</InputLabel>
-                      <input
-                        type="text"
-                        value={configDraft.navigation.ctaLabel}
-                        onChange={(e) =>
-                          patchConfig((p) => ({
-                            ...p,
-                            navigation: { ...p.navigation, ctaLabel: e.target.value }
-                          }))
-                        }
-                        className={inputCls}
-                      />
-                    </div>
                   </div>
+
+                  <CtaActionEditor
+                    title="Header Primary CTA Button"
+                    value={configDraft.navigation.ctaAction}
+                    onChange={(nextAction) =>
+                      patchConfig((p) => ({
+                        ...p,
+                        navigation: {
+                          ...p.navigation,
+                          ctaLabel: nextAction.label,
+                          ctaAction: nextAction
+                        }
+                      }))
+                    }
+                  />
                 </SectionCard>
 
                 <SectionCard title="Footer Text & Social Media Links">
@@ -981,6 +988,37 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                     />
                   </div>
 
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+                    <CtaActionEditor
+                      title="About Hero Primary CTA"
+                      value={configDraft.aboutPage.heroPrimaryCtaAction}
+                      onChange={(nextAction) =>
+                        patchConfig((p) => ({
+                          ...p,
+                          aboutPage: {
+                            ...p.aboutPage,
+                            heroPrimaryCta: nextAction.label,
+                            heroPrimaryCtaAction: nextAction
+                          }
+                        }))
+                      }
+                    />
+                    <CtaActionEditor
+                      title="About Hero Secondary CTA"
+                      value={configDraft.aboutPage.heroSecondaryCtaAction}
+                      onChange={(nextAction) =>
+                        patchConfig((p) => ({
+                          ...p,
+                          aboutPage: {
+                            ...p.aboutPage,
+                            heroSecondaryCta: nextAction.label,
+                            heroSecondaryCtaAction: nextAction
+                          }
+                        }))
+                      }
+                    />
+                  </div>
+
                   <ImageInputField
                     label="Founder Hero Portrait Image"
                     value={configDraft.founderHeroImage}
@@ -988,6 +1026,10 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                       patchConfig((p) => ({ ...p, founderHeroImage: val }))
                     }
                     defaultValue={FOUNDER_HERO_IMAGE}
+                    imageLink={configDraft.founderHeroImageLink}
+                    onImageLinkChange={(nextLink) =>
+                      patchConfig((p) => ({ ...p, founderHeroImageLink: nextLink }))
+                    }
                   />
                 </SectionCard>
 
@@ -1003,6 +1045,10 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                     }
                     defaultValue={FOUNDER_STORY_IMAGE}
                     aspectClass="w-20 h-24"
+                    imageLink={configDraft.founderStoryImageLink}
+                    onImageLinkChange={(nextLink) =>
+                      patchConfig((p) => ({ ...p, founderStoryImageLink: nextLink }))
+                    }
                   />
 
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -1085,6 +1131,20 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                       ))}
                     </div>
                   </div>
+                  <CtaActionEditor
+                    title="Founder Story Section CTA Button"
+                    value={configDraft.aboutPage.storyCtaAction}
+                    onChange={(nextAction) =>
+                      patchConfig((p) => ({
+                        ...p,
+                        aboutPage: {
+                          ...p.aboutPage,
+                          storyCtaText: nextAction.label,
+                          storyCtaAction: nextAction
+                        }
+                      }))
+                    }
+                  />
                 </SectionCard>
 
                 <SectionCard title="My Philosophy & 4 Core Values">
@@ -1175,36 +1235,35 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                 </SectionCard>
 
                 <SectionCard title="Skills, Capabilities Mockup Image & Process">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
-                      <InputLabel>Skills Heading</InputLabel>
-                      <input
-                        type="text"
-                        value={configDraft.aboutPage.skillsHeading}
-                        onChange={(e) =>
-                          patchConfig((p) => ({
-                            ...p,
-                            aboutPage: { ...p.aboutPage, skillsHeading: e.target.value }
-                          }))
-                        }
-                        className={inputCls}
-                      />
-                    </div>
-                    <div>
-                      <InputLabel>Skills CTA Text</InputLabel>
-                      <input
-                        type="text"
-                        value={configDraft.aboutPage.skillsCtaText}
-                        onChange={(e) =>
-                          patchConfig((p) => ({
-                            ...p,
-                            aboutPage: { ...p.aboutPage, skillsCtaText: e.target.value }
-                          }))
-                        }
-                        className={inputCls}
-                      />
-                    </div>
+                  <div>
+                    <InputLabel>Skills Heading</InputLabel>
+                    <input
+                      type="text"
+                      value={configDraft.aboutPage.skillsHeading}
+                      onChange={(e) =>
+                        patchConfig((p) => ({
+                          ...p,
+                          aboutPage: { ...p.aboutPage, skillsHeading: e.target.value }
+                        }))
+                      }
+                      className={inputCls}
+                    />
                   </div>
+
+                  <CtaActionEditor
+                    title="Skills Section CTA Button"
+                    value={configDraft.aboutPage.skillsCtaAction}
+                    onChange={(nextAction) =>
+                      patchConfig((p) => ({
+                        ...p,
+                        aboutPage: {
+                          ...p.aboutPage,
+                          skillsCtaText: nextAction.label,
+                          skillsCtaAction: nextAction
+                        }
+                      }))
+                    }
+                  />
 
                   <div>
                     <InputLabel>Skills Intro Description</InputLabel>
@@ -1252,6 +1311,13 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                       }))
                     }
                     defaultValue={CLASSROOM_DESIGN_HUB_IMAGE}
+                    imageLink={configDraft.aboutPage.skillsImageLink}
+                    onImageLinkChange={(nextLink) =>
+                      patchConfig((p) => ({
+                        ...p,
+                        aboutPage: { ...p.aboutPage, skillsImageLink: nextLink }
+                      }))
+                    }
                   />
 
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
@@ -1292,7 +1358,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                     ))}
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                     <div>
                       <InputLabel>Bottom CTA Heading</InputLabel>
                       <input
@@ -1321,21 +1387,22 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                         className={inputCls}
                       />
                     </div>
-                    <div>
-                      <InputLabel>Bottom CTA Button</InputLabel>
-                      <input
-                        type="text"
-                        value={configDraft.aboutPage.ctaButtonText}
-                        onChange={(e) =>
-                          patchConfig((p) => ({
-                            ...p,
-                            aboutPage: { ...p.aboutPage, ctaButtonText: e.target.value }
-                          }))
-                        }
-                        className={inputCls}
-                      />
-                    </div>
                   </div>
+
+                  <CtaActionEditor
+                    title="About Page Bottom Banner CTA"
+                    value={configDraft.aboutPage.ctaButtonAction}
+                    onChange={(nextAction) =>
+                      patchConfig((p) => ({
+                        ...p,
+                        aboutPage: {
+                          ...p.aboutPage,
+                          ctaButtonText: nextAction.label,
+                          ctaButtonAction: nextAction
+                        }
+                      }))
+                    }
+                  />
                 </SectionCard>
               </div>
             )}
@@ -1420,49 +1487,50 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                     />
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    <div>
-                      <InputLabel>Primary CTA</InputLabel>
-                      <input
-                        type="text"
-                        value={configDraft.homePage.heroPrimaryCta}
-                        onChange={(e) =>
-                          patchConfig((p) => ({
-                            ...p,
-                            homePage: { ...p.homePage, heroPrimaryCta: e.target.value }
-                          }))
-                        }
-                        className={inputCls}
-                      />
-                    </div>
-                    <div>
-                      <InputLabel>Secondary CTA</InputLabel>
-                      <input
-                        type="text"
-                        value={configDraft.homePage.heroSecondaryCta}
-                        onChange={(e) =>
-                          patchConfig((p) => ({
-                            ...p,
-                            homePage: { ...p.homePage, heroSecondaryCta: e.target.value }
-                          }))
-                        }
-                        className={inputCls}
-                      />
-                    </div>
-                    <div>
-                      <InputLabel>Overlay Script Text</InputLabel>
-                      <input
-                        type="text"
-                        value={configDraft.homePage.heroScriptText}
-                        onChange={(e) =>
-                          patchConfig((p) => ({
-                            ...p,
-                            homePage: { ...p.homePage, heroScriptText: e.target.value }
-                          }))
-                        }
-                        className={inputCls}
-                      />
-                    </div>
+                  <div>
+                    <InputLabel>Overlay Script Text</InputLabel>
+                    <input
+                      type="text"
+                      value={configDraft.homePage.heroScriptText}
+                      onChange={(e) =>
+                        patchConfig((p) => ({
+                          ...p,
+                          homePage: { ...p.homePage, heroScriptText: e.target.value }
+                        }))
+                      }
+                      className={inputCls}
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+                    <CtaActionEditor
+                      title="Home Hero Primary CTA"
+                      value={configDraft.homePage.heroPrimaryCtaAction}
+                      onChange={(nextAction) =>
+                        patchConfig((p) => ({
+                          ...p,
+                          homePage: {
+                            ...p.homePage,
+                            heroPrimaryCta: nextAction.label,
+                            heroPrimaryCtaAction: nextAction
+                          }
+                        }))
+                      }
+                    />
+                    <CtaActionEditor
+                      title="Home Hero Secondary CTA"
+                      value={configDraft.homePage.heroSecondaryCtaAction}
+                      onChange={(nextAction) =>
+                        patchConfig((p) => ({
+                          ...p,
+                          homePage: {
+                            ...p.homePage,
+                            heroSecondaryCta: nextAction.label,
+                            heroSecondaryCtaAction: nextAction
+                          }
+                        }))
+                      }
+                    />
                   </div>
 
                   <ImageInputField
@@ -1475,6 +1543,13 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                       }))
                     }
                     defaultValue={HOME_HERO_DEFAULT_IMAGE}
+                    imageLink={configDraft.homePage.heroImageLink}
+                    onImageLinkChange={(nextLink) =>
+                      patchConfig((p) => ({
+                        ...p,
+                        homePage: { ...p.homePage, heroImageLink: nextLink }
+                      }))
+                    }
                   />
                 </SectionCard>
 
@@ -1681,6 +1756,28 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                       }))
                     }
                     defaultValue={WHY_CHOOSE_GROWTH_IMAGE}
+                    imageLink={configDraft.homePage.whyGrowthImageLink}
+                    onImageLinkChange={(nextLink) =>
+                      patchConfig((p) => ({
+                        ...p,
+                        homePage: { ...p.homePage, whyGrowthImageLink: nextLink }
+                      }))
+                    }
+                  />
+
+                  <CtaActionEditor
+                    title="Why Choose Us CTA Button"
+                    value={configDraft.homePage.whyCtaAction}
+                    onChange={(nextAction) =>
+                      patchConfig((p) => ({
+                        ...p,
+                        homePage: {
+                          ...p.homePage,
+                          whyCtaText: nextAction.label,
+                          whyCtaAction: nextAction
+                        }
+                      }))
+                    }
                   />
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -1715,7 +1812,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                   </div>
                 </SectionCard>
 
-                <SectionCard title="Home Section Headings & Final CTA Banner">
+                <SectionCard title="Home Section Headings, Buttons & Final CTA Banner">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <InputLabel>Services Section Heading</InputLabel>
@@ -1760,20 +1857,66 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                       />
                     </div>
                     <div>
-                      <InputLabel>Final CTA Button</InputLabel>
+                      <InputLabel>Final CTA Subtitle</InputLabel>
                       <input
                         type="text"
-                        value={configDraft.homePage.ctaButtonText}
+                        value={configDraft.homePage.ctaSubtitle}
                         onChange={(e) =>
                           patchConfig((p) => ({
                             ...p,
-                            homePage: { ...p.homePage, ctaButtonText: e.target.value }
+                            homePage: { ...p.homePage, ctaSubtitle: e.target.value }
                           }))
                         }
                         className={inputCls}
                       />
                     </div>
                   </div>
+
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+                    <CtaActionEditor
+                      title="Services Section Button"
+                      value={configDraft.homePage.servicesCtaAction}
+                      onChange={(nextAction) =>
+                        patchConfig((p) => ({
+                          ...p,
+                          homePage: {
+                            ...p.homePage,
+                            servicesCtaText: nextAction.label,
+                            servicesCtaAction: nextAction
+                          }
+                        }))
+                      }
+                    />
+                    <CtaActionEditor
+                      title="Portfolio Section Button"
+                      value={configDraft.homePage.portfolioCtaAction}
+                      onChange={(nextAction) =>
+                        patchConfig((p) => ({
+                          ...p,
+                          homePage: {
+                            ...p.homePage,
+                            portfolioCtaText: nextAction.label,
+                            portfolioCtaAction: nextAction
+                          }
+                        }))
+                      }
+                    />
+                  </div>
+
+                  <CtaActionEditor
+                    title="Home Final Banner CTA Button"
+                    value={configDraft.homePage.ctaButtonAction}
+                    onChange={(nextAction) =>
+                      patchConfig((p) => ({
+                        ...p,
+                        homePage: {
+                          ...p.homePage,
+                          ctaButtonText: nextAction.label,
+                          ctaButtonAction: nextAction
+                        }
+                      }))
+                    }
+                  />
                 </SectionCard>
               </div>
             )}
@@ -1844,6 +1987,37 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                     />
                   </div>
 
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+                    <CtaActionEditor
+                      title="Services Hero Primary CTA"
+                      value={configDraft.servicesPage.heroPrimaryCtaAction}
+                      onChange={(nextAction) =>
+                        patchConfig((p) => ({
+                          ...p,
+                          servicesPage: {
+                            ...p.servicesPage,
+                            heroPrimaryCta: nextAction.label,
+                            heroPrimaryCtaAction: nextAction
+                          }
+                        }))
+                      }
+                    />
+                    <CtaActionEditor
+                      title="Services Hero Secondary CTA"
+                      value={configDraft.servicesPage.heroSecondaryCtaAction}
+                      onChange={(nextAction) =>
+                        patchConfig((p) => ({
+                          ...p,
+                          servicesPage: {
+                            ...p.servicesPage,
+                            heroSecondaryCta: nextAction.label,
+                            heroSecondaryCtaAction: nextAction
+                          }
+                        }))
+                      }
+                    />
+                  </div>
+
                   <ImageInputField
                     label="Services Hero Image"
                     value={configDraft.servicesPage.heroImage}
@@ -1854,6 +2028,13 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                       }))
                     }
                     defaultValue={SERVICES_HERO_DEFAULT_IMAGE}
+                    imageLink={configDraft.servicesPage.heroImageLink}
+                    onImageLinkChange={(nextLink) =>
+                      patchConfig((p) => ({
+                        ...p,
+                        servicesPage: { ...p.servicesPage, heroImageLink: nextLink }
+                      }))
+                    }
                   />
 
                   <ImageInputField
@@ -1866,6 +2047,59 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                       }))
                     }
                     defaultValue={WHY_CHOOSE_GROWTH_IMAGE}
+                    imageLink={configDraft.servicesPage.processImageLink}
+                    onImageLinkChange={(nextLink) =>
+                      patchConfig((p) => ({
+                        ...p,
+                        servicesPage: { ...p.servicesPage, processImageLink: nextLink }
+                      }))
+                    }
+                  />
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                      <InputLabel>Services Final Banner Heading</InputLabel>
+                      <input
+                        type="text"
+                        value={configDraft.servicesPage.ctaHeading}
+                        onChange={(e) =>
+                          patchConfig((p) => ({
+                            ...p,
+                            servicesPage: { ...p.servicesPage, ctaHeading: e.target.value }
+                          }))
+                        }
+                        className={inputCls}
+                      />
+                    </div>
+                    <div>
+                      <InputLabel>Services Final Banner Subtitle</InputLabel>
+                      <input
+                        type="text"
+                        value={configDraft.servicesPage.ctaSubtitle}
+                        onChange={(e) =>
+                          patchConfig((p) => ({
+                            ...p,
+                            servicesPage: { ...p.servicesPage, ctaSubtitle: e.target.value }
+                          }))
+                        }
+                        className={inputCls}
+                      />
+                    </div>
+                  </div>
+
+                  <CtaActionEditor
+                    title="Services Bottom Banner CTA"
+                    value={configDraft.servicesPage.ctaButtonAction}
+                    onChange={(nextAction) =>
+                      patchConfig((p) => ({
+                        ...p,
+                        servicesPage: {
+                          ...p.servicesPage,
+                          ctaButtonText: nextAction.label,
+                          ctaButtonAction: nextAction
+                        }
+                      }))
+                    }
                   />
                 </SectionCard>
 
@@ -1968,6 +2202,22 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                             className={inputCls}
                           />
                         </div>
+
+                        <CtaActionEditor
+                          title={`Service #${srv.number} CTA Button`}
+                          value={
+                            srv.cta || {
+                              label: `Inquire About ${srv.title}`,
+                              actionType: 'contact_popup',
+                              target: ''
+                            }
+                          }
+                          onChange={(nextAction) => {
+                            const copy = [...services];
+                            copy[idx] = { ...copy[idx], cta: nextAction };
+                            onUpdateServices(copy);
+                          }}
+                        />
                       </div>
                     ))}
                   </div>
@@ -2009,14 +2259,14 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                             />
                           </div>
                           <div>
-                            <InputLabel>CTA Button Text</InputLabel>
+                            <InputLabel>Block Title</InputLabel>
                             <input
                               type="text"
-                              value={block.ctaText}
+                              value={block.title}
                               onChange={(e) =>
                                 patchConfig((p) => {
                                   const copy = [...p.servicesPage.blocks];
-                                  copy[idx] = { ...copy[idx], ctaText: e.target.value };
+                                  copy[idx] = { ...copy[idx], title: e.target.value };
                                   return {
                                     ...p,
                                     servicesPage: { ...p.servicesPage, blocks: copy }
@@ -2026,25 +2276,6 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                               className={inputCls}
                             />
                           </div>
-                        </div>
-
-                        <div>
-                          <InputLabel>Block Title</InputLabel>
-                          <input
-                            type="text"
-                            value={block.title}
-                            onChange={(e) =>
-                              patchConfig((p) => {
-                                const copy = [...p.servicesPage.blocks];
-                                copy[idx] = { ...copy[idx], title: e.target.value };
-                                return {
-                                  ...p,
-                                  servicesPage: { ...p.servicesPage, blocks: copy }
-                                };
-                              })
-                            }
-                            className={inputCls}
-                          />
                         </div>
 
                         <div>
@@ -2066,6 +2297,25 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                           />
                         </div>
 
+                        <CtaActionEditor
+                          title={`Block ${idx + 1} CTA Button & Destination`}
+                          value={block.ctaAction}
+                          onChange={(nextAction) =>
+                            patchConfig((p) => {
+                              const copy = [...p.servicesPage.blocks];
+                              copy[idx] = {
+                                ...copy[idx],
+                                ctaText: nextAction.label,
+                                ctaAction: nextAction
+                              };
+                              return {
+                                ...p,
+                                servicesPage: { ...p.servicesPage, blocks: copy }
+                              };
+                            })
+                          }
+                        />
+
                         <ImageInputField
                           label={`Block ${idx + 1} Showcase Image`}
                           value={block.imageUrl}
@@ -2080,6 +2330,17 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                             })
                           }
                           defaultValue={CLASSROOM_DESIGN_HUB_IMAGE}
+                          imageLink={block.imageLink}
+                          onImageLinkChange={(nextLink) =>
+                            patchConfig((p) => {
+                              const copy = [...p.servicesPage.blocks];
+                              copy[idx] = { ...copy[idx], imageLink: nextLink };
+                              return {
+                                ...p,
+                                servicesPage: { ...p.servicesPage, blocks: copy }
+                              };
+                            })
+                          }
                         />
                       </div>
                     ))}
@@ -2139,6 +2400,37 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                     />
                   </div>
 
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+                    <CtaActionEditor
+                      title="Portfolio Hero Primary CTA"
+                      value={configDraft.portfolioPage.heroPrimaryCtaAction}
+                      onChange={(nextAction) =>
+                        patchConfig((p) => ({
+                          ...p,
+                          portfolioPage: {
+                            ...p.portfolioPage,
+                            heroPrimaryCta: nextAction.label,
+                            heroPrimaryCtaAction: nextAction
+                          }
+                        }))
+                      }
+                    />
+                    <CtaActionEditor
+                      title="Portfolio Hero Secondary CTA"
+                      value={configDraft.portfolioPage.heroSecondaryCtaAction}
+                      onChange={(nextAction) =>
+                        patchConfig((p) => ({
+                          ...p,
+                          portfolioPage: {
+                            ...p.portfolioPage,
+                            heroSecondaryCta: nextAction.label,
+                            heroSecondaryCtaAction: nextAction
+                          }
+                        }))
+                      }
+                    />
+                  </div>
+
                   <ImageInputField
                     label="Portfolio Hero Image"
                     value={configDraft.portfolioPage.heroImage}
@@ -2149,6 +2441,13 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                       }))
                     }
                     defaultValue={PORTFOLIO_HERO_DEFAULT_IMAGE}
+                    imageLink={configDraft.portfolioPage.heroImageLink}
+                    onImageLinkChange={(nextLink) =>
+                      patchConfig((p) => ({
+                        ...p,
+                        portfolioPage: { ...p.portfolioPage, heroImageLink: nextLink }
+                      }))
+                    }
                   />
                 </SectionCard>
 
@@ -2236,6 +2535,22 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                     />
                   </div>
 
+                  <CtaActionEditor
+                    title="Case Study CTA Button"
+                    value={configDraft.portfolioPage.caseStudyCtaAction}
+                    allowCaseStudy
+                    onChange={(nextAction) =>
+                      patchConfig((p) => ({
+                        ...p,
+                        portfolioPage: {
+                          ...p.portfolioPage,
+                          caseStudyCtaText: nextAction.label,
+                          caseStudyCtaAction: nextAction
+                        }
+                      }))
+                    }
+                  />
+
                   <ImageInputField
                     label="Featured Case Study Image"
                     value={caseStudyDraft.imageUrl}
@@ -2244,7 +2559,62 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                       setHasUnsavedConfig(true);
                     }}
                     defaultValue={GLAM_CRAFTER_CLASSROOM_URL}
+                    imageLink={configDraft.portfolioPage.caseStudyImageLink}
+                    onImageLinkChange={(nextLink) =>
+                      patchConfig((p) => ({
+                        ...p,
+                        portfolioPage: { ...p.portfolioPage, caseStudyImageLink: nextLink }
+                      }))
+                    }
                   />
+
+                  <div className="pt-3 border-t border-[#202E43] space-y-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <div>
+                        <InputLabel>Portfolio Final Banner Heading</InputLabel>
+                        <input
+                          type="text"
+                          value={configDraft.portfolioPage.ctaHeading}
+                          onChange={(e) =>
+                            patchConfig((p) => ({
+                              ...p,
+                              portfolioPage: { ...p.portfolioPage, ctaHeading: e.target.value }
+                            }))
+                          }
+                          className={inputCls}
+                        />
+                      </div>
+                      <div>
+                        <InputLabel>Portfolio Final Banner Subtitle</InputLabel>
+                        <input
+                          type="text"
+                          value={configDraft.portfolioPage.ctaSubtitle}
+                          onChange={(e) =>
+                            patchConfig((p) => ({
+                              ...p,
+                              portfolioPage: { ...p.portfolioPage, ctaSubtitle: e.target.value }
+                            }))
+                          }
+                          className={inputCls}
+                        />
+                      </div>
+                    </div>
+
+                    <CtaActionEditor
+                      title="Portfolio Bottom Banner CTA"
+                      value={configDraft.portfolioPage.ctaButtonAction}
+                      onChange={(nextAction) =>
+                        patchConfig((p) => ({
+                          ...p,
+                          portfolioPage: {
+                            ...p.portfolioPage,
+                            ctaButtonText: nextAction.label,
+                            ctaButtonAction: nextAction
+                          }
+                        }))
+                      }
+                    />
+                  </div>
                 </SectionCard>
               </div>
             )}

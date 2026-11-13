@@ -4,11 +4,16 @@ import { Footer } from './components/Footer';
 import { ContactModal } from './components/ContactModal';
 import { AdminModal } from './components/AdminModal';
 import { LightboxModal } from './components/LightboxModal';
+import { MediaPopupModal } from './components/MediaPopupModal';
 import { HomePage } from './pages/HomePage';
 import { ServicesPage } from './pages/ServicesPage';
 import { PortfolioPage } from './pages/PortfolioPage';
 import { AboutPage } from './pages/AboutPage';
+import { MediaViewerPage } from './pages/MediaViewerPage';
+import { executeCtaAction } from './utils/ctaExecutor';
 import {
+  CtaConfig,
+  MediaPreviewPayload,
   SiteConfig,
   Project,
   ServiceItem,
@@ -53,7 +58,7 @@ export default function App() {
   const [currentPath, setCurrentPath] = useState<string>(() => {
     if (typeof window !== 'undefined' && window.location.pathname) {
       const p = window.location.pathname;
-      if (['/services', '/portfolio', '/about'].includes(p)) return p;
+      if (['/services', '/portfolio', '/about', '/media'].includes(p)) return p;
     }
     return '/';
   });
@@ -162,10 +167,12 @@ export default function App() {
     return FAQ_ITEMS;
   });
 
-  // Modal states
+  // Modal & Media states
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isAdminOpen, setIsAdminOpen] = useState(false);
   const [selectedLightboxProject, setSelectedLightboxProject] = useState<Project | null>(null);
+  const [activeMediaPopup, setActiveMediaPopup] = useState<MediaPreviewPayload | null>(null);
+  const [activeMediaPage, setActiveMediaPage] = useState<MediaPreviewPayload | null>(null);
 
   // Sync SEO metadata & accent color dynamically
   useEffect(() => {
@@ -196,6 +203,26 @@ export default function App() {
     if (window.history.pushState) {
       window.history.pushState({}, '', path);
     }
+  };
+
+  const handleExecuteCta = (cta: CtaConfig | undefined, fallbackAction?: () => void) => {
+    executeCtaAction(
+      cta,
+      {
+        currentPath,
+        navigate: handleNavigate,
+        openContact: () => setIsContactOpen(true),
+        openMediaPopup: (payload) => setActiveMediaPopup(payload),
+        openMediaPage: (payload) => {
+          setActiveMediaPage(payload);
+          handleNavigate('/media');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        },
+        openCaseStudy: () => setSelectedLightboxProject(featuredCaseStudy),
+        fallbackContactEmail: siteConfig.contactEmail
+      },
+      fallbackAction
+    );
   };
 
   const persist = (key: string, value: unknown) => {
@@ -272,6 +299,7 @@ export default function App() {
         siteConfig={siteConfig}
         onOpenContact={() => setIsContactOpen(true)}
         onOpenAdmin={() => setIsAdminOpen(true)}
+        onExecuteCta={handleExecuteCta}
       />
 
       <main className="flex-grow">
@@ -286,6 +314,7 @@ export default function App() {
             faqItems={faqItems}
             onOpenContact={() => setIsContactOpen(true)}
             onSelectProject={(p) => setSelectedLightboxProject(p)}
+            onExecuteCta={handleExecuteCta}
           />
         )}
 
@@ -295,6 +324,7 @@ export default function App() {
             siteConfig={siteConfig}
             services={services}
             onOpenContact={() => setIsContactOpen(true)}
+            onExecuteCta={handleExecuteCta}
           />
         )}
 
@@ -308,6 +338,7 @@ export default function App() {
             onOpenContact={() => setIsContactOpen(true)}
             onSelectProject={(p) => setSelectedLightboxProject(p)}
             onOpenAdmin={() => setIsAdminOpen(true)}
+            onExecuteCta={handleExecuteCta}
           />
         )}
 
@@ -315,6 +346,22 @@ export default function App() {
           <AboutPage
             onNavigate={handleNavigate}
             siteConfig={siteConfig}
+            onOpenContact={() => setIsContactOpen(true)}
+            onExecuteCta={handleExecuteCta}
+          />
+        )}
+
+        {currentPath === '/media' && (
+          <MediaViewerPage
+            media={activeMediaPage}
+            siteConfig={siteConfig}
+            onBack={() => {
+              if (window.history.length > 1) {
+                window.history.back();
+              } else {
+                handleNavigate('/');
+              }
+            }}
             onOpenContact={() => setIsContactOpen(true)}
           />
         )}
@@ -358,6 +405,15 @@ export default function App() {
         onClose={() => setSelectedLightboxProject(null)}
         onOpenContact={() => {
           setSelectedLightboxProject(null);
+          setIsContactOpen(true);
+        }}
+      />
+
+      <MediaPopupModal
+        media={activeMediaPopup}
+        onClose={() => setActiveMediaPopup(null)}
+        onOpenContact={() => {
+          setActiveMediaPopup(null);
           setIsContactOpen(true);
         }}
       />

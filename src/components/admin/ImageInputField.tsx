@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react';
-import { Upload, RotateCcw, Image as ImageIcon, Loader2 } from 'lucide-react';
+import { Upload, RotateCcw, Image as ImageIcon, Loader2, Link2, Unlink } from 'lucide-react';
 import { processUploadedImage } from '../../utils/imageUpload';
+import { CtaConfig, DEFAULT_NONE_LINK } from '../../data/siteData';
+import { CtaActionEditor, ACTION_TYPE_LABELS } from './CtaActionEditor';
 
 interface ImageInputFieldProps {
   label: string;
@@ -9,6 +11,8 @@ interface ImageInputFieldProps {
   defaultValue?: string;
   helperText?: string;
   aspectClass?: string;
+  imageLink?: CtaConfig;
+  onImageLinkChange?: (nextLink: CtaConfig) => void;
 }
 
 export const ImageInputField: React.FC<ImageInputFieldProps> = ({
@@ -17,11 +21,16 @@ export const ImageInputField: React.FC<ImageInputFieldProps> = ({
   onChange,
   defaultValue,
   helperText,
-  aspectClass = 'w-24 h-16'
+  aspectClass = 'w-24 h-16',
+  imageLink,
+  onImageLinkChange
 }) => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const [uploadError, setUploadError] = useState<string | null>(null);
+  const [showLinkEditor, setShowLinkEditor] = useState(false);
+
+  const isImageLinked = Boolean(imageLink && imageLink.actionType && imageLink.actionType !== 'none');
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -39,9 +48,23 @@ export const ImageInputField: React.FC<ImageInputFieldProps> = ({
     }
   };
 
+  const handleToggleImageLink = () => {
+    if (!onImageLinkChange) return;
+    if (isImageLinked) {
+      onImageLinkChange({ ...DEFAULT_NONE_LINK });
+      setShowLinkEditor(false);
+    } else {
+      onImageLinkChange({
+        ...(imageLink || DEFAULT_NONE_LINK),
+        actionType: 'external_url'
+      });
+      setShowLinkEditor(true);
+    }
+  };
+
   return (
     <div className="p-3.5 rounded-xl bg-[#0D1525] border border-[#202E43] space-y-2.5">
-      <div className="flex items-center justify-between gap-2">
+      <div className="flex flex-wrap items-center justify-between gap-2">
         <label className="text-xs font-semibold uppercase tracking-wide text-slate-300">
           {label}
         </label>
@@ -127,7 +150,64 @@ export const ImageInputField: React.FC<ImageInputFieldProps> = ({
         </div>
       </div>
 
+      {onImageLinkChange && (
+        <div className="pt-2 border-t border-[#202E43]/70 space-y-2">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <span className="text-[11px] text-slate-300 flex items-center gap-1.5">
+              {isImageLinked ? (
+                <Link2 className="w-3.5 h-3.5 text-emerald-400" />
+              ) : (
+                <Unlink className="w-3.5 h-3.5 text-slate-500" />
+              )}
+              <span>
+                Image Click Link:{' '}
+                <strong className={isImageLinked ? 'text-emerald-400' : 'text-slate-400'}>
+                  {isImageLinked && imageLink
+                    ? ACTION_TYPE_LABELS[imageLink.actionType]
+                    : 'Not Linked'}
+                </strong>
+              </span>
+            </span>
+
+            <div className="flex items-center gap-2">
+              {isImageLinked && (
+                <button
+                  type="button"
+                  onClick={() => setShowLinkEditor((s) => !s)}
+                  className="px-2.5 py-1 rounded-md bg-blue-600/20 hover:bg-blue-600/35 text-blue-300 text-[11px] font-semibold"
+                >
+                  {showLinkEditor ? 'Hide Link Settings' : 'Configure Link'}
+                </button>
+              )}
+              <button
+                type="button"
+                onClick={handleToggleImageLink}
+                className={`px-2.5 py-1 rounded-md text-[11px] font-semibold border transition-colors ${
+                  isImageLinked
+                    ? 'bg-rose-500/15 hover:bg-rose-500/25 border-rose-500/30 text-rose-300'
+                    : 'bg-emerald-500/15 hover:bg-emerald-500/25 border-emerald-500/30 text-emerald-300'
+                }`}
+              >
+                {isImageLinked ? 'Unlink Image' : 'Link This Image'}
+              </button>
+            </div>
+          </div>
+
+          {(showLinkEditor || (isImageLinked && !imageLink?.target && imageLink?.actionType !== 'contact_popup')) &&
+            imageLink && (
+              <CtaActionEditor
+                value={imageLink}
+                onChange={onImageLinkChange}
+                allowNone
+                noneLabel="No Link (Unlinked Image)"
+                hideLabelInput={false}
+              />
+            )}
+        </div>
+      )}
+
       {uploadError && <p className="text-[11px] text-rose-400">{uploadError}</p>}
     </div>
   );
 };
+

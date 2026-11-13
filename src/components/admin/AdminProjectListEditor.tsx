@@ -8,8 +8,9 @@ import {
   Check,
   X
 } from 'lucide-react';
-import { Project } from '../../data/siteData';
+import { Project, DEFAULT_NONE_LINK } from '../../data/siteData';
 import { ImageInputField } from './ImageInputField';
+import { CtaActionEditor } from './CtaActionEditor';
 
 interface AdminProjectListEditorProps {
   title: string;
@@ -30,7 +31,17 @@ export const AdminProjectListEditor: React.FC<AdminProjectListEditorProps> = ({
 }) => {
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editDraft, setEditDraft] = useState<Project | null>(null);
-  const [newDraft, setNewDraft] = useState({
+  const [newDraft, setNewDraft] = useState<{
+    title: string;
+    category: string;
+    description: string;
+    imageUrl: string;
+    highlight: string;
+    services: string;
+    overview: string;
+    details: string;
+    clickAction: Project['clickAction'];
+  }>({
     title: '',
     category: defaultCategory,
     description: '',
@@ -38,7 +49,8 @@ export const AdminProjectListEditor: React.FC<AdminProjectListEditorProps> = ({
     highlight: 'Featured Project',
     services: '',
     overview: '',
-    details: ''
+    details: '',
+    clickAction: { ...DEFAULT_NONE_LINK }
   });
 
   const handleAdd = (e: React.FormEvent) => {
@@ -53,7 +65,11 @@ export const AdminProjectListEditor: React.FC<AdminProjectListEditorProps> = ({
       highlight: newDraft.highlight.trim(),
       services: newDraft.services.trim() || undefined,
       overview: newDraft.overview.trim() || undefined,
-      details: newDraft.details.trim() || undefined
+      details: newDraft.details.trim() || undefined,
+      clickAction:
+        newDraft.clickAction && newDraft.clickAction.actionType !== 'none'
+          ? newDraft.clickAction
+          : undefined
     };
     onUpdate([...projects, item]);
     setNewDraft({
@@ -64,7 +80,8 @@ export const AdminProjectListEditor: React.FC<AdminProjectListEditorProps> = ({
       highlight: 'Featured Project',
       services: '',
       overview: '',
-      details: ''
+      details: '',
+      clickAction: { ...DEFAULT_NONE_LINK }
     });
   };
 
@@ -204,6 +221,19 @@ export const AdminProjectListEditor: React.FC<AdminProjectListEditorProps> = ({
                     onChange={(val) => setEditDraft({ ...editDraft, imageUrl: val })}
                     defaultValue={defaultImageUrl}
                   />
+
+                  <CtaActionEditor
+                    title="Project Card & Image Click Action"
+                    value={editDraft.clickAction || { ...DEFAULT_NONE_LINK }}
+                    onChange={(nextAction) =>
+                      setEditDraft({
+                        ...editDraft,
+                        clickAction: nextAction.actionType === 'none' ? undefined : nextAction
+                      })
+                    }
+                    allowNone
+                    noneLabel="Default: Open High-Res Project Lightbox"
+                  />
                 </div>
               ) : (
                 <div className="flex items-center justify-between gap-3">
@@ -314,6 +344,18 @@ export const AdminProjectListEditor: React.FC<AdminProjectListEditorProps> = ({
           value={newDraft.imageUrl}
           onChange={(val) => setNewDraft({ ...newDraft, imageUrl: val })}
           defaultValue={defaultImageUrl}
+        />
+        <CtaActionEditor
+          title="Card Click Destination (Optional)"
+          value={newDraft.clickAction || { ...DEFAULT_NONE_LINK }}
+          onChange={(nextAction) =>
+            setNewDraft({
+              ...newDraft,
+              clickAction: nextAction
+            })
+          }
+          allowNone
+          noneLabel="Default: Open High-Res Project Lightbox"
         />
         <button
           type="submit"

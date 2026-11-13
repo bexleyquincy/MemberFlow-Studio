@@ -15,24 +15,28 @@ import {
   Plus
 } from 'lucide-react';
 import {
+  CtaConfig,
   ServiceItem,
   SiteConfig,
   SERVICES_HERO_DEFAULT_IMAGE,
   WHY_CHOOSE_GROWTH_IMAGE,
   CLASSROOM_DESIGN_HUB_IMAGE
 } from '../data/siteData';
+import { LinkableImage } from '../components/LinkableImage';
 
 interface ServicesPageProps {
   onNavigate: (path: string) => void;
   siteConfig: SiteConfig;
   services: ServiceItem[];
   onOpenContact: () => void;
+  onExecuteCta: (cta: CtaConfig | undefined, fallbackAction?: () => void) => void;
 }
 
 export const ServicesPage: React.FC<ServicesPageProps> = ({
   siteConfig,
   services,
-  onOpenContact
+  onOpenContact,
+  onExecuteCta
 }) => {
   const sp = siteConfig.servicesPage;
 
@@ -104,24 +108,26 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
 
               <div className="flex flex-wrap items-center gap-4 pt-2">
                 <button
-                  onClick={onOpenContact}
+                  onClick={() => onExecuteCta(sp.heroPrimaryCtaAction, onOpenContact)}
                   className="px-7 py-3.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm shadow-xl shadow-blue-600/30 active:scale-95 transition-all flex items-center gap-2"
                 >
-                  <span>{sp.heroPrimaryCta}</span>
+                  <span>{sp.heroPrimaryCtaAction?.label || sp.heroPrimaryCta}</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
 
                 <button
-                  onClick={() => {
-                    const el = document.getElementById('core-services');
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  }}
+                  onClick={() =>
+                    onExecuteCta(sp.heroSecondaryCtaAction, () => {
+                      const el = document.getElementById('core-services');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    })
+                  }
                   className="px-6 py-3.5 rounded-full bg-[#152033] hover:bg-[#202E43] text-white font-semibold text-sm border border-[#202E43] flex items-center gap-2.5 transition-colors"
                 >
                   <div className="w-6 h-6 rounded-full bg-blue-600/20 text-blue-400 flex items-center justify-center">
                     <Play className="w-3 h-3 fill-current ml-0.5" />
                   </div>
-                  <span>{sp.heroSecondaryCta}</span>
+                  <span>{sp.heroSecondaryCtaAction?.label || sp.heroSecondaryCta}</span>
                 </button>
               </div>
 
@@ -145,16 +151,12 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
 
             <div className="lg:col-span-6">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-[#202E43] bg-gradient-to-b from-[#18253B] to-[#10192B]">
-                <img
+                <LinkableImage
                   src={sp.heroImage || SERVICES_HERO_DEFAULT_IMAGE}
                   alt={`${siteConfig.brandName} Services Showcase`}
-                  referrerPolicy="no-referrer"
-                  onError={(e) => {
-                    const img = e.currentTarget;
-                    if (!img.src.includes('MemberFlow_Studio_Services_Showcase')) {
-                      img.src = SERVICES_HERO_DEFAULT_IMAGE;
-                    }
-                  }}
+                  fallbackSrc={SERVICES_HERO_DEFAULT_IMAGE}
+                  imageLink={sp.heroImageLink}
+                  onExecuteAction={onExecuteCta}
                   className="w-full h-auto object-cover object-top max-h-[500px]"
                 />
               </div>
@@ -208,10 +210,10 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
 
                   <div className="pt-5 mt-4 border-t border-slate-100">
                     <button
-                      onClick={onOpenContact}
+                      onClick={() => onExecuteCta(s.cta, onOpenContact)}
                       className="text-xs font-bold text-blue-600 group-hover:text-blue-700 flex items-center gap-1.5"
                     >
-                      <span>Inquire About {s.title}</span>
+                      <span>{s.cta?.label || `Inquire About ${s.title}`}</span>
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                     </button>
                   </div>
@@ -260,10 +262,10 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
                   </ul>
                   <div className="pt-2">
                     <button
-                      onClick={onOpenContact}
+                      onClick={() => onExecuteCta(block.ctaAction, onOpenContact)}
                       className="px-6 py-2.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs tracking-wide inline-flex items-center gap-2"
                     >
-                      <span>{block.ctaText}</span>
+                      <span>{block.ctaAction?.label || block.ctaText}</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </button>
                   </div>
@@ -271,16 +273,12 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
 
                 <div className={`lg:col-span-6 ${imageLeft ? 'order-2 lg:order-1' : ''}`}>
                   <div className="rounded-2xl overflow-hidden border border-[#202E43] bg-[#152033] shadow-xl p-3">
-                    <img
+                    <LinkableImage
                       src={block.imageUrl}
                       alt={block.title}
-                      referrerPolicy="no-referrer"
-                      onError={(e) => {
-                        const img = e.currentTarget;
-                        if (img.src !== CLASSROOM_DESIGN_HUB_IMAGE) {
-                          img.src = CLASSROOM_DESIGN_HUB_IMAGE;
-                        }
-                      }}
+                      fallbackSrc={CLASSROOM_DESIGN_HUB_IMAGE}
+                      imageLink={block.imageLink}
+                      onExecuteAction={onExecuteCta}
                       className="w-full h-auto rounded-xl object-cover"
                     />
                   </div>
@@ -322,16 +320,12 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
 
             <div className="lg:col-span-4">
               <div className="rounded-2xl overflow-hidden border border-[#DCE3EF] bg-white shadow-lg p-2">
-                <img
+                <LinkableImage
                   src={sp.processImage || WHY_CHOOSE_GROWTH_IMAGE}
                   alt={sp.processHeading}
-                  referrerPolicy="no-referrer"
-                  onError={(e) => {
-                    const img = e.currentTarget;
-                    if (img.src !== WHY_CHOOSE_GROWTH_IMAGE) {
-                      img.src = WHY_CHOOSE_GROWTH_IMAGE;
-                    }
-                  }}
+                  fallbackSrc={WHY_CHOOSE_GROWTH_IMAGE}
+                  imageLink={sp.processImageLink}
+                  onExecuteAction={onExecuteCta}
                   className="w-full h-auto rounded-xl object-cover"
                   loading="lazy"
                 />
@@ -354,10 +348,10 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
 
             <div className="shrink-0">
               <button
-                onClick={onOpenContact}
+                onClick={() => onExecuteCta(sp.ctaButtonAction, onOpenContact)}
                 className="px-8 py-4 rounded-full bg-white text-blue-700 hover:bg-slate-100 font-extrabold text-base shadow-2xl active:scale-95 transition-all flex items-center gap-2"
               >
-                <span>{sp.ctaButtonText}</span>
+                <span>{sp.ctaButtonAction?.label || sp.ctaButtonText}</span>
                 <ArrowRight className="w-5 h-5 text-blue-700" />
               </button>
             </div>

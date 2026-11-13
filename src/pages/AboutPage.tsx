@@ -11,22 +11,26 @@ import {
   Zap
 } from 'lucide-react';
 import {
+  CtaConfig,
   SiteConfig,
   FOUNDER_HERO_IMAGE,
   FOUNDER_STORY_IMAGE,
   CLASSROOM_DESIGN_HUB_IMAGE
 } from '../data/siteData';
+import { LinkableImage } from '../components/LinkableImage';
 
 interface AboutPageProps {
   onNavigate: (path: string) => void;
   siteConfig: SiteConfig;
   onOpenContact: () => void;
+  onExecuteCta: (cta: CtaConfig | undefined, fallbackAction?: () => void) => void;
 }
 
 export const AboutPage: React.FC<AboutPageProps> = ({
   onNavigate,
   siteConfig,
-  onOpenContact
+  onOpenContact,
+  onExecuteCta
 }) => {
   const ap = siteConfig.aboutPage;
   const vis = siteConfig.sectionVisibility;
@@ -82,24 +86,26 @@ export const AboutPage: React.FC<AboutPageProps> = ({
 
               <div className="flex flex-wrap items-center gap-4 pt-2">
                 <button
-                  onClick={onOpenContact}
+                  onClick={() => onExecuteCta(ap.heroPrimaryCtaAction, onOpenContact)}
                   className="px-7 py-3.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm shadow-xl shadow-blue-600/30 active:scale-95 transition-all flex items-center gap-2"
                 >
-                  <span>{ap.heroPrimaryCta}</span>
+                  <span>{ap.heroPrimaryCtaAction?.label || ap.heroPrimaryCta}</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
 
                 <button
-                  onClick={() => {
-                    const el = document.getElementById('founder-story');
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  }}
+                  onClick={() =>
+                    onExecuteCta(ap.heroSecondaryCtaAction, () => {
+                      const el = document.getElementById('founder-story');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    })
+                  }
                   className="px-6 py-3.5 rounded-full bg-[#152033] hover:bg-[#202E43] text-white font-semibold text-sm border border-[#202E43] flex items-center gap-2.5 transition-colors"
                 >
                   <div className="w-6 h-6 rounded-full bg-blue-600/20 text-blue-400 flex items-center justify-center">
                     <Play className="w-3 h-3 fill-current ml-0.5" />
                   </div>
-                  <span>{ap.heroSecondaryCta}</span>
+                  <span>{ap.heroSecondaryCtaAction?.label || ap.heroSecondaryCta}</span>
                 </button>
               </div>
 
@@ -117,22 +123,18 @@ export const AboutPage: React.FC<AboutPageProps> = ({
             <div className="lg:col-span-6 relative">
               <div className="relative mx-auto max-w-lg lg:max-w-none">
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-[#202E43] bg-gradient-to-b from-[#18253B] to-[#10192B]">
-                  <img
+                  <LinkableImage
                     src={siteConfig.founderHeroImage || FOUNDER_HERO_IMAGE}
-                    referrerPolicy="no-referrer"
-                    onError={(e) => {
-                      const target = e.currentTarget;
-                      if (!target.src.includes('Skool_Community_Growth_Dashboard_1f90cb40.png')) {
-                        target.src = FOUNDER_HERO_IMAGE;
-                      }
-                    }}
+                    fallbackSrc={FOUNDER_HERO_IMAGE}
                     alt={siteConfig.founderName}
+                    imageLink={siteConfig.founderHeroImageLink}
+                    onExecuteAction={onExecuteCta}
                     className="w-full h-auto object-cover object-top max-h-[520px]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#10192B] via-transparent to-transparent opacity-40 pointer-events-none" />
                 </div>
 
-                <div className="absolute top-4 right-4 sm:top-6 sm:right-6 text-right">
+                <div className="absolute top-4 right-4 sm:top-6 sm:right-6 text-right pointer-events-none">
                   <div className="font-heading italic font-extrabold text-lg sm:text-xl text-white drop-shadow-md">
                     {ap.heroGreetingPrefix} {siteConfig.founderName}
                   </div>
@@ -154,19 +156,16 @@ export const AboutPage: React.FC<AboutPageProps> = ({
             <div className="lg:col-span-5">
               <div className="relative rounded-2xl overflow-hidden border border-[#DCE3EF] bg-white shadow-xl p-3">
                 <div className="aspect-[4/5] rounded-xl overflow-hidden bg-slate-900 relative">
-                  <img
+                  <LinkableImage
                     src={siteConfig.founderStoryImage || FOUNDER_STORY_IMAGE}
-                    referrerPolicy="no-referrer"
-                    onError={(e) => {
-                      const target = e.currentTarget;
-                      if (target.src !== FOUNDER_STORY_IMAGE) {
-                        target.src = FOUNDER_STORY_IMAGE;
-                      }
-                    }}
+                    fallbackSrc={FOUNDER_STORY_IMAGE}
                     alt={`${siteConfig.founderName} Speaking`}
+                    imageLink={siteConfig.founderStoryImageLink}
+                    onExecuteAction={onExecuteCta}
                     className="w-full h-full object-cover object-top"
+                    wrapperClassName="w-full h-full"
                   />
-                  <div className="absolute bottom-3 left-3 bg-[#10192B]/90 backdrop-blur-md px-3 py-1.5 rounded-lg border border-[#202E43] text-white">
+                  <div className="absolute bottom-3 left-3 bg-[#10192B]/90 backdrop-blur-md px-3 py-1.5 rounded-lg border border-[#202E43] text-white pointer-events-none">
                     <span className="text-xs font-bold block">{siteConfig.founderName}</span>
                     <span className="text-[10px] text-blue-400">{ap.storyImageBadgeRole}</span>
                   </div>
@@ -204,10 +203,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({
 
               <div className="pt-2">
                 <button
-                  onClick={() => onNavigate('/services')}
+                  onClick={() => onExecuteCta(ap.storyCtaAction, () => onNavigate('/services'))}
                   className="px-7 py-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow-md inline-flex items-center gap-2"
                 >
-                  <span>{ap.storyCtaText}</span>
+                  <span>{ap.storyCtaAction?.label || ap.storyCtaText}</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
@@ -284,10 +283,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({
 
                 <div className="pt-2">
                   <button
-                    onClick={() => onNavigate('/services')}
+                    onClick={() => onExecuteCta(ap.skillsCtaAction, () => onNavigate('/services'))}
                     className="px-7 py-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow-md inline-flex items-center gap-2"
                   >
-                    <span>{ap.skillsCtaText}</span>
+                    <span>{ap.skillsCtaAction?.label || ap.skillsCtaText}</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
@@ -296,16 +295,12 @@ export const AboutPage: React.FC<AboutPageProps> = ({
               <div className="lg:col-span-6">
                 <div className="rounded-2xl overflow-hidden border border-[#DCE3EF] bg-white shadow-xl p-3">
                   <div className="rounded-xl overflow-hidden bg-slate-900 border border-slate-800">
-                    <img
+                    <LinkableImage
                       src={ap.skillsImage || CLASSROOM_DESIGN_HUB_IMAGE}
                       alt="Skool Dashboard Showcase"
-                      referrerPolicy="no-referrer"
-                      onError={(e) => {
-                        const img = e.currentTarget;
-                        if (img.src !== CLASSROOM_DESIGN_HUB_IMAGE) {
-                          img.src = CLASSROOM_DESIGN_HUB_IMAGE;
-                        }
-                      }}
+                      fallbackSrc={CLASSROOM_DESIGN_HUB_IMAGE}
+                      imageLink={ap.skillsImageLink}
+                      onExecuteAction={onExecuteCta}
                       className="w-full h-auto object-cover"
                     />
                   </div>
@@ -359,10 +354,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({
 
             <div className="shrink-0">
               <button
-                onClick={onOpenContact}
+                onClick={() => onExecuteCta(ap.ctaButtonAction, onOpenContact)}
                 className="px-8 py-4 rounded-full bg-white text-blue-700 hover:bg-slate-100 font-extrabold text-base shadow-2xl active:scale-95 transition-all flex items-center gap-2"
               >
-                <span>{ap.ctaButtonText}</span>
+                <span>{ap.ctaButtonAction?.label || ap.ctaButtonText}</span>
                 <ArrowRight className="w-5 h-5 text-blue-700" />
               </button>
             </div>

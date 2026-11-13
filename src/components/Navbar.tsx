@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Layers, Shield, X, Menu, ArrowRight } from 'lucide-react';
-import { SiteConfig } from '../data/siteData';
+import { CtaConfig, SiteConfig } from '../data/siteData';
 
 interface NavbarProps {
   currentPath: string;
@@ -8,6 +8,7 @@ interface NavbarProps {
   siteConfig: SiteConfig;
   onOpenContact: () => void;
   onOpenAdmin: () => void;
+  onExecuteCta: (cta: CtaConfig | undefined, fallbackAction?: () => void) => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -15,7 +16,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   onNavigate,
   siteConfig,
   onOpenContact,
-  onOpenAdmin
+  onOpenAdmin,
+  onExecuteCta
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -108,10 +110,10 @@ export const Navbar: React.FC<NavbarProps> = ({
           </button>
 
           <button
-            onClick={onOpenContact}
+            onClick={() => onExecuteCta(siteConfig.navigation.ctaAction, onOpenContact)}
             className="px-5 py-2.5 rounded-full text-sm font-semibold text-white bg-blue-600 hover:bg-blue-500 shadow-md shadow-blue-600/30 active:scale-95 transition-all duration-150 flex items-center gap-2"
           >
-            <span>{siteConfig.navigation.ctaLabel}</span>
+            <span>{siteConfig.navigation.ctaAction?.label || siteConfig.navigation.ctaLabel}</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>
@@ -162,11 +164,11 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
-                onOpenContact();
+                onExecuteCta(siteConfig.navigation.ctaAction, onOpenContact);
               }}
               className="w-full py-3 rounded-xl text-center text-sm font-semibold text-white bg-blue-600 hover:bg-blue-500 shadow-md shadow-blue-600/30 flex items-center justify-center gap-2"
             >
-              <span>{siteConfig.navigation.ctaLabel}</span>
+              <span>{siteConfig.navigation.ctaAction?.label || siteConfig.navigation.ctaLabel}</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>

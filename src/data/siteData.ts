@@ -30,6 +30,41 @@ export const LANDING_APPAREL_IMAGE = landingApparelImg;
 export const WHY_CHOOSE_GROWTH_IMAGE = whyChooseGrowthImg;
 export const SERVICES_ONBOARDING_IMAGE = servicesOnboardingImg;
 
+export type CtaActionType =
+  | 'none'
+  | 'contact_popup'
+  | 'internal_page'
+  | 'scroll_section'
+  | 'external_url'
+  | 'media_popup'
+  | 'media_internal'
+  | 'media_external'
+  | 'download_file'
+  | 'email_mailto'
+  | 'case_study_modal';
+
+export interface CtaConfig {
+  label: string;
+  actionType: CtaActionType;
+  target: string; // route ('/services'), section id ('#faq'), external url, media url, email, or file url
+  mediaTitle?: string;
+  mediaDescription?: string;
+  downloadFilename?: string;
+  openInNewTab?: boolean;
+}
+
+export interface MediaPreviewPayload {
+  url: string;
+  title?: string;
+  description?: string;
+}
+
+export const DEFAULT_NONE_LINK: CtaConfig = {
+  label: 'Open Link',
+  actionType: 'none',
+  target: ''
+};
+
 export interface Project {
   id: string;
   title: string;
@@ -41,6 +76,7 @@ export interface Project {
   services?: string;
   overview?: string;
   details?: string;
+  clickAction?: CtaConfig;
 }
 
 export interface ServiceItem {
@@ -50,6 +86,7 @@ export interface ServiceItem {
   description: string;
   deliverables: string[];
   iconName: string;
+  cta?: CtaConfig;
 }
 
 export interface Testimonial {
@@ -73,7 +110,9 @@ export interface ServiceShowcaseBlock {
   description: string;
   bullets: string[];
   ctaText: string;
+  ctaAction: CtaConfig;
   imageUrl: string;
+  imageLink: CtaConfig;
 }
 
 export interface SiteConfig {
@@ -87,7 +126,9 @@ export interface SiteConfig {
   positioning: string;
   contactEmail: string;
   founderHeroImage: string;
+  founderHeroImageLink: CtaConfig;
   founderStoryImage: string;
+  founderStoryImageLink: CtaConfig;
   founderVideoUrl: string;
   seo: {
     title: string;
@@ -116,6 +157,7 @@ export interface SiteConfig {
     aboutLabel: string;
     faqLabel: string;
     ctaLabel: string;
+    ctaAction: CtaConfig;
   };
   footer: {
     description: string;
@@ -148,8 +190,11 @@ export interface SiteConfig {
     heroHighlightWord: string;
     heroSubtitle: string;
     heroPrimaryCta: string;
+    heroPrimaryCtaAction: CtaConfig;
     heroSecondaryCta: string;
+    heroSecondaryCtaAction: CtaConfig;
     heroImage: string;
+    heroImageLink: CtaConfig;
     heroBadgeTopTitle: string;
     heroBadgeTopSubtitle: string;
     heroBadgeMidTitle: string;
@@ -161,16 +206,20 @@ export interface SiteConfig {
     servicesHeading: string;
     servicesSubtitle: string;
     servicesCtaText: string;
+    servicesCtaAction: CtaConfig;
     portfolioEyebrow: string;
     portfolioHeading: string;
     portfolioHighlight: string;
     portfolioSubtitle: string;
     portfolioCtaText: string;
+    portfolioCtaAction: CtaConfig;
     whyEyebrow: string;
     whyHeading: string;
     whySubtitle: string;
     whyCtaText: string;
+    whyCtaAction: CtaConfig;
     whyGrowthImage: string;
+    whyGrowthImageLink: CtaConfig;
     whyEngineTitle: string;
     whyEngineDescription: string;
     whyStat1Label: string;
@@ -189,6 +238,7 @@ export interface SiteConfig {
     ctaHeading: string;
     ctaSubtitle: string;
     ctaButtonText: string;
+    ctaButtonAction: CtaConfig;
   };
   servicesPage: {
     heroEyebrow: string;
@@ -197,8 +247,11 @@ export interface SiteConfig {
     heroHighlightWord: string;
     heroSubtitle: string;
     heroPrimaryCta: string;
+    heroPrimaryCtaAction: CtaConfig;
     heroSecondaryCta: string;
+    heroSecondaryCtaAction: CtaConfig;
     heroImage: string;
+    heroImageLink: CtaConfig;
     heroIndicators: Array<{ title: string; subtitle: string }>;
     coreEyebrow: string;
     coreHeading: string;
@@ -212,10 +265,12 @@ export interface SiteConfig {
     processHeading: string;
     processSubtitle: string;
     processImage: string;
+    processImageLink: CtaConfig;
     processSteps: Array<{ title: string; description: string }>;
     ctaHeading: string;
     ctaSubtitle: string;
     ctaButtonText: string;
+    ctaButtonAction: CtaConfig;
   };
   portfolioPage: {
     heroEyebrow: string;
@@ -223,8 +278,11 @@ export interface SiteConfig {
     heroHighlightWord: string;
     heroSubtitle: string;
     heroPrimaryCta: string;
+    heroPrimaryCtaAction: CtaConfig;
     heroSecondaryCta: string;
+    heroSecondaryCtaAction: CtaConfig;
     heroImage: string;
+    heroImageLink: CtaConfig;
     heroBadge1: string;
     heroBadge2: string;
     classroomsEyebrow: string;
@@ -236,6 +294,8 @@ export interface SiteConfig {
     caseStudyEyebrow: string;
     caseStudyHeading: string;
     caseStudyCtaText: string;
+    caseStudyCtaAction: CtaConfig;
+    caseStudyImageLink: CtaConfig;
     caseStudyBullets: string[];
     metric3Value: string;
     metric3Label: string;
@@ -244,6 +304,7 @@ export interface SiteConfig {
     ctaHeading: string;
     ctaSubtitle: string;
     ctaButtonText: string;
+    ctaButtonAction: CtaConfig;
   };
   aboutPage: {
     heroEyebrow: string;
@@ -251,7 +312,9 @@ export interface SiteConfig {
     heroHeadlineLine2: string;
     heroHighlightWord: string;
     heroPrimaryCta: string;
+    heroPrimaryCtaAction: CtaConfig;
     heroSecondaryCta: string;
+    heroSecondaryCtaAction: CtaConfig;
     heroQuoteText: string;
     heroGreetingPrefix: string;
     heroRoleCallout: string;
@@ -259,6 +322,7 @@ export interface SiteConfig {
     storyHeading: string;
     storyImageBadgeRole: string;
     storyCtaText: string;
+    storyCtaAction: CtaConfig;
     storyPillars: string[];
     philosophyEyebrow: string;
     philosophyHeading: string;
@@ -269,7 +333,9 @@ export interface SiteConfig {
     skillsHeading: string;
     skillsDescription: string;
     skillsImage: string;
+    skillsImageLink: CtaConfig;
     skillsCtaText: string;
+    skillsCtaAction: CtaConfig;
     skillsList: string[];
     processEyebrow: string;
     processHeading: string;
@@ -279,6 +345,7 @@ export interface SiteConfig {
     ctaHeading: string;
     ctaSubtitle: string;
     ctaButtonText: string;
+    ctaButtonAction: CtaConfig;
   };
 }
 
@@ -298,7 +365,9 @@ I believe a successful community is about more than simply having a platform. It
   positioning: 'Skool Community Setup, Management, Member Experience and Growth',
   contactEmail: 'femizydasilver@gmail.com',
   founderHeroImage: FOUNDER_HERO_IMAGE,
+  founderHeroImageLink: { ...DEFAULT_NONE_LINK },
   founderStoryImage: FOUNDER_STORY_IMAGE,
+  founderStoryImageLink: { ...DEFAULT_NONE_LINK },
   founderVideoUrl: '',
   seo: {
     title: 'MemberFlow Studio — Skool Community Setup, Management & Growth',
@@ -327,7 +396,12 @@ I believe a successful community is about more than simply having a platform. It
     portfolioLabel: 'Portfolio',
     aboutLabel: 'About',
     faqLabel: 'FAQ',
-    ctaLabel: 'Get in Touch'
+    ctaLabel: 'Get in Touch',
+    ctaAction: {
+      label: 'Get in Touch',
+      actionType: 'contact_popup',
+      target: ''
+    }
   },
   footer: {
     description:
@@ -362,8 +436,19 @@ I believe a successful community is about more than simply having a platform. It
     heroSubtitle:
       'We help Skool community owners build, organize, manage and grow thriving communities through expert setup, engaging classrooms and strategic growth.',
     heroPrimaryCta: 'Explore Our Services',
+    heroPrimaryCtaAction: {
+      label: 'Explore Our Services',
+      actionType: 'internal_page',
+      target: '/services'
+    },
     heroSecondaryCta: 'Watch Our Work',
+    heroSecondaryCtaAction: {
+      label: 'Watch Our Work',
+      actionType: 'scroll_section',
+      target: '#portfolio-section'
+    },
     heroImage: HOME_HERO_DEFAULT_IMAGE,
+    heroImageLink: { ...DEFAULT_NONE_LINK },
     heroBadgeTopTitle: 'Grow Your',
     heroBadgeTopSubtitle: 'Community',
     heroBadgeMidTitle: 'Engage',
@@ -376,18 +461,34 @@ I believe a successful community is about more than simply having a platform. It
     servicesSubtitle:
       'From setup to growth, we provide everything you need to create a powerful, engaging and profitable community.',
     servicesCtaText: 'View All Services',
+    servicesCtaAction: {
+      label: 'View All Services',
+      actionType: 'internal_page',
+      target: '/services'
+    },
     portfolioEyebrow: 'Our Portfolio',
     portfolioHeading: 'See Our Work',
     portfolioHighlight: 'in Action',
     portfolioSubtitle:
       "Explore real examples of Skool classrooms and stunning landing pages we've created.",
     portfolioCtaText: 'View Full Portfolio',
+    portfolioCtaAction: {
+      label: 'View Full Portfolio',
+      actionType: 'internal_page',
+      target: '/portfolio'
+    },
     whyEyebrow: 'Why Choose Us',
     whyHeading: 'Your Success is Our Priority',
     whySubtitle:
       'We go beyond setup. We partner with you to build a community that lasts and grows.',
     whyCtaText: "Let's Build Together",
+    whyCtaAction: {
+      label: "Let's Build Together",
+      actionType: 'contact_popup',
+      target: ''
+    },
     whyGrowthImage: WHY_CHOOSE_GROWTH_IMAGE,
+    whyGrowthImageLink: { ...DEFAULT_NONE_LINK },
     whyEngineTitle: 'Community Growth Engine',
     whyEngineDescription:
       'Transform passive spectators into engaged members with systematic gamification and structured learning paths.',
@@ -425,7 +526,12 @@ I believe a successful community is about more than simply having a platform. It
     ctaHeading: 'Ready to Level Up Your Skool Community?',
     ctaSubtitle:
       "Let's turn your community into a thriving, engaging and profitable space.",
-    ctaButtonText: 'Contact Us Today'
+    ctaButtonText: 'Contact Us Today',
+    ctaButtonAction: {
+      label: 'Contact Us Today',
+      actionType: 'contact_popup',
+      target: ''
+    }
   },
   servicesPage: {
     heroEyebrow: 'Our Services',
@@ -435,8 +541,19 @@ I believe a successful community is about more than simply having a platform. It
     heroSubtitle:
       'From setup to growth, we provide the expertise and support you need to build, manage and scale thriving online communities.',
     heroPrimaryCta: 'Explore Our Services',
+    heroPrimaryCtaAction: {
+      label: 'Explore Our Services',
+      actionType: 'contact_popup',
+      target: ''
+    },
     heroSecondaryCta: 'Watch How It Works',
+    heroSecondaryCtaAction: {
+      label: 'Watch How It Works',
+      actionType: 'scroll_section',
+      target: '#core-services'
+    },
     heroImage: SERVICES_HERO_DEFAULT_IMAGE,
+    heroImageLink: { ...DEFAULT_NONE_LINK },
     heroIndicators: [
       { title: 'Expert Support', subtitle: 'Every Step of the Way' },
       { title: 'Proven Strategies', subtitle: 'for Real Growth' },
@@ -461,7 +578,13 @@ I believe a successful community is about more than simply having a platform. It
           'Clear category guidelines that eliminate discussion clutter'
         ],
         ctaText: 'Build My Classroom',
-        imageUrl: DY_SALSA_CLASSROOM_URL
+        ctaAction: {
+          label: 'Build My Classroom',
+          actionType: 'contact_popup',
+          target: ''
+        },
+        imageUrl: DY_SALSA_CLASSROOM_URL,
+        imageLink: { ...DEFAULT_NONE_LINK }
       },
       {
         tag: 'Block B — Retention',
@@ -474,7 +597,13 @@ I believe a successful community is about more than simply having a platform. It
           'Leaderboard rewards and level unlock strategies'
         ],
         ctaText: 'Improve Engagement',
-        imageUrl: SERVICES_ONBOARDING_IMAGE
+        ctaAction: {
+          label: 'Improve Engagement',
+          actionType: 'contact_popup',
+          target: ''
+        },
+        imageUrl: SERVICES_ONBOARDING_IMAGE,
+        imageLink: { ...DEFAULT_NONE_LINK }
       },
       {
         tag: 'Block C — Scaling',
@@ -487,13 +616,20 @@ I believe a successful community is about more than simply having a platform. It
           'Dedicated routine operational reports and metrics'
         ],
         ctaText: 'Scale My Community',
-        imageUrl: GLAM_CRAFTER_CLASSROOM_URL
+        ctaAction: {
+          label: 'Scale My Community',
+          actionType: 'contact_popup',
+          target: ''
+        },
+        imageUrl: GLAM_CRAFTER_CLASSROOM_URL,
+        imageLink: { ...DEFAULT_NONE_LINK }
       }
     ],
     processEyebrow: 'Our Process',
     processHeading: 'How It Works',
     processSubtitle: 'Getting started is simple. Just follow these easy steps:',
     processImage: WHY_CHOOSE_GROWTH_IMAGE,
+    processImageLink: { ...DEFAULT_NONE_LINK },
     processSteps: [
       {
         title: 'Share Your Goals',
@@ -513,7 +649,12 @@ I believe a successful community is about more than simply having a platform. It
     ],
     ctaHeading: 'Ready to Transform Your Skool Community?',
     ctaSubtitle: "Let's build, grow and manage your community together.",
-    ctaButtonText: 'Contact Us Today'
+    ctaButtonText: 'Contact Us Today',
+    ctaButtonAction: {
+      label: 'Contact Us Today',
+      actionType: 'contact_popup',
+      target: ''
+    }
   },
   portfolioPage: {
     heroEyebrow: 'Our Portfolio',
@@ -522,8 +663,19 @@ I believe a successful community is about more than simply having a platform. It
     heroSubtitle:
       "Explore real examples of Skool classrooms and community landing pages we've designed, organized and optimized for growth.",
     heroPrimaryCta: 'Discuss Your Project',
+    heroPrimaryCtaAction: {
+      label: 'Discuss Your Project',
+      actionType: 'contact_popup',
+      target: ''
+    },
     heroSecondaryCta: 'Watch Our Work',
+    heroSecondaryCtaAction: {
+      label: 'Watch Our Work',
+      actionType: 'scroll_section',
+      target: '#classrooms-gallery'
+    },
     heroImage: PORTFOLIO_HERO_DEFAULT_IMAGE,
+    heroImageLink: { ...DEFAULT_NONE_LINK },
     heroBadge1: 'Premium Designs',
     heroBadge2: 'Real Results',
     classroomsEyebrow: 'Skool Classroom Designs',
@@ -537,6 +689,12 @@ I believe a successful community is about more than simply having a platform. It
     caseStudyEyebrow: 'Featured Case Study',
     caseStudyHeading: 'From Vision to a Thriving Community',
     caseStudyCtaText: 'View Case Study Details',
+    caseStudyCtaAction: {
+      label: 'View Case Study Details',
+      actionType: 'case_study_modal',
+      target: ''
+    },
+    caseStudyImageLink: { ...DEFAULT_NONE_LINK },
     caseStudyBullets: [
       'Complete Skool Setup',
       'Organized Classrooms & Custom Thumbnails',
@@ -549,7 +707,12 @@ I believe a successful community is about more than simply having a platform. It
     metric4Label: 'Retention Focused',
     ctaHeading: 'Ready to Get Similar Results?',
     ctaSubtitle: "Let's create a stunning community experience for you.",
-    ctaButtonText: 'Contact Us Today'
+    ctaButtonText: 'Contact Us Today',
+    ctaButtonAction: {
+      label: 'Contact Us Today',
+      actionType: 'contact_popup',
+      target: ''
+    }
   },
   aboutPage: {
     heroEyebrow: 'About MemberFlow Studio',
@@ -557,7 +720,17 @@ I believe a successful community is about more than simply having a platform. It
     heroHeadlineLine2: 'That',
     heroHighlightWord: 'Grow.',
     heroPrimaryCta: "Let's Work Together",
+    heroPrimaryCtaAction: {
+      label: "Let's Work Together",
+      actionType: 'contact_popup',
+      target: ''
+    },
     heroSecondaryCta: 'Watch My Story',
+    heroSecondaryCtaAction: {
+      label: 'Watch My Story',
+      actionType: 'scroll_section',
+      target: '#founder-story'
+    },
     heroQuoteText:
       'A platform without structure is noise; with deliberate systems, it becomes transformational.',
     heroGreetingPrefix: "Hi, I'm",
@@ -566,6 +739,11 @@ I believe a successful community is about more than simply having a platform. It
     storyHeading: 'From Passion to Purpose',
     storyImageBadgeRole: 'Skool Community Specialist',
     storyCtaText: 'Explore What I Do',
+    storyCtaAction: {
+      label: 'Explore What I Do',
+      actionType: 'internal_page',
+      target: '/services'
+    },
     storyPillars: [
       'Community Growth Expert',
       'Skool Setup & Management',
@@ -604,7 +782,13 @@ I believe a successful community is about more than simply having a platform. It
     skillsDescription:
       'With a practical, community-focused approach, I bring together the skills needed to create organized, engaging and growth-ready community experiences.',
     skillsImage: CLASSROOM_DESIGN_HUB_IMAGE,
+    skillsImageLink: { ...DEFAULT_NONE_LINK },
     skillsCtaText: 'Explore My Services',
+    skillsCtaAction: {
+      label: 'Explore My Services',
+      actionType: 'internal_page',
+      target: '/services'
+    },
     skillsList: [
       '01. Skool Community Setup',
       '02. Classroom & Course Management',
@@ -637,7 +821,12 @@ I believe a successful community is about more than simply having a platform. It
     ],
     ctaHeading: "Let's Build Your Dream Community Together.",
     ctaSubtitle: 'Ready to create a better Skool community experience? Let’s discuss your goals today.',
-    ctaButtonText: 'Contact Me Today'
+    ctaButtonText: 'Contact Me Today',
+    ctaButtonAction: {
+      label: 'Contact Me Today',
+      actionType: 'contact_popup',
+      target: ''
+    }
   }
 };
 
@@ -761,7 +950,12 @@ export const CORE_SERVICES: ServiceItem[] = [
       'Community categories & topic channels',
       'Community rules & moderation policy',
       'Welcome post & announcement structure'
-    ]
+    ],
+    cta: {
+      label: 'Inquire About Community Setup',
+      actionType: 'contact_popup',
+      target: ''
+    }
   },
   {
     id: 'service-02',
@@ -777,7 +971,12 @@ export const CORE_SERVICES: ServiceItem[] = [
       'Course thumbnails & visual graphics',
       'Learning-path clarity & progression',
       'Resource downloads & cheat-sheet linking'
-    ]
+    ],
+    cta: {
+      label: 'Inquire About Classroom & Course Setup',
+      actionType: 'contact_popup',
+      target: ''
+    }
   },
   {
     id: 'service-03',
@@ -793,7 +992,12 @@ export const CORE_SERVICES: ServiceItem[] = [
       'Pinned onboarding welcome posts',
       'Member navigation & tour guidance',
       'First-week activation prompts'
-    ]
+    ],
+    cta: {
+      label: 'Inquire About Member Onboarding',
+      actionType: 'contact_popup',
+      target: ''
+    }
   },
   {
     id: 'service-04',
@@ -809,7 +1013,12 @@ export const CORE_SERVICES: ServiceItem[] = [
       'Active community moderation & safety',
       'Gamification & leaderboard management',
       'Routine operational systems'
-    ]
+    ],
+    cta: {
+      label: 'Inquire About Community Management',
+      actionType: 'contact_popup',
+      target: ''
+    }
   },
   {
     id: 'service-05',
@@ -825,7 +1034,12 @@ export const CORE_SERVICES: ServiceItem[] = [
       'Member-to-member interaction initiatives',
       'Point system & level unlocking incentives',
       'Feedback loops & experience surveys'
-    ]
+    ],
+    cta: {
+      label: 'Inquire About Engagement & Experience',
+      actionType: 'contact_popup',
+      target: ''
+    }
   },
   {
     id: 'service-06',
@@ -841,7 +1055,12 @@ export const CORE_SERVICES: ServiceItem[] = [
       'Lead magnet to Skool funnel setup',
       'Organic referral & invite campaigns',
       'Growth roadmap & retention analysis'
-    ]
+    ],
+    cta: {
+      label: 'Inquire About Community Growth & Social Media',
+      actionType: 'contact_popup',
+      target: ''
+    }
   }
 ];
 
@@ -917,24 +1136,174 @@ function cleanImageUrl(val: string | undefined, fallback: string): string {
   return isExpiredOrLegacyImageUrl(val) ? fallback : (val as string);
 }
 
+function cleanCta(saved: Partial<CtaConfig> | undefined, def: CtaConfig, labelOverride?: string): CtaConfig {
+  return {
+    ...def,
+    ...(saved || {}),
+    label: saved?.label || labelOverride || def.label
+  };
+}
+
 export function sanitizeSiteConfig(saved: Partial<SiteConfig>): SiteConfig {
+  const def = INITIAL_SITE_CONFIG;
   const merged: SiteConfig = {
-    ...INITIAL_SITE_CONFIG,
+    ...def,
     ...saved,
-    seo: { ...INITIAL_SITE_CONFIG.seo, ...(saved.seo || {}) },
-    theme: { ...INITIAL_SITE_CONFIG.theme, ...(saved.theme || {}) },
+    founderHeroImageLink: cleanCta(saved.founderHeroImageLink, def.founderHeroImageLink),
+    founderStoryImageLink: cleanCta(saved.founderStoryImageLink, def.founderStoryImageLink),
+    seo: { ...def.seo, ...(saved.seo || {}) },
+    theme: { ...def.theme, ...(saved.theme || {}) },
     sectionVisibility: {
-      ...INITIAL_SITE_CONFIG.sectionVisibility,
+      ...def.sectionVisibility,
       ...(saved.sectionVisibility || {})
     },
-    navigation: { ...INITIAL_SITE_CONFIG.navigation, ...(saved.navigation || {}) },
-    footer: { ...INITIAL_SITE_CONFIG.footer, ...(saved.footer || {}) },
-    socials: { ...INITIAL_SITE_CONFIG.socials, ...(saved.socials || {}) },
-    metrics: { ...INITIAL_SITE_CONFIG.metrics, ...(saved.metrics || {}) },
-    homePage: { ...INITIAL_SITE_CONFIG.homePage, ...(saved.homePage || {}) },
-    servicesPage: { ...INITIAL_SITE_CONFIG.servicesPage, ...(saved.servicesPage || {}) },
-    portfolioPage: { ...INITIAL_SITE_CONFIG.portfolioPage, ...(saved.portfolioPage || {}) },
-    aboutPage: { ...INITIAL_SITE_CONFIG.aboutPage, ...(saved.aboutPage || {}) }
+    navigation: {
+      ...def.navigation,
+      ...(saved.navigation || {}),
+      ctaAction: cleanCta(
+        saved.navigation?.ctaAction,
+        def.navigation.ctaAction,
+        saved.navigation?.ctaLabel
+      )
+    },
+    footer: { ...def.footer, ...(saved.footer || {}) },
+    socials: { ...def.socials, ...(saved.socials || {}) },
+    metrics: { ...def.metrics, ...(saved.metrics || {}) },
+    homePage: {
+      ...def.homePage,
+      ...(saved.homePage || {}),
+      heroPrimaryCtaAction: cleanCta(
+        saved.homePage?.heroPrimaryCtaAction,
+        def.homePage.heroPrimaryCtaAction,
+        saved.homePage?.heroPrimaryCta
+      ),
+      heroSecondaryCtaAction: cleanCta(
+        saved.homePage?.heroSecondaryCtaAction,
+        def.homePage.heroSecondaryCtaAction,
+        saved.homePage?.heroSecondaryCta
+      ),
+      heroImageLink: cleanCta(saved.homePage?.heroImageLink, def.homePage.heroImageLink),
+      servicesCtaAction: cleanCta(
+        saved.homePage?.servicesCtaAction,
+        def.homePage.servicesCtaAction,
+        saved.homePage?.servicesCtaText
+      ),
+      portfolioCtaAction: cleanCta(
+        saved.homePage?.portfolioCtaAction,
+        def.homePage.portfolioCtaAction,
+        saved.homePage?.portfolioCtaText
+      ),
+      whyCtaAction: cleanCta(
+        saved.homePage?.whyCtaAction,
+        def.homePage.whyCtaAction,
+        saved.homePage?.whyCtaText
+      ),
+      whyGrowthImageLink: cleanCta(
+        saved.homePage?.whyGrowthImageLink,
+        def.homePage.whyGrowthImageLink
+      ),
+      ctaButtonAction: cleanCta(
+        saved.homePage?.ctaButtonAction,
+        def.homePage.ctaButtonAction,
+        saved.homePage?.ctaButtonText
+      )
+    },
+    servicesPage: {
+      ...def.servicesPage,
+      ...(saved.servicesPage || {}),
+      heroPrimaryCtaAction: cleanCta(
+        saved.servicesPage?.heroPrimaryCtaAction,
+        def.servicesPage.heroPrimaryCtaAction,
+        saved.servicesPage?.heroPrimaryCta
+      ),
+      heroSecondaryCtaAction: cleanCta(
+        saved.servicesPage?.heroSecondaryCtaAction,
+        def.servicesPage.heroSecondaryCtaAction,
+        saved.servicesPage?.heroSecondaryCta
+      ),
+      heroImageLink: cleanCta(saved.servicesPage?.heroImageLink, def.servicesPage.heroImageLink),
+      processImageLink: cleanCta(
+        saved.servicesPage?.processImageLink,
+        def.servicesPage.processImageLink
+      ),
+      ctaButtonAction: cleanCta(
+        saved.servicesPage?.ctaButtonAction,
+        def.servicesPage.ctaButtonAction,
+        saved.servicesPage?.ctaButtonText
+      ),
+      blocks: (saved.servicesPage?.blocks || def.servicesPage.blocks).map((block, i) => {
+        const defBlock = def.servicesPage.blocks[i] || def.servicesPage.blocks[0];
+        return {
+          ...defBlock,
+          ...block,
+          ctaAction: cleanCta(block.ctaAction, defBlock.ctaAction, block.ctaText),
+          imageLink: cleanCta(block.imageLink, defBlock.imageLink),
+          imageUrl: cleanImageUrl(
+            block.imageUrl,
+            defBlock.imageUrl || CLASSROOM_DESIGN_HUB_IMAGE
+          )
+        };
+      })
+    },
+    portfolioPage: {
+      ...def.portfolioPage,
+      ...(saved.portfolioPage || {}),
+      heroPrimaryCtaAction: cleanCta(
+        saved.portfolioPage?.heroPrimaryCtaAction,
+        def.portfolioPage.heroPrimaryCtaAction,
+        saved.portfolioPage?.heroPrimaryCta
+      ),
+      heroSecondaryCtaAction: cleanCta(
+        saved.portfolioPage?.heroSecondaryCtaAction,
+        def.portfolioPage.heroSecondaryCtaAction,
+        saved.portfolioPage?.heroSecondaryCta
+      ),
+      heroImageLink: cleanCta(saved.portfolioPage?.heroImageLink, def.portfolioPage.heroImageLink),
+      caseStudyCtaAction: cleanCta(
+        saved.portfolioPage?.caseStudyCtaAction,
+        def.portfolioPage.caseStudyCtaAction,
+        saved.portfolioPage?.caseStudyCtaText
+      ),
+      caseStudyImageLink: cleanCta(
+        saved.portfolioPage?.caseStudyImageLink,
+        def.portfolioPage.caseStudyImageLink
+      ),
+      ctaButtonAction: cleanCta(
+        saved.portfolioPage?.ctaButtonAction,
+        def.portfolioPage.ctaButtonAction,
+        saved.portfolioPage?.ctaButtonText
+      )
+    },
+    aboutPage: {
+      ...def.aboutPage,
+      ...(saved.aboutPage || {}),
+      heroPrimaryCtaAction: cleanCta(
+        saved.aboutPage?.heroPrimaryCtaAction,
+        def.aboutPage.heroPrimaryCtaAction,
+        saved.aboutPage?.heroPrimaryCta
+      ),
+      heroSecondaryCtaAction: cleanCta(
+        saved.aboutPage?.heroSecondaryCtaAction,
+        def.aboutPage.heroSecondaryCtaAction,
+        saved.aboutPage?.heroSecondaryCta
+      ),
+      storyCtaAction: cleanCta(
+        saved.aboutPage?.storyCtaAction,
+        def.aboutPage.storyCtaAction,
+        saved.aboutPage?.storyCtaText
+      ),
+      skillsImageLink: cleanCta(saved.aboutPage?.skillsImageLink, def.aboutPage.skillsImageLink),
+      skillsCtaAction: cleanCta(
+        saved.aboutPage?.skillsCtaAction,
+        def.aboutPage.skillsCtaAction,
+        saved.aboutPage?.skillsCtaText
+      ),
+      ctaButtonAction: cleanCta(
+        saved.aboutPage?.ctaButtonAction,
+        def.aboutPage.ctaButtonAction,
+        saved.aboutPage?.ctaButtonText
+      )
+    }
   };
 
   merged.founderHeroImage = cleanImageUrl(merged.founderHeroImage, FOUNDER_HERO_IMAGE);
@@ -951,16 +1320,6 @@ export function sanitizeSiteConfig(saved: Partial<SiteConfig>): SiteConfig {
   merged.servicesPage.processImage = cleanImageUrl(
     merged.servicesPage.processImage,
     WHY_CHOOSE_GROWTH_IMAGE
-  );
-  merged.servicesPage.blocks = (merged.servicesPage.blocks || INITIAL_SITE_CONFIG.servicesPage.blocks).map(
-    (block, i) => ({
-      ...INITIAL_SITE_CONFIG.servicesPage.blocks[i],
-      ...block,
-      imageUrl: cleanImageUrl(
-        block.imageUrl,
-        INITIAL_SITE_CONFIG.servicesPage.blocks[i]?.imageUrl || CLASSROOM_DESIGN_HUB_IMAGE
-      )
-    })
   );
   merged.portfolioPage.heroImage = cleanImageUrl(
     merged.portfolioPage.heroImage,
@@ -983,7 +1342,7 @@ export function sanitizeProjects(
   return saved.map((item) => {
     const def = defaultById.get(item.id);
     if (isExpiredOrLegacyImageUrl(item.imageUrl)) {
-      return def ? { ...def } : { ...item, imageUrl: fallbackImage };
+      return def ? { ...def, clickAction: item.clickAction || def.clickAction } : { ...item, imageUrl: fallbackImage };
     }
     return item;
   });
